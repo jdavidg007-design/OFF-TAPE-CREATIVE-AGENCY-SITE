@@ -549,6 +549,14 @@ footer { padding-block: 64px 36px; }
 .hero h1 .l2, .hero h1 .l2 .ch { color: transparent !important; -webkit-text-stroke: 2px #fff; }
 .hero-meta .pill.fill { background: #fff; border-color: #fff; color: #0b1440; }
 .hero-meta .pill.fill:hover { background: var(--violet); border-color: var(--violet); color: #fff; }
+/* desktop: fit the whole hero in the first screen, vertically centered */
+@media (min-width: 861px) {
+  .hero { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--navh, 84px) + 16px) !important; padding-bottom: 96px; }
+  .hero .wrap { width: 100%; }
+  .hero h1 { font-size: clamp(60px, min(10.4vw, 13.5vh), 168px); margin-block: 14px 18px; }
+  .hero h1 .l4 { white-space: nowrap; }
+  .phone-wrap { width: min(100%, 340px, calc((100svh - var(--navh, 84px) - 150px) * .5)); }
+}
 </style>
 </head>
 <body>
