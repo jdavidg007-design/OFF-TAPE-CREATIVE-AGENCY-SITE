@@ -112,8 +112,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav.away { transform: translateY(calc(-100% - env(safe-area-inset-top, 0px))); }
 .nav { transition: transform .35s cubic-bezier(.2,.7,.2,1), background-color .3s; }
 .nav.top { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
-.hero { margin-top: calc(-1 * var(--navh, 84px)); padding-top: calc(clamp(16px, 4svh, 64px) + var(--navh, 84px)) !important; }
-@media (min-width: 861px) { .hero { padding-bottom: clamp(40px, 7svh, 120px) !important; } }
+.hero { margin-top: calc(-1 * var(--navh, 84px)); padding-top: calc(clamp(40px, 6vw, 80px) + var(--navh, 84px)) !important; }
+@media (min-width: 861px) { .hero .wrap { padding-inline: clamp(24px, 4vw, 64px); } }
 @media (prefers-reduced-motion: reduce) { .nav { transition: none; } }
 .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; height: 84px; }
 .nav-left { display: flex; gap: 8px; }
@@ -124,8 +124,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .nav-right { justify-self: end; display: flex; align-items: center; gap: 20px; }
 .nav-right .where { font-size: 14px; line-height: 1.25; color: var(--mute-d); text-align: right; }
 .talk { display: inline-flex; align-items: center; gap: 14px; padding: 6px 6px 6px 22px; border-radius: 999px; background: var(--violet); color: #fff; border: 0; font-weight: 600; font-size: 15px; cursor: pointer; }
-.talk i { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--violet); display: grid; place-items: center; font-style: normal; transition: transform .25s; }
-.talk:hover i { transform: rotate(45deg); }
+.talk i { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--violet); display: grid; place-items: center; font-style: normal; transition: transform .25s; font-size: 19px; line-height: 1; }
+.talk i svg { width: 24px; height: 24px; }
+.fab .ph { font-size: 1.25em; line-height: 1; display: inline-block; animation: phring 2.4s ease-in-out infinite; }
+@keyframes phring { 0%, 70%, 100% { transform: rotate(0); } 74%, 82%, 90% { transform: rotate(-14deg); } 78%, 86%, 94% { transform: rotate(14deg); } }
+@media (prefers-reduced-motion: reduce) { .fab .ph { animation: none; } }
+.talk:hover i { transform: rotate(-15deg) scale(1.08); }
 @media (max-width: 960px) { .nav-left, .nav-right .where { display: none; } .nav .wrap { grid-template-columns: auto 1fr; } .logo { justify-self: start; } }
 
 /* contact overlay */
@@ -142,11 +146,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 820px) { .ov-body { grid-template-columns: 1fr; } }
 
 /* hero */
-.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 80px) clamp(110px, 12vw, 170px); background: radial-gradient(90% 70% at 80% 20%, rgba(35,80,255,.42), transparent 60%), radial-gradient(70% 60% at 10% 90%, rgba(35,80,255,.4), transparent 65%), linear-gradient(160deg, #0c1550 0%, #101c66 55%, #0a1248 100%); }
+.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 80px) clamp(110px, 12vw, 170px); background: radial-gradient(75% 85% at 95% 55%, rgba(24,54,190,.55), transparent 70%), radial-gradient(60% 50% at 30% 105%, rgba(20,40,150,.35), transparent 70%), linear-gradient(115deg, #05060b 0%, #070a1c 35%, #0b1a5c 75%, #0e2276 100%); }
 .grid-floor { position: absolute; left: -20%; right: -20%; bottom: -10px; height: 300px; z-index: 0; background-image: linear-gradient(var(--sky) 2px, transparent 2px), linear-gradient(90deg, var(--sky) 2px, transparent 2px); background-size: 70px 50px; transform: perspective(380px) rotateX(62deg); transform-origin: bottom; opacity: .55; animation: floor 2.4s linear infinite; mask-image: linear-gradient(to top, #000 30%, transparent); -webkit-mask-image: linear-gradient(to top, #000 30%, transparent); }
 @keyframes floor { to { background-position: 0 50px, 0 0; } }
 .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px; align-items: center; }
-.hero h1 { font-size: clamp(52px, min(10.4vw, 13svh), 168px); margin-block: min(24px, 2.5svh) min(28px, 3svh); }
+.hero h1 { font-size: clamp(72px, 10.4vw, 168px); margin-block: 24px 28px; }
 .hero h1 .hl { display: block; width: fit-content; will-change: transform; }
 .hero h1 .l0 { color: var(--violet); }
 .hero h1 .l2 { color: var(--blue); padding-left: .4em; }
@@ -160,7 +164,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-meta .tags { display: grid; gap: 2px; font-size: clamp(17px, 1.8vw, 21px); }
 .hero-meta .tags b { font-weight: 600; }
 .hero-meta .tags span { color: var(--mute-d); }
-.phone-wrap { position: relative; justify-self: center; width: min(100%, 340px, 42svh); }
+.phone-wrap { position: relative; justify-self: center; width: min(100%, 340px); }
 .phone { aspect-ratio: 9 / 16; transform: rotate(4deg); position: relative; }
 .phone video, .phone img { width: 100%; height: 100%; object-fit: cover; }
 .sound { position: absolute; z-index: 4; left: 50%; bottom: -22px; transform: translateX(-50%) rotate(-3deg); background: var(--ink); color: #fff; border: 2px solid #fff; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
@@ -245,6 +249,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .rows li:hover .blogo { transform: rotate(0) scale(1.06); box-shadow: 6px 6px 0 var(--hc, var(--blue)); }
 .chip { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; border: 1.5px solid currentColor; border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
 .rows li:hover .name { transform: translateX(18px); color: var(--hc, var(--blue)); }
+.rows li.more { display: block; border-bottom: 0; padding-block: clamp(14px, 2vw, 24px) 0; }
+.rows li.more .name { font-family: var(--serif); text-transform: none; font-size: clamp(28px, 3.6vw, 52px); line-height: 1.1; color: var(--violet); opacity: .85; display: inline-block; transform: rotate(-2deg); padding-left: 6px; }
+.rows li.more:hover .name { transform: rotate(-2deg); color: var(--violet); }
 @media (max-width: 640px) { .rows li { grid-template-columns: auto minmax(0, 1fr); gap: 12px 14px; } .rows .blogo { width: 88px; height: 52px; padding: 6px 10px; border-radius: 14px; box-shadow: 3px 3px 0 var(--ink); } .rows .blogo:empty { display: none; } .rows .blogo:empty + .name { grid-column: 1 / -1; } }
 
 /* will smith */
@@ -425,8 +432,16 @@ a.dg-stat { text-decoration: none; }
 .tst figcaption { display: flex; align-items: center; gap: 12px; }
 .av { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 15px; background: var(--blue); color: #fff; flex: none; }
 .tst figure:nth-child(3) .av { background: #fff; color: var(--violet); }
+.tst figure:nth-child(1) { background: var(--blue); color: #fff; }
+.tst figure:nth-child(1) .av { background: #fff; color: var(--blue); }
+.tst figure:nth-child(1) figcaption span { opacity: .8; }
+@media (hover: hover) { .tst figure:nth-child(1):hover { box-shadow: 10px 14px 0 var(--ink); } }
 .tst figcaption b { display: block; font-weight: 600; }
 .tst figcaption span { font-size: 14px; opacity: .7; }
+.tst figcaption .av.logo, .tst figure:nth-child(n) .av.logo { opacity: 1; background: #fff; padding: 8px; overflow: hidden; box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+.tst .av.logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tst figcaption .av.pfp { opacity: 1; padding: 0; overflow: hidden; background: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+.tst .av.pfp img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 900px) { .tst { grid-template-columns: 1fr; } .tst figure:nth-child(n) { transform: none; } }
 
 /* faq */
@@ -493,10 +508,10 @@ footer { padding-block: 64px 36px; }
 @keyframes fabpulse { 0%, 60% { opacity: 0; transform: scale(1); } 62% { opacity: .9; } 100% { opacity: 0; transform: scale(1.35, 1.7); } }
 @keyframes recblink { 50% { opacity: .25; } }
 @media (max-width: 700px) {
-  .fab { left: 0; right: 0; bottom: 0; justify-content: center; border-radius: 0; border: 0; border-top: 3px solid #fff; box-shadow: 0 -8px 24px rgba(0,0,0,.3); padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px)); font-size: 17px; transform: translateY(100%); }
-  .fab.on, .fab:hover { transform: none; }
+  .fab { right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); gap: 8px; padding: 11px 16px 11px 13px; font-size: 14px; border-width: 2.5px; box-shadow: 3px 3px 0 var(--ink), 0 10px 22px rgba(0,0,0,.3); transform: translateY(16px) rotate(-3deg); }
+  .fab .dot { width: 10px; height: 10px; }
+  .fab.on, .fab:hover { transform: rotate(-3deg); }
   .fab::before { display: none; }
-  body.has-fab footer { padding-bottom: 72px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -509,6 +524,31 @@ footer { padding-block: 64px 36px; }
   .ticker .row, .spin, .bob, .grid-floor, .ring svg, .ransom:hover .c { animation: none; }
   .cursor { display: none !important; }
 }
+
+/* phones: centered, stacked hero */
+@media (max-width: 860px) {
+  .hero .wrap { justify-items: center; text-align: center; gap: 28px; }
+  .hero .wrap > div:first-child { display: grid; justify-items: center; width: 100%; }
+  .hero h1 { font-size: min(20vw, 104px); margin-block: 18px 22px; }
+  .hero h1 .hl { margin-inline: auto; }
+  .hero h1 .l2 { padding-left: 0; }
+  .hero h1 .l4 { font-size: .6em; }
+  .hero-meta { flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+  .hero-meta .tags { justify-items: center; }
+  .hero-meta .pill { font-size: 18px; padding: 16px 30px; }
+  .phone-wrap { width: min(80%, 330px) !important; margin: 8px auto 0; }
+}
+@media (max-width: 860px) {
+  .dg h2 { font-size: min(24vw, 120px); text-align: center; }
+  .dg h2 .l1, .dg h2 .l2, .dg .dg-role { transform: none !important; }
+  .dg h2 .l2 { padding-left: 0; }
+  .dg .dg-role { text-align: center; }
+  #david .eyebrow { display: flex; justify-content: center; }
+}
+/* hero: outlined middle line + white button so it doesn't read as a flag */
+.hero h1 .l2, .hero h1 .l2 .ch { color: transparent !important; -webkit-text-stroke: 2px #fff; }
+.hero-meta .pill.fill { background: #fff; border-color: #fff; color: #0b1440; }
+.hero-meta .pill.fill:hover { background: var(--violet); border-color: var(--violet); color: #fff; }
 </style>
 </head>
 <body>
@@ -531,7 +571,7 @@ footer { padding-block: 64px 36px; }
 </svg>
 
 <div class="cursor" id="cursor" aria-hidden="true"></div>
-<a class="fab" id="fab" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Book a call</a>
+<a class="fab" id="fab" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener"><span class="ph" aria-hidden="true">📞</span>Book a call</a>
 <div class="mib-flash" id="mib-flash" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Main">
@@ -539,7 +579,7 @@ footer { padding-block: 64px 36px; }
     <div class="nav-left" aria-hidden="true"></div>
     <a class="logo" href="#top">OFF<span>-</span>TAPE</a>
     <div class="nav-right">
-      <button class="talk" type="button" id="open-talk">Book a call <i aria-hidden="true">↗</i></button>
+      <button class="talk" type="button" id="open-talk">Book a call <i aria-hidden="true"><svg><use href="#bolt"/></svg></i></button>
     </div>
   </div>
 </nav>
@@ -574,9 +614,8 @@ footer { padding-block: 64px 36px; }
     </div>
     <div class="phone-wrap">
       <div class="phone diecut">
-        <video id="hero-vid" src="media/highlight.mp4?v=4" poster="media/highlight.jpg?v=4" autoplay muted loop playsinline preload="auto"></video>
+        <video id="hero-vid" src="media/highlight.mp4?v=5" poster="media/highlight.jpg?v=5" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
       </div>
-      <button class="sound" type="button" id="sound">🔈 Sound on</button>
       <span class="deco d2 bob" aria-hidden="true"><svg><use href="#star"/></svg></span>
       <span class="deco d4 bob" aria-hidden="true" style="animation-delay:-.6s"><svg><use href="#bolt"/></svg></span>
     </div>
@@ -603,19 +642,19 @@ footer { padding-block: 64px 36px; }
     </div>
   </div>
   <div class="track-x" id="track">
-    <div class="card" style="--c:var(--blue)"><video src="media/work-rayban.mp4" poster="media/work-rayban.jpg" muted loop playsinline preload="none"></video><span class="brand">Ray-Ban Meta</span></div>
-    <div class="card" style="--c:var(--blue)"><video src="media/work-perfectday.mp4" poster="media/work-perfectday.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--aqua)"><video src="media/work-abyss.mp4" poster="media/work-abyss.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--violet)"><video src="media/work-united-crew.mp4" poster="media/work-united-crew.jpg" muted loop playsinline preload="none"></video><span class="brand">United Airlines</span></div>
-    <div class="card" style="--c:var(--aqua)"><video src="media/work-kart.mp4?v=3" poster="media/work-kart.jpg" muted loop playsinline preload="none"></video><span class="brand">NCL</span></div>
-    <div class="card" style="--c:var(--aqua)"><video src="media/work-thrill.mp4" poster="media/work-thrill.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--violet)"><video src="media/work-united-cabin.mp4" poster="media/work-united-cabin.jpg" muted loop playsinline preload="none"></video><span class="brand">United Airlines</span></div>
-    <div class="card" style="--c:var(--blue)"><video src="media/work-nightlife.mp4" poster="media/work-nightlife.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--blue)"><video src="media/work-aquatheater.mp4?v=2" poster="media/work-aquatheater.jpg?v=2" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--violet)"><video src="media/work-united-hangar.mp4" poster="media/work-united-hangar.jpg" muted loop playsinline preload="none"></video><span class="brand">United Airlines</span></div>
-    <div class="card" style="--c:var(--blue)"><video src="media/work-flowrider.mp4" poster="media/work-flowrider.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--violet)"><video src="media/work-ifly.mp4?v=2" poster="media/work-ifly.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
-    <div class="card" style="--c:var(--aqua)"><video src="media/work-texting.mp4?v=3" poster="media/work-texting.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--blue)"><video src="media/work-rayban.mp4" poster="media/work-rayban.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Ray-Ban Meta</span></div>
+    <div class="card" style="--c:var(--blue)"><video src="media/work-perfectday.mp4" poster="media/work-perfectday.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--aqua)"><video src="media/work-abyss.mp4" poster="media/work-abyss.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--violet)"><video src="media/work-united-crew.mp4" poster="media/work-united-crew.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">United Airlines</span></div>
+    <div class="card" style="--c:var(--aqua)"><video src="media/work-kart.mp4?v=3" poster="media/work-kart.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">NCL</span></div>
+    <div class="card" style="--c:var(--aqua)"><video src="media/work-thrill.mp4" poster="media/work-thrill.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--violet)"><video src="media/work-united-cabin.mp4" poster="media/work-united-cabin.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">United Airlines</span></div>
+    <div class="card" style="--c:var(--blue)"><video src="media/work-nightlife.mp4" poster="media/work-nightlife.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--blue)"><video src="media/work-aquatheater.mp4?v=2" poster="media/work-aquatheater.jpg?v=2" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--violet)"><video src="media/work-united-hangar.mp4" poster="media/work-united-hangar.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">United Airlines</span></div>
+    <div class="card" style="--c:var(--blue)"><video src="media/work-flowrider.mp4" poster="media/work-flowrider.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--violet)"><video src="media/work-ifly.mp4?v=2" poster="media/work-ifly.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
+    <div class="card" style="--c:var(--aqua)"><video src="media/work-texting.mp4?v=3" poster="media/work-texting.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span></div>
   </div>
 </section>
 
@@ -644,6 +683,7 @@ footer { padding-block: 64px 36px; }
       <li style="--hc:var(--blue)"><span class="blogo"><img src="media/logo-ncl.png" alt="NCL logo"></span><span class="name">NCL</span></li>
       <li style="--hc:var(--violet)"><span class="blogo"><img src="media/logo-rbmeta.png" alt="Ray-Ban Meta logo"></span><span class="name">Ray-Ban Meta</span></li>
       <li style="--hc:var(--blue)"><span class="blogo"><img src="media/logo-rtg.png" alt="Rooms To Go logo"></span><span class="name">Rooms To Go</span></li>
+      <li class="more" aria-label="and many more brands"><span class="name">+ many more</span></li>
     </ul>
   </div>
 </section>
@@ -716,18 +756,17 @@ footer { padding-block: 64px 36px; }
         <span class="eyebrow">Behind the scenes</span>
         <h2 id="bts-h">On set <span class="it">with us</span></h2>
       </div>
-      <div class="bts-head-r"><p>How the work gets made. Real sets, real crews, real chaos. Swipe through to see more.</p><div class="bts-ctrl"><button type="button" id="bts-prev" aria-label="Scroll back">←</button><button type="button" id="bts-next" aria-label="Scroll forward">→</button></div></div>
     </div>
   </div>
     <div class="bts-grid" id="bts-row">
-      <div class="bts" style="--t:-2deg" role="img" aria-label="Rooms To Go behind the scenes: ADS on set"><video src="media/rtg-bts-full.mp4?v=3" poster="media/rtg-bts.jpg?v=3" muted loop playsinline preload="none"></video><span class="brand">Rooms To Go</span><span class="lab"><span style="text-transform:uppercase">ADS</span> on set</span></div>
-      <div class="bts" style="--t:1.5deg" role="img" aria-label="Royal Caribbean behind the scenes: Glam on deck"><video src="media/rc-bts-makeup.mp4?v=2" poster="media/rc-bts-makeup.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span><span class="lab">Glam on deck</span></div>
-      <div class="bts" style="--t:-1deg" role="img" aria-label="Rooms To Go behind the scenes: Studio setup"><video src="media/rtg-studio-walk.mp4" poster="media/rtg-studio-walk.jpg" muted loop playsinline preload="none"></video><span class="brand">Rooms To Go</span><span class="lab">Studio setup</span></div>
-      <div class="bts" style="--t:-1.5deg" role="img" aria-label="Behind the scenes with Julianne Hough"><video src="media/bts-julianne.mp4" poster="media/bts-julianne.jpg" muted loop playsinline preload="none"></video><span class="brand">Julianne Hough</span><span class="lab"><span style="text-transform:none">BTS</span> with <span style="text-transform:none">Julianne Hough</span></span></div>
-      <div class="bts" style="--t:1deg" role="img" aria-label="Rooms To Go behind the scenes: This is the fun part"><video src="media/rtg-bts-shoot.mp4" poster="media/rtg-bts-shoot.jpg" muted loop playsinline preload="none"></video><span class="brand">Rooms To Go</span><span class="lab">This is the fun part</span></div>
-      <div class="bts" style="--t:2deg" role="img" aria-label="Royal Caribbean behind the scenes: Tropic Like It’s Hot"><video src="media/rc-bts-tropic.mp4" poster="media/rc-bts-tropic.jpg" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span><span class="lab">Tropic Like It’s Hot</span></div>
-      <div class="bts" style="--t:-1.5deg" role="img" aria-label="Royal Caribbean behind the scenes: That’s a wrap!"><video src="media/rc-bts-crowd.mp4?v=3" poster="media/rc-bts-crowd.jpg?v=2" muted loop playsinline preload="none"></video><span class="brand">Royal Caribbean</span><span class="lab">That’s a wrap!</span></div>
-      <div class="bts" style="--t:1.5deg" role="img" aria-label="United Airlines behind the scenes: Another shoot done!"><video src="media/ua-bts-crew.mp4?v=2" poster="media/ua-bts-crew.jpg?v=2" muted loop playsinline preload="none"></video><span class="brand">United Airlines</span><span class="lab">Another shoot done!</span></div>
+      <div class="bts" style="--t:-2deg" role="img" aria-label="Rooms To Go behind the scenes: ADS on set"><video src="media/rtg-bts-full.mp4?v=3" poster="media/rtg-bts.jpg?v=3" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Rooms To Go</span><span class="lab"><span style="text-transform:uppercase">ADS</span> on set</span></div>
+      <div class="bts" style="--t:1.5deg" role="img" aria-label="Royal Caribbean behind the scenes: Glam on deck"><video src="media/rc-bts-makeup.mp4?v=2" poster="media/rc-bts-makeup.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span><span class="lab">Glam on deck</span></div>
+      <div class="bts" style="--t:-1deg" role="img" aria-label="Rooms To Go behind the scenes: Studio setup"><video src="media/rtg-studio-walk.mp4" poster="media/rtg-studio-walk.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Rooms To Go</span><span class="lab">Studio setup</span></div>
+      <div class="bts" style="--t:-1.5deg" role="img" aria-label="Behind the scenes with Julianne Hough"><video src="media/bts-julianne.mp4?v=2" poster="media/bts-julianne.jpg?v=2" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Julianne Hough</span><span class="lab"><span style="text-transform:none">BTS</span> with <span style="text-transform:none">Julianne Hough</span></span></div>
+      <div class="bts" style="--t:1deg" role="img" aria-label="Rooms To Go behind the scenes: This is the fun part"><video src="media/rtg-bts-shoot.mp4" poster="media/rtg-bts-shoot.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Rooms To Go</span><span class="lab">This is the fun part</span></div>
+      <div class="bts" style="--t:2deg" role="img" aria-label="Royal Caribbean behind the scenes: Tropic Like It’s Hot"><video src="media/rc-bts-tropic.mp4" poster="media/rc-bts-tropic.jpg" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span><span class="lab">Tropic Like It’s Hot</span></div>
+      <div class="bts" style="--t:-1.5deg" role="img" aria-label="Royal Caribbean behind the scenes: That’s a wrap!"><video src="media/rc-bts-crowd.mp4?v=3" poster="media/rc-bts-crowd.jpg?v=2" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">Royal Caribbean</span><span class="lab">That’s a wrap!</span></div>
+      <div class="bts" style="--t:1.5deg" role="img" aria-label="United Airlines behind the scenes: Another shoot done!"><video src="media/ua-bts-crew.mp4?v=2" poster="media/ua-bts-crew.jpg?v=2" muted loop playsinline webkit-playsinline preload="metadata"></video><span class="brand">United Airlines</span><span class="lab">Another shoot done!</span></div>
     </div>
 </section>
 
@@ -757,17 +796,17 @@ footer { padding-block: 64px 36px; }
       <figure>
         <div class="hl">It turned out awesome</div>
         <blockquote>“Loved the video for our Airbus A321neo. It turned out awesome!”</blockquote>
-        <figcaption><span class="av">UA</span><div><b>United Airlines</b><span>Brand partner</span></div></figcaption>
+        <figcaption><span class="av pfp"><img src="media/pfp-united.jpg" alt="United Airlines"></span><div><b>United Airlines</b><span>Brand partner</span></div></figcaption>
       </figure>
       <figure>
         <div class="hl">Pure perfection</div>
         <blockquote>“This is pure perfection! The team loves the video!!”</blockquote>
-        <figcaption><span class="av">RC</span><div><b>Royal Caribbean</b><span>Brand partner</span></div></figcaption>
+        <figcaption><span class="av pfp"><img src="media/pfp-rc.jpg" alt="Royal Caribbean"></span><div><b>Royal Caribbean</b><span>Brand partner</span></div></figcaption>
       </figure>
       <figure>
         <div class="hl">NCL loved it</div>
         <blockquote>This is EPIC! This video came out insane!</blockquote>
-        <figcaption><span class="av">NCL</span><div><b>NCL</b><span>Brand partner</span></div></figcaption>
+        <figcaption><span class="av logo"><img src="media/logo-ncl.png" alt="NCL"></span><div><b>NCL</b><span>Brand partner</span></div></figcaption>
       </figure>
     </div>
   </div>
@@ -786,19 +825,20 @@ footer { padding-block: 64px 36px; }
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><small>Email us</small><span class="mail">offtapefilms@gmail.com</span></div>
-    </div>
-    <div class="giant" aria-hidden="true"><span class="l">O</span><span class="l">F</span><span class="l">F</span><span class="l dash">-</span><span class="l">T</span><span class="l">A</span><span class="l">P</span><span class="l">E</span></div>
-    <div class="legal"><span>© <span id="yr">2026</span> OFF-TAPE. Miami, FL.</span><span>Social Content for Brands</span></div>
-  </div>
-</footer>
 
 <script>
 (function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // muted inline playback that also works on iPhone: force the muted/inline flags in JS,
+  // and if the browser refuses to autoplay (Low Power Mode etc.), retry on the first touch
+  var vidWant = new Set();
+  document.querySelectorAll('video').forEach(function (v) { if (v.id === 'ws-vid' || v.id === 'lb-vid') return; v.muted = true; v.defaultMuted = true; v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); });
+  function tryPlay(v) { vidWant.add(v); if (v.preload !== 'auto') v.preload = 'auto'; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+  function stopVid(v) { vidWant.delete(v); v.pause(); }
+  function kick() { vidWant.forEach(function (v) { if (v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }); }
+  ['touchstart', 'touchend', 'click', 'scroll'].forEach(function (ev) { addEventListener(ev, kick, { passive: true }); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
 
   // ransom-note lettering
   document.querySelectorAll('[data-ransom]').forEach(function (el) {
@@ -821,17 +861,12 @@ footer { padding-block: 64px 36px; }
   var wsF = document.getElementById('ws-frame'), wsV = document.getElementById('ws-vid'), wsB = document.getElementById('ws-play');
   wsB.addEventListener('click', function () {
     wsF.classList.add('playing'); wsF.querySelector('img').hidden = true; wsB.hidden = true; wsV.hidden = false;
-    hv.muted = true; snd.textContent = '🔈 Sound on';
     wsV.play().catch(function () {});
   });
 
-  // hero video sound toggle
-  var hv = document.getElementById('hero-vid'), snd = document.getElementById('sound');
-  snd.addEventListener('click', function () {
-    hv.muted = !hv.muted; if (!hv.muted) { hv.play().catch(function () {}); }
-    snd.textContent = hv.muted ? '🔈 Sound on' : '🔇 Sound off';
-  });
-  if (reduce) { hv.removeAttribute('autoplay'); hv.pause(); }
+  // hero video: silent loop
+  var hv = document.getElementById('hero-vid');
+  tryPlay(hv);
 
   // top bar: slides away on scroll down, comes back on scroll up
   (function () {
@@ -858,7 +893,7 @@ footer { padding-block: 64px 36px; }
   document.body.classList.add('has-fab');
   function fabUpdate() { fab.classList.toggle('on', !endSeen && scrollY > innerHeight * .6); }
   if ('IntersectionObserver' in window) {
-    var endEls = [document.getElementById('contact'), document.querySelector('footer')], vis = new Set();
+    var endEls = [document.getElementById('contact')], vis = new Set();
     var fio = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.isIntersecting ? vis.add(e.target) : vis.delete(e.target); });
       endSeen = vis.size > 0; fabUpdate();
@@ -878,7 +913,7 @@ footer { padding-block: 64px 36px; }
 
   // endless side-scrolling rows: two extra copies of the cards, and the scroll position is
   // quietly moved back by exactly one set whenever it drifts out of the middle copy
-  function makeLoop(el) {
+  function makeLoop(el, startAt) {
     var orig = Array.prototype.slice.call(el.children), n = orig.length;
     orig.forEach(function (c, i) { c.dataset.k = i % 4; });
     for (var r = 0; r < 2; r++) orig.forEach(function (c) { var k = c.cloneNode(true); k.setAttribute('aria-hidden', 'true'); k.tabIndex = -1; el.appendChild(k); });
@@ -887,7 +922,7 @@ footer { padding-block: 64px 36px; }
       period: function () { return el.children[n].offsetLeft - el.children[0].offsetLeft; },
       wrap: function () { var P = lp.period(); if (!P) return; if (el.scrollLeft < P * .5) el.scrollLeft += P; else if (el.scrollLeft >= P * 1.5) el.scrollLeft -= P; }
     };
-    function home() { el.scrollLeft = lp.period(); }
+    function home() { var s = startAt && startAt(); el.scrollLeft = s != null ? el.children[s].offsetLeft - el.children[0].offsetLeft : lp.period(); }
     home(); addEventListener('load', home);
     var idle;
     el.addEventListener('scroll', function () {
@@ -901,12 +936,17 @@ footer { padding-block: 64px 36px; }
 
   // showcase: auto-drift, drag, arrows, play videos in view
   var track = document.getElementById('track');
-  var tloop = makeLoop(track);
+  // phones open on a Royal Caribbean card (Thrill Island) instead of Ray-Ban
+  var tloop = makeLoop(track, function () { if (innerWidth > 860) return null; var c = track.querySelector('.card video[src*="work-thrill"]'); return c ? Array.prototype.indexOf.call(track.children, c.parentNode) : null; });
   var all = track.querySelectorAll('.card');
   var paused = false, dragging = false, moved = 0, sx = 0, sl = 0, pos = track.scrollLeft;
+  addEventListener('load', function () { pos = track.scrollLeft; });
   function wrapPos() { tloop.wrap(); }
+  // on phones, hold the drift until the row is on screen so it still opens on the Royal card
+  var seen = innerWidth > 860 || !('IntersectionObserver' in window);
+  if (!seen) { var sio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { seen = true; sio.disconnect(); } }, { threshold: .4 }); sio.observe(track); }
   function drift() {
-    if (!paused && !dragging && !reduce) { pos += 0.6; if (Math.abs(pos - track.scrollLeft) > 2) pos = track.scrollLeft; track.scrollLeft = pos; wrapPos(); pos = track.scrollLeft; }
+    if (seen && !paused && !dragging && !reduce) { pos += 0.6; if (Math.abs(pos - track.scrollLeft) > 2) pos = track.scrollLeft; track.scrollLeft = pos; wrapPos(); pos = track.scrollLeft; }
     requestAnimationFrame(drift);
   }
   requestAnimationFrame(drift);
@@ -922,7 +962,7 @@ footer { padding-block: 64px 36px; }
   track.addEventListener('touchend', function () { setTimeout(function () { paused = false; pos = track.scrollLeft; }, 1800); }, { passive: true });
   function step(dir) { var w = all[0].getBoundingClientRect().width + 18; paused = true; tloop.busy = true; track.scrollBy({ left: dir * w, behavior: reduce ? 'auto' : 'smooth' }); setTimeout(function () { tloop.busy = false; wrapPos(); pos = track.scrollLeft; paused = false; }, 700); }
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { var v = en.target.querySelector('video'); if (en.isIntersecting && !reduce) { v.preload = 'auto'; v.play().catch(function () {}); } else { v.pause(); } }); }, { root: null, threshold: .25 });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (en) { var v = en.target.querySelector('video'); if (en.isIntersecting) tryPlay(v); else stopVid(v); }); }, { root: null, threshold: .25 });
     all.forEach(function (c) { io.observe(c); });
   }
 
@@ -943,11 +983,8 @@ footer { padding-block: 64px 36px; }
   row.addEventListener('pointermove', function (e) { if (!bdown) return; var dx = e.clientX - bsx; bmoved = Math.max(bmoved, Math.abs(dx)); if (bmoved > 6) { row.classList.add('drag'); row.scrollLeft = bsl - dx; var w = row.scrollLeft; bloop.wrap(); bsl += row.scrollLeft - w; } });
   function bend() { bdown = false; row.classList.remove('drag'); }
   addEventListener('pointerup', bend); row.addEventListener('pointerleave', bend);
-  function bstep(dir) { bloop.busy = true; row.scrollBy({ left: dir * (bts[0].offsetWidth + 20) * 2, behavior: reduce ? 'auto' : 'smooth' }); setTimeout(function () { bloop.busy = false; bloop.wrap(); }, 700); }
-  document.getElementById('bts-prev').addEventListener('click', function () { bstep(-1); });
-  document.getElementById('bts-next').addEventListener('click', function () { bstep(1); });
   if ('IntersectionObserver' in window) {
-    var bio = new IntersectionObserver(function (es) { es.forEach(function (en) { var v = en.target.querySelector('video'); if (en.isIntersecting && !reduce) { v.preload = 'auto'; v.play().catch(function () {}); } else { v.pause(); } }); }, { threshold: .25 });
+    var bio = new IntersectionObserver(function (es) { es.forEach(function (en) { var v = en.target.querySelector('video'); if (en.isIntersecting) tryPlay(v); else stopVid(v); }); }, { threshold: .25 });
     bts.forEach(function (c) { bio.observe(c); });
   }
   document.getElementById('lb-close').addEventListener('click', closeLb);
@@ -971,7 +1008,7 @@ footer { padding-block: 64px 36px; }
     var heroEl = document.querySelector('.hero'), hlTick = false;
     function hlDrift() {
       hlTick = false;
-      var y = Math.min(scrollY, heroEl.offsetHeight);
+      var y = Math.min(scrollY, heroEl.offsetHeight) * (innerWidth < 861 ? .3 : 1);
       hls.forEach(function (l) { l.style.transform = 'translateX(' + (y * +l.dataset.sp).toFixed(1) + 'px)'; });
     }
     addEventListener('scroll', function () { if (!hlTick) { hlTick = true; requestAnimationFrame(hlDrift); } }, { passive: true });
@@ -1084,7 +1121,6 @@ footer { padding-block: 64px 36px; }
   document.getElementById('close-talk').addEventListener('click', shut);
   addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; if (!ov.hidden) shut(); if (!lb.hidden) closeLb(); });
 
-  document.getElementById('yr').textContent = new Date().getFullYear();
   var btn = document.getElementById('copy');
   btn.addEventListener('click', function () {
     var el = document.getElementById('em');
