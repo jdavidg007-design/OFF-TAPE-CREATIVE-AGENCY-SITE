@@ -125,6 +125,20 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
 .card p { color: #d9dcea; font-size: 15px; }
 .card .need { margin-top: 8px; font-size: 14px; color: var(--sky); }
 
+/* where I find them */
+.find { margin-top: 14px; background: var(--paper); color: var(--ink); border-radius: 22px; padding: 20px; }
+.find h3 { font-size: 30px; margin-bottom: 12px; }
+.find ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: f; }
+.find li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; counter-increment: f; font-size: 16px; }
+.find li::before { content: counter(f); width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-family: var(--display); font-size: 18px; }
+.find li b { display: block; }
+.find li > span { display: block; min-width: 0; }
+.find .q { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.find .q span { display: inline-block; background: var(--paper-2); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+.find .q span::before { content: "⌕ "; color: var(--blue); font-weight: 900; }
+.src { margin-top: 10px; font-size: 15px; }
+.src a { color: var(--sky); font-weight: 700; }
+
 /* 4 · try it */
 .drills { margin-top: 22px; display: grid; gap: 10px; }
 @media (min-width: 760px) { .drills { grid-template-columns: repeat(3, 1fr); } }
@@ -210,7 +224,8 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
         <p>Get every shot your fire moments need.</p></article>
       <article class="stepc"><h3><b>3</b>Edit it</h3>
         <p>Find a song that <strong>builds to a beat drop.</strong> Open with something eye-catching, build up with the music, hit your fire moments on the drop, keep the energy through the middle, and finish strong.</p>
-        <p>Add <strong>risers</strong> for tension, <strong>impacts</strong> on key moments, <strong>whooshes</strong> on movement.</p></article>
+        <p>Add <strong>risers</strong> for tension, <strong>impacts</strong> on key moments, <strong>whooshes</strong> on movement.</p>
+        <p class="src">I get my sound effects from <a href="https://www.epidemicsound.com" target="_blank" rel="noopener">Epidemic Sound</a> or <a href="https://ocularsounds.com" target="_blank" rel="noopener">Ocular Sounds</a>.</p></article>
     </div>
   </div>
 </section>
@@ -221,6 +236,14 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
     <div class="sec-head"><span class="num" aria-hidden="true">3</span><h2 id="h-fx">Fire moments</h2></div>
     <p class="say">The shots people rewatch. Each one needs specific footage, so <strong>plan it before you film.</strong></p>
     <div class="fx" id="library"></div>
+    <div class="find">
+      <h3>Where I find them</h3>
+      <ol>
+        <li><span><b>Search Instagram.</b>Type the effect or transition into the Instagram search bar and scroll the reels.<span class="q"><span>whip transition</span><span>car transition</span><span>smooth transitions</span><span>creative camera movement</span></span></span></li>
+        <li><span><b>Save them to a folder.</b>Tap save on the ones you love and add them to a collection called "Effects & Transitions." I build mine on the go, any time one catches my eye.</span></li>
+        <li><span><b>Pick from it before you shoot.</b>Open the folder, choose your 2–3 fire moments, and figure out the shots each one needs.</span></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -256,7 +279,8 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
         <div class="cs-rule"><b>Plan 2–3 fire moments</b>Pick them before you shoot and add every shot they need to your list.</div>
         <div><h5>Shoot variety</h5><p class="cs-shots"><span>Wide</span><span>Close-up</span><span>Low angle</span><span>High angle</span><span>Push-in</span><span>Pull-out</span><span>Tracking</span></p></div>
         <div><h5>Edit to the music</h5><div class="cs-row r4"><div class="c-build"><b>Build-up</b>Open eye-catching, rise with the song</div><div class="c-drop"><b>Beat drop</b>Fire moments, fast cuts</div><div class="c-middle"><b>Middle</b>Keep the energy going</div><div class="c-end"><b>End</b>Strong final shot</div></div></div>
-        <div><h5>Sound design</h5><div class="cs-row"><div><b>Riser</b>Into the drop</div><div><b>Impact</b>On key hits</div><div><b>Whoosh</b>On fast moves</div></div></div>
+        <div><h5>Sound design · Epidemic Sound or Ocular Sounds</h5><div class="cs-row"><div><b>Riser</b>Into the drop</div><div><b>Impact</b>On key hits</div><div><b>Whoosh</b>On fast moves</div></div></div>
+        <div><h5>Find fire moments</h5><p style="font-size:14px;font-weight:600">Search Instagram → save to your "Effects &amp; Transitions" folder → pick 2–3 before you shoot.</p></div>
         <p class="cheat-foot">free guide by off-tape · @j.david007</p>
       </div>
     </div>
