@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hype Video Blueprint · OFF-TAPE</title>
-<meta name="description" content="Free guide from OFF-TAPE. Plan, shoot and edit your next hype video in three steps. Pick your fire moments, get your shot list, save your plan.">
+<meta name="description" content="Free guide from OFF-TAPE. See how a hype video is built, learn the 3 steps, pick your effects, practice with your phone, and plan your next shoot.">
 <meta name="theme-color" content="#050608">
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
 <link rel="icon" href="../favicon-32.png?v=2" sizes="32x32" type="image/png">
@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Sans:wght@400;500;600;700&family=Unbounded:wght@700;900&display=swap">
 <style>
-/* Layout: one scroll that follows the reel — Plan, Shoot, Edit — then the plan card. OFF-TAPE tokens copied from off-tape.com. */
+/* Layout: one scroll in six sections — see it, learn it, pick effects, practice, save the cheat sheet, plan the shoot. OFF-TAPE tokens copied from off-tape.com. */
 :root {
   --ink: #050608;
   --ink-2: #11131d;
@@ -26,6 +26,7 @@
   --aqua: #19c3ff;
   --navy: #0b1440;
   --green: #12a150;
+  --yellow: #ffd84a;
   --line-d: rgba(143,184,255,.2);
   --line-l: rgba(11,20,64,.16);
   --mute-d: #9aa2ba;
@@ -66,61 +67,86 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(5,6,8,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-d); }
 .top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
 .logo { font-family: var(--display); font-size: 28px; line-height: 1; text-decoration: none; letter-spacing: .02em; flex: none; }
-.jump { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+.jump { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; min-width: 0; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); padding-right: 18px; }
+@media (min-width: 760px) { .jump { -webkit-mask-image: none; mask-image: none; padding-right: 0; } }
 .jump::-webkit-scrollbar { display: none; }
 .jump a { text-decoration: none; padding: 8px 12px; border-radius: 999px; background: var(--ink-2); font-weight: 600; font-size: 13px; white-space: nowrap; transition: background .2s; }
 .jump a:hover, .jump a.on { background: var(--blue); color: #fff; }
-.jump a .n { font-family: var(--chunky); font-weight: 900; font-size: 11px; color: var(--sky); margin-right: 4px; }
-.jump a.on .n { color: #fff; }
-@media (max-width: 420px) { .jump a .lbl { display: none; } .jump a .n { margin: 0; color: #fff; } .jump a.plan .lbl { display: inline; } }
 
 /* hero */
-.hero { padding-block: clamp(40px, 8vw, 88px) 40px; position: relative; overflow: hidden; }
+.hero { padding-block: clamp(40px, 8vw, 88px) 44px; position: relative; overflow: hidden; }
 .hero .slash { position: absolute; left: -10%; width: 120%; transform: rotate(-12deg); pointer-events: none; }
-.hero .s1 { top: 52%; height: 40px; background: var(--blue); opacity: .35; }
-.hero .s2 { top: 60%; height: 12px; background: var(--violet); opacity: .45; }
+.hero .s1 { top: 55%; height: 40px; background: var(--blue); opacity: .35; }
+.hero .s2 { top: 63%; height: 12px; background: var(--violet); opacity: .45; }
 .hero .inner { position: relative; z-index: 2; }
 .hero h1 { font-size: clamp(60px, 14vw, 140px); margin-top: 16px; }
 .hero h1 .it { color: var(--sky); font-size: .6em; vertical-align: .1em; }
-.hero .lead { margin-top: 22px; font-size: clamp(19px, 2.6vw, 24px); font-weight: 600; max-width: 600px; line-height: 1.3; }
-.three { margin-top: 26px; display: grid; gap: 10px; max-width: 640px; }
-@media (min-width: 640px) { .three { grid-template-columns: repeat(3, 1fr); } }
-.three a { display: block; text-decoration: none; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 18px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
-.three a:hover { border-color: var(--blue); transform: translateY(-2px); }
-.three b { font-family: var(--display); font-weight: 400; font-size: 28px; text-transform: uppercase; display: block; line-height: 1; }
-.three b i { font-style: normal; color: var(--blue); margin-right: 6px; }
-.three span { color: var(--mute-d); font-size: 14px; }
-.hero .cta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.hero .lead { margin-top: 22px; font-size: clamp(19px, 2.6vw, 24px); font-weight: 600; max-width: 620px; line-height: 1.3; }
+.map { margin-top: 28px; display: grid; gap: 8px; grid-template-columns: 1fr 1fr; max-width: 680px; }
+@media (min-width: 640px) { .map { grid-template-columns: repeat(3, 1fr); } }
+.map a { display: block; text-decoration: none; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 16px; padding: 12px 14px; transition: border-color .2s, transform .2s; }
+.map a:hover { border-color: var(--blue); transform: translateY(-2px); }
+.map b { font-family: var(--display); font-weight: 400; font-size: 22px; text-transform: uppercase; display: block; line-height: 1; }
+.map b i { font-style: normal; color: var(--blue); margin-right: 5px; }
+.map span { color: var(--mute-d); font-size: 13px; line-height: 1.3; display: block; margin-top: 4px; }
+.hero .cta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .hero .cta .pill.fill { font-size: 17px; min-height: 56px; padding-inline: 30px; }
 .hero .note { font-size: 13px; color: var(--mute-d); }
 .zap { position: absolute; right: max(4%, 10px); top: 22px; width: 64px; height: 92px; z-index: 1; transform: rotate(12deg); }
 @media (min-width: 720px) { .zap { width: 110px; height: 156px; top: 56px; } }
 
-/* step sections */
-.step { padding-block: clamp(48px, 8vw, 90px) 20px; border-top: 1px solid var(--line-d); }
-.step-head { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: end; }
-.step-head .num { font-family: var(--display); font-size: clamp(90px, 20vw, 150px); line-height: .78; color: var(--blue); grid-row: span 2; }
-.step-head h2 { font-size: clamp(42px, 9vw, 80px); }
-.step-head .sub { font-family: var(--serif); color: var(--sky); font-size: clamp(18px, 3.2vw, 24px); transform: rotate(-1.5deg); display: inline-block; line-height: 1.2; }
-.say { margin-top: 26px; display: grid; gap: 12px; max-width: 640px; font-size: 18px; }
+/* sections */
+.sec { padding-block: clamp(48px, 8vw, 90px) 20px; border-top: 1px solid var(--line-d); }
+.sec-head { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: end; }
+.sec-head .num { font-family: var(--display); font-size: clamp(84px, 18vw, 140px); line-height: .78; color: var(--blue); grid-row: span 2; }
+.sec-head h2 { font-size: clamp(40px, 8.5vw, 76px); }
+.sec-head .sub { font-family: var(--serif); color: var(--sky); font-size: clamp(18px, 3.2vw, 24px); transform: rotate(-1.5deg); display: inline-block; line-height: 1.2; }
+.say { margin-top: 24px; display: grid; gap: 12px; max-width: 640px; font-size: 18px; }
 .say strong { color: #fff; }
-.part-h { margin-top: 40px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.part-h h3 { font-size: clamp(28px, 6vw, 42px); }
+.part-h { margin-top: 36px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.part-h h3 { font-size: clamp(28px, 6vw, 40px); }
 .part-h p { color: var(--mute-d); font-size: 15px; }
 
-/* paper panel */
-.work { margin-top: 18px; background: var(--paper); color: var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 30px); border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); }
-.work label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
-.inp { width: 100%; background: #fff; border: 1.5px solid var(--line-l); border-radius: 14px; padding: 12px 14px; font-size: 16px; color: var(--ink); min-height: 48px; transition: border-color .15s, box-shadow .15s; }
-.inp::placeholder { color: #9095a8; }
-.inp:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,80,255,.18); }
-textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
-.story3 { display: grid; gap: 12px; margin-top: 16px; }
-@media (min-width: 720px) { .story3 { grid-template-columns: repeat(3, 1fr); } }
-.story3 label .tag { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: #fff; background: var(--ink); padding: 3px 9px; border-radius: 999px; margin-right: 6px; }
-.story3 .f2 label .tag { background: var(--blue); } .story3 .f3 label .tag { background: var(--violet); }
+/* 1 · breakdown */
+.reel { margin-top: 24px; display: grid; gap: 16px; }
+@media (min-width: 760px) { .reel.has-video { grid-template-columns: 260px 1fr; align-items: start; } }
+.reel .vid { border: 6px solid #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 4px var(--blue); background: #000; aspect-ratio: 9/16; max-width: 260px; max-height: 70vh; }
+.reel .vid video { width: 100%; height: 100%; object-fit: cover; }
+.ex-tag { display: inline-block; font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--yellow); color: var(--ink); padding: 5px 11px; border-radius: 999px; }
+.track { margin-top: 12px; position: relative; }
+.track .bar4 { display: flex; height: 46px; border-radius: 12px; overflow: hidden; }
+.track .bar4 div { display: grid; place-items: center; color: #fff; font-family: var(--display); text-transform: uppercase; font-size: 14px; line-height: 1; min-width: 0; overflow: hidden; }
+.c-hook { background: #2a2f45; } .c-build { background: var(--navy); } .c-drop { background: var(--blue); } .c-end { background: var(--violet); }
+.track .ticks { position: relative; height: 22px; margin-top: 4px; font-size: 11px; color: var(--mute-d); font-variant-numeric: tabular-nums; }
+.track .ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.track .ticks span:first-child { transform: none; } .track .ticks span:last-child { transform: translateX(-100%); }
+.beats { margin-top: 10px; display: grid; gap: 8px; }
+.beatrow { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 16px; padding: 12px 14px; text-align: left; width: 100%; color: inherit; }
+button.beatrow { cursor: pointer; } button.beatrow:hover { border-color: var(--sky); }
+.beatrow .ts { font-family: var(--display); font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; }
+.beatrow .tag { display: inline-block; font-family: var(--chunky); font-weight: 900; font-size: 10px; text-transform: lowercase; padding: 3px 8px; border-radius: 999px; color: #fff; margin-right: 6px; vertical-align: 2px; }
+.beatrow .w { font-weight: 600; }
+.beatrow .sd { display: block; margin-top: 4px; font-size: 13px; color: var(--sky); }
+.reel-note { margin-top: 12px; font-size: 14px; color: var(--mute-d); }
 
-/* effects library */
+/* 2 · steps */
+.steps3 { margin-top: 24px; display: grid; gap: 12px; }
+.stepc { background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 22px; padding: 20px; display: grid; gap: 10px; }
+.stepc .h { display: flex; align-items: baseline; gap: 12px; }
+.stepc .h b { font-family: var(--display); font-weight: 400; font-size: 54px; line-height: .8; color: var(--blue); }
+.stepc h3 { font-size: 34px; }
+.stepc p { color: #d9dcea; }
+.stepc p strong { color: #fff; }
+.mini4 { display: grid; gap: 6px; grid-template-columns: 1fr 1fr; margin-top: 4px; }
+@media (min-width: 640px) { .mini4 { grid-template-columns: repeat(4, 1fr); } }
+.mini4 div { border-radius: 12px; padding: 10px 12px; font-size: 14px; color: #fff; }
+.mini4 b { display: block; font-family: var(--display); font-weight: 400; font-size: 20px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+.sfx3 { display: grid; gap: 6px; margin-top: 4px; }
+@media (min-width: 640px) { .sfx3 { grid-template-columns: repeat(3, 1fr); } }
+.sfx3 div { border: 1px solid var(--line-d); border-radius: 12px; padding: 10px 12px; font-size: 14px; color: #d9dcea; }
+.sfx3 b { display: block; color: #fff; font-family: var(--display); font-weight: 400; font-size: 20px; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
+
+/* 3 · effects */
 .lib-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
 .filters { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { min-height: 40px; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--line-d); background: var(--ink-2); color: var(--paper); font-weight: 600; font-size: 14px; cursor: pointer; }
@@ -146,7 +172,66 @@ textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
 .card .pick { margin-top: auto; width: 100%; }
 .card.on .pick { background: #fff; border-color: #fff; color: var(--blue); }
 
-/* shot list */
+/* 4 · practice */
+.drills { margin-top: 20px; display: grid; gap: 12px; }
+@media (min-width: 720px) { .drills { grid-template-columns: 1fr 1fr; } }
+.drill { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 10px; border: 4px solid #fff; transition: box-shadow .2s; }
+.drill.done { box-shadow: 0 0 0 4px var(--green); }
+.drill .dt { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.drill h4 { font-size: 28px; }
+.drill .time { flex: none; font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--ink); color: #fff; padding: 4px 9px; border-radius: 999px; }
+.drill .need { font-size: 14px; color: var(--mute-l); }
+.drill .need b { color: var(--ink); }
+.drill ol { margin: 0; padding-left: 20px; font-size: 15px; }
+.drill ol li + li { margin-top: 3px; }
+.drill .learn { font-size: 14px; background: var(--paper-2); border-radius: 12px; padding: 8px 12px; }
+.drill .learn b { color: var(--blue); }
+.drill .inp { margin-top: 2px; }
+.drill .ckrow { margin-top: auto; display: flex; align-items: center; gap: 4px; font-weight: 700; cursor: pointer; }
+.tagit { margin-top: 16px; background: var(--ink-2); border: 1.5px dashed var(--line-d); border-radius: 20px; padding: 18px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; justify-content: space-between; }
+.tagit p { font-weight: 600; max-width: 480px; }
+.tagit p span { color: var(--mute-d); font-weight: 500; display: block; font-size: 15px; }
+.dprog { font-family: var(--chunky); font-weight: 900; font-size: 12px; text-transform: lowercase; padding: 8px 14px; border-radius: 999px; background: var(--ink-2); border: 1.5px solid var(--line-d); }
+.dprog.all { background: var(--green); border-color: var(--green); }
+
+/* 5 · cheat sheet */
+.cheat { margin-top: 22px; background: var(--paper); color: var(--ink); border-radius: 24px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); max-width: 560px; }
+.cheat-h { background: var(--ink); color: #fff; padding: 16px 20px; display: flex; justify-content: space-between; align-items: end; gap: 10px; flex-wrap: wrap; }
+.cheat-h .logo { font-size: 24px; }
+.cheat-h b { display: block; font-family: var(--display); font-weight: 400; font-size: 28px; text-transform: uppercase; line-height: 1; margin-top: 4px; color: var(--sky); }
+.cheat-h small { font-family: var(--chunky); font-weight: 900; font-size: 10px; text-transform: lowercase; color: var(--mute-d); }
+.cheat-b { padding: 16px 20px 18px; display: grid; gap: 14px; }
+.cheat-b h5 { margin: 0 0 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+.cs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.cs-row.r4 { grid-template-columns: 1fr 1fr; }
+@media (min-width: 480px) { .cs-row.r4 { grid-template-columns: repeat(4, 1fr); } }
+.cs-row div { border-radius: 10px; padding: 8px 10px; font-size: 13px; line-height: 1.3; background: var(--paper-2); }
+.cs-row div b { display: block; font-family: var(--display); font-weight: 400; font-size: 17px; text-transform: uppercase; line-height: 1; margin-bottom: 3px; }
+.cs-row.r4 div { color: #fff; }
+.cs-row .c-hook { background: #2a2f45; } .cs-row .c-build { background: var(--navy); } .cs-row .c-drop { background: var(--blue); } .cs-row .c-end { background: var(--violet); }
+.cs-shots { font-weight: 700; font-size: 15px; line-height: 1.6; }
+.cs-shots span { white-space: nowrap; display: inline-block; }
+.cs-shots span + span::before { content: "·"; color: var(--blue); margin: 0 7px; font-weight: 900; }
+.cs-rule { background: var(--violet); color: #fff; border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14px; line-height: 1.35; }
+.cs-rule b { font-family: var(--display); font-weight: 400; font-size: 20px; text-transform: uppercase; display: block; line-height: 1; margin-bottom: 3px; }
+.cheat-foot { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: var(--mute-l); }
+
+/* 6 · plan */
+.work { margin-top: 18px; background: var(--paper); color: var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 30px); border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); }
+.work label, .work .lbl { display: block; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.inp { width: 100%; background: #fff; border: 1.5px solid var(--line-l); border-radius: 14px; padding: 12px 14px; font-size: 16px; color: var(--ink); min-height: 48px; transition: border-color .15s, box-shadow .15s; }
+.inp::placeholder { color: #9095a8; }
+.inp:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,80,255,.18); }
+textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
+.story3 { display: grid; gap: 12px; margin-top: 16px; }
+@media (min-width: 720px) { .story3 { grid-template-columns: repeat(3, 1fr); } }
+.story3 label .tag { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: #fff; background: var(--ink); padding: 3px 9px; border-radius: 999px; margin-right: 6px; }
+.story3 .f2 label .tag { background: var(--blue); } .story3 .f3 label .tag { background: var(--violet); }
+.picked-row { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.picked-row span { display: inline-block; line-height: 1.25; background: var(--violet); color: #fff; font-weight: 700; font-size: 13px; padding: 5px 11px; border-radius: 999px; }
+.picked-row a { color: var(--blue); font-weight: 700; font-size: 14px; }
+.row2 { display: grid; gap: 12px; margin-top: 18px; }
+@media (min-width: 640px) { .row2 { grid-template-columns: 2fr 1fr; } }
 .progress { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
 .progress .cnt { font-family: var(--display); font-size: 30px; line-height: 1; text-transform: uppercase; }
 .progress .cnt b { color: var(--blue); font-weight: 400; }
@@ -159,8 +244,9 @@ textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
 .shot { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 4px; border-bottom: 1px solid var(--line-l); }
 .shot label { margin: 0; font-weight: 600; font-size: 16px; padding: 12px 0; cursor: pointer; word-break: break-word; min-width: 0; }
 .shot.done label { text-decoration: line-through; text-decoration-thickness: 2px; color: var(--mute-l); }
-.ck { appearance: none; -webkit-appearance: none; width: 30px; height: 30px; margin: 7px; border: 2px solid var(--ink); border-radius: 9px; background: #fff; cursor: pointer; display: grid; place-items: center; }
+.ck { appearance: none; -webkit-appearance: none; flex: none; width: 30px; height: 30px; margin: 7px; border: 2px solid var(--ink); border-radius: 9px; background: #fff; cursor: pointer; display: grid; place-items: center; }
 .ck:checked { background: var(--blue); border-color: var(--blue); }
+.drill .ck:checked { background: var(--green); border-color: var(--green); }
 .ck:checked::after { content: ""; width: 8px; height: 14px; border: solid #fff; border-width: 0 3px 3px 0; transform: translateY(-2px) rotate(45deg); }
 .ib { width: 42px; height: 42px; border-radius: 12px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; color: var(--mute-l); }
 .ib:hover { background: var(--paper-2); color: var(--ink); }
@@ -170,39 +256,6 @@ textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
 .nofx { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: var(--paper-2); font-size: 15px; }
 .nofx a { color: var(--blue); font-weight: 700; }
 
-/* edit timeline */
-.tl { margin-top: 18px; display: grid; gap: 10px; }
-@media (min-width: 720px) { .tl { grid-template-columns: 1fr 1.3fr 1.8fr 1fr; } }
-.beat { border-radius: 18px; padding: 16px; color: #fff; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.beat.b1 { background: var(--ink-2); border: 1.5px solid var(--line-d); } .beat.b2 { background: var(--navy); } .beat.b3 { background: var(--blue); } .beat.b4 { background: var(--violet); }
-.beat h4 { font-size: 28px; }
-.beat .k { font-family: var(--serif); font-size: 17px; transform: rotate(-2deg); display: inline-block; }
-.beat p { font-size: 15px; }
-.beat .yours { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; }
-.beat .yours span { background: #fff; color: var(--ink); font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
-.beat .muted { font-size: 13px; opacity: .85; font-style: italic; word-break: break-word; }
-.sfx { margin-top: 12px; display: grid; gap: 10px; }
-@media (min-width: 720px) { .sfx { grid-template-columns: repeat(3, 1fr); } }
-.sfx div { background: var(--ink-2); border: 1.5px solid var(--line-d); border-radius: 18px; padding: 16px; }
-.sfx h4 { font-size: 26px; margin-bottom: 6px; }
-.sfx p { font-size: 15px; color: #d9dcea; }
-.sfx .use { margin-top: 10px; font-size: 13px; color: var(--sky); font-weight: 600; }
-
-/* tips + breakdown */
-.tip { margin-top: 28px; background: var(--blue); color: #fff; border-radius: 22px; padding: 20px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
-.tip svg { width: 36px; height: 50px; }
-.tip .tl2 { font-family: var(--serif); font-size: 20px; transform: rotate(-3deg); display: inline-block; margin-bottom: 4px; }
-.tip p { font-size: 17px; font-weight: 500; line-height: 1.4; }
-.bdn { margin-top: 12px; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; border: 1.5px dashed var(--line-d); text-decoration: none; font-weight: 600; font-size: 15px; }
-.bdn:hover { border-color: var(--sky); }
-.bdn .play { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--violet); display: grid; place-items: center; }
-.bdn .play::after { content: ""; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
-.bdn small { display: block; color: var(--mute-d); font-weight: 500; }
-
-/* plan card */
-.plan { padding-block: clamp(48px, 8vw, 90px) 20px; border-top: 1px solid var(--line-d); }
-.plan h2 { font-size: clamp(46px, 10vw, 92px); }
-.plan h2 .it { color: var(--sky); }
 .pc { margin-top: 26px; background: var(--paper); color: var(--ink); border-radius: 24px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); max-width: 560px; }
 .pc-h { background: var(--blue); color: #fff; padding: 18px 20px; display: flex; justify-content: space-between; align-items: end; gap: 10px; flex-wrap: wrap; }
 .pc-h .logo { font-size: 26px; }
@@ -215,7 +268,7 @@ textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
 .pc-story { display: grid; gap: 6px; }
 .pc-story p b { font-weight: 700; color: var(--mute-l); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-right: 6px; }
 .pc-fx { display: flex; flex-wrap: wrap; gap: 6px; }
-.pc-fx span { display: inline-block; line-height: 1.25; background: var(--violet); color: #fff; font-weight: 700; font-size: 13px; padding: 5px 11px; border-radius: 999px; }
+.pc-fx span { display: inline-flex; align-items: center; height: 28px; line-height: 28px; padding-block: 0 !important; background: var(--violet); color: #fff; font-weight: 700; font-size: 13px; padding: 5px 11px; border-radius: 999px; }
 .pc-shots { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px 16px; }
 @media (min-width: 520px) { .pc-shots { grid-template-columns: 1fr 1fr; } }
 .pc-shots li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; }
@@ -224,11 +277,22 @@ textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
 .pc-shots li.d { color: var(--mute-l); }
 .pc-sec .empty { color: var(--mute-l); font-style: italic; font-weight: 400; }
 .pc-foot { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: var(--mute-l); border-top: 1px solid var(--line-l); padding-top: 12px; }
-.save { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 560px; }
+.save { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 560px; }
 .save .pill.fill { flex: 1 1 220px; }
 .save-msg { margin-top: 10px; font-size: 14px; color: var(--aqua); min-height: 1.4em; max-width: 560px; }
 .saved-note { margin-top: 6px; font-size: 13px; color: var(--mute-d); }
 .reset { background: none; border: 0; color: var(--mute-d); text-decoration: underline; cursor: pointer; font-size: 14px; padding: 8px 0; }
+
+/* tips + breakdown links */
+.tip { margin-top: 26px; background: var(--blue); color: #fff; border-radius: 22px; padding: 20px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+.tip svg { width: 36px; height: 50px; }
+.tip .tl2 { font-family: var(--serif); font-size: 20px; transform: rotate(-3deg); display: inline-block; margin-bottom: 4px; }
+.tip p { font-size: 17px; font-weight: 500; line-height: 1.4; }
+.bdn { margin-top: 12px; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; border: 1.5px dashed var(--line-d); text-decoration: none; font-weight: 600; font-size: 15px; }
+.bdn:hover { border-color: var(--sky); }
+.bdn .play { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--violet); display: grid; place-items: center; }
+.bdn .play::after { content: ""; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
+.bdn small { display: block; color: var(--mute-d); font-weight: 500; }
 
 /* outro */
 .outro { margin-top: 56px; display: grid; gap: 14px; }
@@ -254,7 +318,7 @@ dialog .btns { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
 dialog .danger { background: var(--violet); border-color: var(--violet); color: #fff; }
 .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 160%); background: var(--blue); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; z-index: 60; transition: transform .3s; box-shadow: 0 10px 30px rgba(0,0,0,.5); max-width: calc(100vw - 32px); text-align: center; }
 .toast.on { transform: translate(-50%, 0); }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } .pill:hover, .three a:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } .pill:hover, .map a:hover { transform: none; } }
 </style>
 </head>
 <body>
@@ -262,10 +326,7 @@ dialog .danger { background: var(--violet); border-color: var(--violet); color: 
   <div class="wrap">
     <a class="logo" href="../">OFF<span>-</span>TAPE</a>
     <nav class="jump" aria-label="Guide sections">
-      <a href="#plan"><span class="n">1</span><span class="lbl">Plan</span></a>
-      <a href="#shoot"><span class="n">2</span><span class="lbl">Shoot</span></a>
-      <a href="#edit"><span class="n">3</span><span class="lbl">Edit</span></a>
-      <a href="#my-plan" class="plan"><span class="lbl">My plan</span></a>
+      <a href="#breakdown">Breakdown</a><a href="#steps">3 steps</a><a href="#effects">Effects</a><a href="#practice">Practice</a><a href="#cheat-sheet">Cheat sheet</a><a href="#my-plan">Plan</a>
     </nav>
   </div>
 </header>
@@ -277,25 +338,118 @@ dialog .danger { background: var(--violet); border-color: var(--violet); color: 
   <div class="wrap inner">
     <span class="eyebrow">The Hype Video Blueprint</span>
     <h1 id="h-hero">Make your next video <span class="it">hype.</span></h1>
-    <p class="lead">Want to make a hype video like mine? Here's my process in three steps. Fill it in as you go and you'll leave with a plan for your next shoot.</p>
-    <div class="three">
-      <a href="#plan"><b><i>1</i>Plan it</b><span>Story + your fire moments</span></a>
-      <a href="#shoot"><b><i>2</i>Shoot it</b><span>Your shot list, ready for set</span></a>
-      <a href="#edit"><b><i>3</i>Edit it</b><span>Music, pacing, sound design</span></a>
-    </div>
-    <div class="cta"><a class="pill fill" href="#plan" id="startBtn">Start planning →</a><span class="note">Free · no sign-up · about 5 minutes</span></div>
+    <p class="lead">See how a hype video is built, learn my 3-step process, and start practicing today with just your phone. When you're ready to shoot, plan it here too.</p>
+    <nav class="map" aria-label="What's inside">
+      <a href="#breakdown"><b><i>1</i>Breakdown</b><span>A hype video, second by second</span></a>
+      <a href="#steps"><b><i>2</i>3 steps</b><span>Plan, shoot, edit</span></a>
+      <a href="#effects"><b><i>3</i>Effects</b><span>12 fire moments and how to film them</span></a>
+      <a href="#practice"><b><i>4</i>Practice</b><span>4 phone drills, 10 minutes each</span></a>
+      <a href="#cheat-sheet"><b><i>5</i>Cheat sheet</b><span>Save it to your camera roll</span></a>
+      <a href="#my-plan"><b><i>6</i>Plan</b><span>For when you're ready to shoot</span></a>
+    </nav>
+    <div class="cta"><a class="pill fill" href="#breakdown">Start with the breakdown →</a><span class="note">Free · no sign-up</span></div>
   </div>
 </section>
 
-<section class="step" id="plan" aria-labelledby="h-plan">
+<!-- 1 BREAKDOWN -->
+<section class="sec" id="breakdown" aria-labelledby="h-bd">
   <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">1</span><h2 id="h-plan">Plan it</h2><span class="sub">Plan your video before you shoot.</span></div>
-    <div class="say">
-      <p>Create a storyline with a <strong>start, middle, and end.</strong></p>
-      <p>If you're filming a car video, start with the driver grabbing the keys and starting the engine. Build the energy as they drive off, then finish with them arriving and stepping out.</p>
-    </div>
+    <div class="sec-head"><span class="num" aria-hidden="true">1</span><h2 id="h-bd">The breakdown</h2><span class="sub">How a hype video is built.</span></div>
+    <div class="say"><p id="bdIntro"></p></div>
+    <div class="reel" id="reel"></div>
+  </div>
+</section>
 
-    <div class="part-h"><h3>Your story</h3><p>Keep it simple. One line each is enough.</p></div>
+<!-- 2 STEPS -->
+<section class="sec" id="steps" aria-labelledby="h-steps">
+  <div class="wrap">
+    <div class="sec-head"><span class="num" aria-hidden="true">2</span><h2 id="h-steps">The 3 steps</h2><span class="sub">My process, every time.</span></div>
+    <div class="steps3">
+      <article class="stepc">
+        <div class="h"><b>1</b><h3>Plan it</h3></div>
+        <p>Plan your video before you shoot. Create a storyline with a <strong>start, middle, and end.</strong> For a car video: the driver grabs the keys and starts the engine, the energy builds as they drive off, and it finishes with them arriving and stepping out.</p>
+        <p>Then plan <strong>two or three fire moments</strong>: a crazy angle, a transition, or a creative camera move. Add the shots they need to your shot list.</p>
+      </article>
+      <article class="stepc">
+        <div class="h"><b>2</b><h3>Shoot it</h3></div>
+        <p><strong>Shoot variety.</strong> Get wide shots to show the scene, close-ups for details, and different angles to give yourself options in the edit. Make sure you get every shot your fire moments need.</p>
+      </article>
+      <article class="stepc">
+        <div class="h"><b>3</b><h3>Edit it</h3></div>
+        <p>You can choose music anytime. I usually find mine while editing. Look for a song that <strong>builds up to a beat drop.</strong></p>
+        <div class="mini4">
+          <div class="c-hook"><b>Hook</b>Grab attention.</div>
+          <div class="c-build"><b>Build-up</b>Rise with the music.</div>
+          <div class="c-drop"><b>Beat drop</b>Fire moments, faster cuts.</div>
+          <div class="c-end"><b>Ending</b>Finish strong.</div>
+        </div>
+        <p style="margin-top:6px">Then add sound design:</p>
+        <div class="sfx3">
+          <div><b>Risers</b>Build tension into a big moment.</div>
+          <div><b>Impacts</b>Emphasize key moments.</div>
+          <div><b>Whooshes</b>Accent movement and transitions.</div>
+        </div>
+      </article>
+    </div>
+    <div data-breakdown></div>
+  </div>
+</section>
+
+<!-- 3 EFFECTS -->
+<section class="sec" id="effects" aria-labelledby="h-fx">
+  <div class="wrap">
+    <div class="sec-head"><span class="num" aria-hidden="true">3</span><h2 id="h-fx">Fire moments</h2><span class="sub">Effects worth planning for.</span></div>
+    <div class="say">
+      <p>Fire moments are what make people rewatch. Most of them need <strong>specific shots</strong>, so you have to know them before you film, not in the edit.</p>
+      <p>Browse these, try a couple in Practice, and pick 2–3 for your next shoot. Picked effects add their shots to your plan.</p>
+    </div>
+    <div class="lib-bar">
+      <div class="filters" role="group" aria-label="Filter by difficulty" id="filters"></div>
+      <span class="count" id="pickCount" aria-live="polite">0 of 3 picked</span>
+    </div>
+    <div class="fx" id="library"></div>
+  </div>
+</section>
+
+<!-- 4 PRACTICE -->
+<section class="sec" id="practice" aria-labelledby="h-pr">
+  <div class="wrap">
+    <div class="sec-head"><span class="num" aria-hidden="true">4</span><h2 id="h-pr">Practice</h2><span class="sub">No car, no client. Just your phone.</span></div>
+    <div class="say"><p>You don't need a big shoot to get better. Each drill takes about 10 minutes and trains one part of the process. Do them in order and the last one is your first hype edit.</p></div>
+    <div class="drills" id="drills"></div>
+    <div class="tagit"><p>Made something?<span>Post your practice edit and tag @j.david007. I'd love to see it.</span></p><span class="dprog" id="drillProg">0 of 4 done</span></div>
+    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>The best way to get better is to keep creating. Small reps with your phone now make your real shoot faster later.</p></div></div>
+  </div>
+</section>
+
+<!-- 5 CHEAT SHEET -->
+<section class="sec" id="cheat-sheet" aria-labelledby="h-cs">
+  <div class="wrap">
+    <div class="sec-head"><span class="num" aria-hidden="true">5</span><h2 id="h-cs">Cheat sheet</h2><span class="sub">Save it. Use it on set.</span></div>
+    <div class="say"><p>Everything from this guide on one card. Save it to your camera roll so it's there when you shoot.</p></div>
+    <div class="cheat" id="cheatCard">
+      <div class="cheat-h"><div><span class="logo">OFF<span>-</span>TAPE</span><b>Hype video cheat sheet</b></div><small>plan it · shoot it · make it hype</small></div>
+      <div class="cheat-b">
+        <div><h5>Story</h5><div class="cs-row"><div><b>Start</b>Set the scene</div><div><b>Build</b>Raise the energy</div><div><b>Finish</b>Final hero moment</div></div></div>
+        <div class="cs-rule"><b>Plan 2–3 fire moments</b>Pick them before you shoot and add every shot they need to your list.</div>
+        <div><h5>Shoot variety</h5><div class="cs-shots"><span>Wide</span><span>Close-up</span><span>Low angle</span><span>High angle</span><span>Push-in</span><span>Pull-out</span><span>Tracking</span><span>Fire moment shots</span></div></div>
+        <div><h5>Edit to the music</h5><div class="cs-row r4"><div class="c-hook"><b>Hook</b>Craziest angle or reveal</div><div class="c-build"><b>Build</b>Rise with the song</div><div class="c-drop"><b>Drop</b>Fire moments, fast cuts</div><div class="c-end"><b>End</b>Strong final shot</div></div></div>
+        <div><h5>Sound design</h5><div class="cs-row"><div><b>Riser</b>Into the drop</div><div><b>Impact</b>On key hits</div><div><b>Whoosh</b>On fast moves</div></div></div>
+        <p class="cheat-foot">free guide by off-tape · @j.david007</p>
+      </div>
+    </div>
+    <div class="save"><button class="pill fill" type="button" data-act="image" data-target="cheatCard" data-name="hype-video-cheat-sheet.png">↓ Save cheat sheet</button></div>
+    <p class="save-msg" id="msg-cheatCard" role="status"></p>
+  </div>
+</section>
+
+<!-- 6 PLAN -->
+<section class="sec" id="my-plan" aria-labelledby="h-plan">
+  <div class="wrap">
+    <div class="sec-head"><span class="num" aria-hidden="true">6</span><h2 id="h-plan">Plan your shoot</h2><span class="sub">When you're ready to film.</span></div>
+    <div class="say"><p>Got a shoot coming up? Fill this in and your plan builds itself below. It saves on this device, so you can come back anytime.</p></div>
+
+    <div class="part-h"><h3>Your story</h3><p>One line each is enough.</p></div>
     <div class="work">
       <label for="f-idea">What are you filming?</label><input class="inp" id="f-idea" data-bind="idea" placeholder="A sports car, an athlete, a product, a trip…" autocomplete="off">
       <div class="story3">
@@ -303,74 +457,28 @@ dialog .danger { background: var(--violet); border-color: var(--violet); color: 
         <div class="f2"><label for="f-build"><span class="tag">build</span>How the energy builds</label><textarea class="inp" id="f-build" data-bind="build" placeholder="Car pulls away. Driving shots, details, angles"></textarea></div>
         <div class="f3"><label for="f-finish"><span class="tag">finish</span>How it ends</label><textarea class="inp" id="f-finish" data-bind="finish" placeholder="Car arrives, driver steps out, final hero shot"></textarea></div>
       </div>
+      <div class="picked-row" id="pickedRow"></div>
+      <div class="row2">
+        <div><label for="f-song">Song with a beat drop</label><input class="inp" id="f-song" data-bind="song" placeholder="Song – artist" autocomplete="off"></div>
+        <div><label for="f-drop">Drop at</label><input class="inp" id="f-drop" data-bind="drop" placeholder="0:42" inputmode="numeric" autocomplete="off"></div>
+      </div>
     </div>
 
-    <div class="part-h" id="fire"><h3>Pick your fire moments</h3><p>A crazy angle, a transition, or a creative camera move.</p></div>
-    <div class="say" style="margin-top:10px">
-      <p>I plan <strong>two or three fire moments</strong> before every shoot and add them to my shot list. Some need specific shots, angles or movement. Plan them now so you don't get to the edit and realize you never filmed what you needed.</p>
-      <p>Tap <strong>Pick this</strong> on 2–3 below. The shots each one needs go straight into your shot list.</p>
-    </div>
-    <div class="lib-bar">
-      <div class="filters" role="group" aria-label="Filter by difficulty" id="filters"></div>
-      <span class="count" id="pickCount" aria-live="polite">0 of 3 picked</span>
-    </div>
-    <div class="fx" id="library"></div>
-
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Keep your story simple. Your camera movement, fire moments, music and edit are what bring the energy.</p></div></div>
-    <div data-breakdown="plan"></div>
-  </div>
-</section>
-
-<section class="step" id="shoot" aria-labelledby="h-shoot">
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">2</span><h2 id="h-shoot">Shoot it</h2><span class="sub">Shoot variety.</span></div>
-    <div class="say">
-      <p>Get <strong>wide shots</strong> to show the scene, <strong>close-ups</strong> for details, and <strong>different angles</strong> to give yourself options in the edit.</p>
-      <p>Then make sure you get every shot your fire moments need. Take this list to set and check shots off as you go.</p>
-    </div>
-    <div class="part-h"><h3>Your shot list</h3><p>Saved on this device. Tap to check off.</p></div>
+    <div class="part-h"><h3>Your shot list</h3><p>Tap to check off on set.</p></div>
     <div class="work">
       <div id="shotList"></div>
       <form class="add" id="addShot" autocomplete="off"><label class="sr" for="f-newshot">Add your own shot</label><input class="inp" id="f-newshot" placeholder="+ Add your own shot"><button class="pill fill sm" type="submit">Add</button></form>
     </div>
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Capture more variety than you think you need. Before you wrap, check you got every shot for your fire moments.</p></div></div>
-    <div data-breakdown="shoot"></div>
-  </div>
-</section>
 
-<section class="step" id="edit" aria-labelledby="h-edit">
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">3</span><h2 id="h-edit">Edit it</h2><span class="sub">Build to the beat drop.</span></div>
-    <div class="say">
-      <p>You can choose music anytime. I usually find mine while editing. I look for a song that <strong>builds up to a beat drop.</strong></p>
-      <p>Open with something that grabs attention, then build anticipation as the music rises. When the beat drops, that's where the hype begins.</p>
-    </div>
-    <div class="work" style="margin-top:22px">
-      <label for="f-song">Your song (one with a beat drop)</label>
-      <input class="inp" id="f-song" data-bind="song" placeholder="Song – artist" autocomplete="off">
-    </div>
-    <div class="part-h"><h3>Your edit</h3><p>Four parts, in this order.</p></div>
-    <div class="tl" id="timeline"></div>
-
-    <div class="part-h"><h3>Then add sound design</h3><p>Every sound should have a reason.</p></div>
-    <div class="sfx" id="sfx"></div>
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Don't just cut randomly to the beat. Build anticipation, then make your biggest moments hit when the drop does.</p></div></div>
-    <div data-breakdown="edit"></div>
-  </div>
-</section>
-
-<section class="plan" id="my-plan" aria-labelledby="h-myplan">
-  <div class="wrap">
-    <span class="eyebrow">Your blueprint</span>
-    <h2 id="h-myplan" style="margin-top:12px">Your plan. <span class="it">Now go shoot.</span></h2>
+    <div class="part-h"><h3>Your plan</h3></div>
     <div class="pc" id="planCard"></div>
     <div class="save">
-      <button class="pill fill" type="button" data-act="image">↓ Save as image</button>
+      <button class="pill fill" type="button" data-act="image" data-target="planCard" data-name="hype-video-plan.png">↓ Save plan as image</button>
       <button class="pill" type="button" data-act="copy">Copy my plan</button>
     </div>
-    <p class="save-msg" id="saveMsg" role="status"></p>
-    <p class="saved-note">Your plan saves automatically in this browser. Save the image to keep a copy anywhere.</p>
-    <button class="reset" type="button" data-act="reset">Start a new video</button>
+    <p class="save-msg" id="msg-planCard" role="status"></p>
+    <p class="saved-note" id="savedNote">Your plan saves automatically in this browser.</p>
+    <button class="reset" type="button" data-act="reset">Start a new plan</button>
 
     <div class="outro">
       <section class="follow" aria-labelledby="h-follow">
@@ -395,61 +503,85 @@ dialog .danger { background: var(--violet); border-color: var(--violet); color: 
 </main>
 
 <dialog id="dlgReset" aria-labelledby="dr-h">
-  <h3 id="dr-h">Start a new video?</h3>
-  <p>This clears your story, fire moments and shot list from this browser. Save your plan as an image first if you want to keep it.</p>
+  <h3 id="dr-h">Start a new plan?</h3>
+  <p>This clears your story, picked effects and shot list from this browser. Your practice progress stays. Save your plan as an image first if you want to keep it.</p>
   <div class="btns"><button class="pill danger" type="button" data-act="resetYes">Yes, start over</button><button class="pill sm" type="button" data-act="resetNo" autofocus>Keep my plan</button></div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* ============ CONFIG: edit freely ============ */
+/* =================== CONFIG: edit freely =================== */
 const CONFIG = {
   instagramUrl: "https://instagram.com/j.david007",
   mentorshipUrl: "https://offtapepassiontoprofit.info",
-  // Paste a reel URL when each breakdown video is posted. Empty = "coming soon".
-  breakdowns: { plan: "", shoot: "", edit: "" },
+  // Paste your reel URL here when the deep-dive breakdowns are posted. Empty = "coming soon".
+  breakdownsUrl: "",
+
+  /* YOUR REEL BREAKDOWN
+     Add your video file (e.g. "../media/hype-reel.mp4") and replace the beats
+     with your real timestamps. Until a video is set, the page shows these beats
+     as a clearly labeled EXAMPLE. */
+  reel: {
+    video: "",
+    poster: "",
+    length: 30, // seconds
+    beats: [
+      { t: 0,  part: "hook",  what: "Low-angle close-up: hand grabs the keys.", sound: "Riser starts" },
+      { t: 3,  part: "build", what: "Driver walks to the car and starts the engine.", sound: "Engine sound, riser building" },
+      { t: 8,  part: "build", what: "Car pulls away. Wheel and headlight details.", sound: "Whooshes on the moves" },
+      { t: 12, part: "drop",  what: "Beat drops. Whip transition into the driving sequence.", sound: "Impact on the drop" },
+      { t: 15, part: "drop",  what: "Fast cuts: speed ramp, orbit, low-angle hero shot.", sound: "Whooshes on every move" },
+      { t: 25, part: "end",   what: "Car arrives. Driver steps out. Final hero shot.", sound: "Last impact, music out" }
+    ]
+  },
+
   storageKey: "offtape-hype-plan-v2",
   html2canvasSrc: "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
 };
 
-/* ============ EFFECTS LIBRARY ============
-   demo: optional path to a short muted loop, e.g. "../media/fx-whip.mp4" */
+/* =================== EFFECTS LIBRARY ===================
+   demo: optional short muted loop, e.g. "../media/fx-whip.mp4" */
 const EFFECTS = [
   { id: "whip", name: "Whip transition", lvl: "easy", what: "A fast camera swipe hides the cut between two scenes.",
-    shots: ["Whip A: end the shot with a fast pan (pick a direction)", "Whip B: start with a fast pan in the same direction"], gear: "Any camera or phone", sound: "whoosh", where: "drop", demo: "" },
+    shots: ["Whip A: end the shot with a fast pan (pick a direction)", "Whip B: start with a fast pan in the same direction"], gear: "Any camera or phone", sound: "whoosh", demo: "" },
   { id: "passby", name: "Object pass-by", lvl: "easy", what: "Something crosses the lens and wipes you into the next shot.",
-    shots: ["Pass-by A: a pole, person or car crosses the lens at the end", "Pass-by B: start behind an object, move out to reveal"], gear: "Any camera or phone", sound: "whoosh", where: "build", demo: "" },
+    shots: ["Pass-by A: a pole, person or car crosses the lens at the end", "Pass-by B: start behind an object, move out to reveal"], gear: "Any camera or phone", sound: "whoosh", demo: "" },
   { id: "blackout", name: "Lens blackout", lvl: "easy", what: "Push into darkness, pull out somewhere new.",
-    shots: ["Blackout A: push the lens into something dark (a jacket, a wall)", "Blackout B: pull out of darkness in the new location"], gear: "Any camera or phone", sound: "whoosh", where: "build", demo: "" },
+    shots: ["Blackout A: push the lens into something dark (a jacket, a wall)", "Blackout B: pull out of darkness in the new location"], gear: "Any camera or phone", sound: "whoosh", demo: "" },
   { id: "jump", name: "Jump cut sequence", lvl: "easy", what: "Same frame, subject jumps to a new spot on every beat.",
-    shots: ["Jump cuts: locked frame, subject in spot 1", "Jump cuts: same frame, subject in spot 2", "Jump cuts: same frame, subject in spot 3"], gear: "Tripod or a steady surface", sound: "impact", where: "drop", demo: "" },
+    shots: ["Jump cuts: locked frame, subject in spot 1", "Jump cuts: same frame, subject in spot 2", "Jump cuts: same frame, subject in spot 3"], gear: "Tripod or a steady surface", sound: "impact", demo: "" },
   { id: "hero", name: "Low-angle hero shot", lvl: "easy", what: "Camera on the ground looking up makes your subject look powerful.",
-    shots: ["Hero: camera near the ground, slow push toward the subject"], gear: "Any camera or phone", sound: "riser", where: "hook", demo: "" },
+    shots: ["Hero: camera near the ground, slow push toward the subject"], gear: "Any camera or phone", sound: "riser", demo: "" },
   { id: "match", name: "Match cut", lvl: "medium", what: "Two shots with the same shape in the same spot of the frame.",
-    shots: ["Match A: a shape or object centered in frame (e.g. a spinning wheel)", "Match B: a matching shape in the same spot (e.g. a spinning record)"], gear: "Tripod helps", sound: "impact", where: "build", demo: "" },
+    shots: ["Match A: a shape or object centered in frame (e.g. a spinning wheel)", "Match B: a matching shape in the same spot (e.g. a spinning record)"], gear: "Tripod helps", sound: "impact", demo: "" },
   { id: "zoom", name: "Zoom punch", lvl: "medium", what: "A fast push-in that lands in the next shot already moving.",
-    shots: ["Zoom A: fast push-in toward the subject at the end", "Zoom B: start tight, pull out fast"], gear: "Gimbal or steady hands", sound: "impact", where: "drop", demo: "" },
+    shots: ["Zoom A: fast push-in toward the subject at the end", "Zoom B: start tight, pull out fast"], gear: "Gimbal or steady hands", sound: "impact", demo: "" },
   { id: "spin", name: "Spin transition", lvl: "medium", what: "Roll the camera at the end of one shot and keep rolling into the next.",
-    shots: ["Spin A: end the shot with a camera roll", "Spin B: start mid-roll in the same direction"], gear: "Gimbal helps", sound: "whoosh", where: "drop", demo: "" },
+    shots: ["Spin A: end the shot with a camera roll", "Spin B: start mid-roll in the same direction"], gear: "Gimbal helps", sound: "whoosh", demo: "" },
   { id: "reveal", name: "Reveal", lvl: "medium", what: "Start on a detail or behind something, then show the whole subject.",
-    shots: ["Reveal: start on a detail or behind an object", "Reveal: move to show the full subject"], gear: "Gimbal or slider helps", sound: "impact", where: "hook", demo: "" },
+    shots: ["Reveal: start on a detail or behind an object", "Reveal: move to show the full subject"], gear: "Gimbal or slider helps", sound: "impact", demo: "" },
   { id: "ramp", name: "Speed ramp", lvl: "medium", what: "Slow motion that snaps to full speed right on the beat.",
-    shots: ["Speed ramp: fast action through the frame at 60 or 120fps"], gear: "Camera that shoots 60fps or more", sound: "whoosh", where: "drop", demo: "" },
+    shots: ["Speed ramp: fast action through the frame at 60 or 120fps"], gear: "Camera that shoots 60fps or more", sound: "whoosh", demo: "" },
   { id: "orbit", name: "Orbit", lvl: "advanced", what: "A smooth circle around your subject while it stays centered.",
-    shots: ["Orbit: circle the subject, keep it centered the whole move"], gear: "Gimbal", sound: "riser", where: "build", demo: "" },
+    shots: ["Orbit: circle the subject, keep it centered the whole move"], gear: "Gimbal", sound: "riser", demo: "" },
   { id: "fpv", name: "FPV / drone reveal", lvl: "advanced", what: "Fly toward the subject, around it, and reveal the whole scene.",
-    shots: ["FPV: fly toward the subject from far out", "FPV: circle around and reveal the full scene"], gear: "FPV or drone, open space", sound: "riser", where: "hook", demo: "" }
-];
-const BASICS = ["Wide shot of the full scene", "Close-up details", "Low-angle shot", "High-angle shot", "Camera movement (push-in, pull-out or tracking)"];
-const MAX_PICKS = 3;
-const SOUNDS = [
-  { id: "riser", name: "Risers", what: "Build tension and anticipation leading into a big moment.", always: "Use one into your beat drop." },
-  { id: "impact", name: "Impacts", what: "Emphasize the key moments: a reveal, a big cut, the drop.", always: "Hit one right on the drop." },
-  { id: "whoosh", name: "Whooshes", what: "Accent camera movement and transitions.", always: "Add one under fast moves." }
+    shots: ["FPV: fly toward the subject from far out", "FPV: circle around and reveal the full scene"], gear: "FPV or drone, open space", sound: "riser", demo: "" }
 ];
 
-/* ============ STATE ============ */
-const fresh = () => ({ v: 2, idea: "", start: "", build: "", finish: "", song: "", picks: [], done: {}, custom: [] });
+/* =================== PRACTICE DRILLS =================== */
+const DRILLS = [
+  { id: "drop", name: "Find the drop", time: "5 min", need: "Any song you like", steps: ["Play a song with energy.", "Listen for where it builds, then where the beat drops.", "Write down the time of the drop."], learn: "Your edit is built around this moment.", input: { key: "practiceDrop", ph: "Song + drop time, e.g. 0:42" } },
+  { id: "angles", name: "Five angles", time: "10 min", need: "Your phone + any object (shoes, keys, a cup)", steps: ["Wide: the object and the space around it.", "Close-up: one small detail.", "Low angle: phone on the floor, looking up.", "High angle: phone above, looking down.", "Movement: one slow push-in."], learn: "Shooting variety, step 2 of the process." },
+  { id: "whip", name: "Whip between rooms", time: "10 min", need: "Your phone + two rooms", steps: ["In room 1, film a few seconds, then whip-pan fast to the right.", "In room 2, start whipping to the right, then settle on the scene.", "Cut the two clips together where the blur is fastest."], learn: "Your first fire moment, planned before you film." },
+  { id: "edit", name: "10-second hype edit", time: "15 min", need: "Your clips from drills 2–3 + your song", steps: ["Hook: open on your best close-up.", "Build: 2–3 clips as the music rises.", "Drop: your whip transition right on the beat drop.", "End on your strongest shot."], learn: "All three steps in one small video." }
+];
+
+const BASICS = ["Wide shot of the full scene", "Close-up details", "Low-angle shot", "High-angle shot", "Camera movement (push-in, pull-out or tracking)"];
+const MAX_PICKS = 3;
+const PART = { hook: ["Hook", "#2a2f45"], build: ["Build-up", "var(--navy)"], drop: ["Beat drop", "var(--blue)"], end: ["Ending", "var(--violet)"] };
+
+/* =================== STATE =================== */
+const fresh = () => ({ v: 2, idea: "", start: "", build: "", finish: "", song: "", drop: "", picks: [], done: {}, custom: [], drills: {}, practiceDrop: "" });
 let S = fresh(), storageOk = true;
 try { const d = JSON.parse(localStorage.getItem(CONFIG.storageKey) || "null"); if (d && d.v === 2) S = Object.assign(fresh(), d); } catch (e) { storageOk = false; }
 S.picks = S.picks.filter(id => EFFECTS.some(e => e.id === id));
@@ -459,35 +591,51 @@ const save = () => { clearTimeout(saveT); saveT = setTimeout(saveNow, 150); };
 addEventListener("pagehide", saveNow);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") saveNow(); });
 
-/* ============ HELPERS ============ */
+/* =================== HELPERS =================== */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const t = s => (s || "").trim();
 const fx = id => EFFECTS.find(e => e.id === id);
 const picked = () => S.picks.map(fx).filter(Boolean);
+const mmss = s => Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0");
 let toastT;
 function toast(m) { const el = $("#toast"); el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2300); }
 const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 const LVL = { easy: "Easy", medium: "Medium", advanced: "Advanced" };
 
-/* shot keys: "b:i" basics, "f:id:i" effect shots, "c:id" custom */
-function allShots() {
-  const out = [{ title: "The basics", items: BASICS.map((n, i) => ({ key: "b:" + i, name: n })) }];
-  picked().forEach(e => out.push({ title: "🔥 " + e.name, fire: true, items: e.shots.map((n, i) => ({ key: "f:" + e.id + ":" + i, name: n })) }));
-  if (S.custom.length) out.push({ title: "Your extras", items: S.custom.map(c => ({ key: "c:" + c.id, name: c.name, cid: c.id })) });
-  return out;
+/* =================== 1 · BREAKDOWN =================== */
+function renderReel() {
+  const R = CONFIG.reel, hasVid = !!R.video, L = R.length || 30;
+  $("#bdIntro").innerHTML = hasVid
+    ? "Here's the reel you just watched, broken down. Tap a moment to jump to it."
+    : "Every hype video I make follows the same shape. Here's a 30-second car video broken down second by second, so you can see where each part and each sound lands.";
+  const spans = ["hook", "build", "drop", "end"].map(p => { const b = R.beats.filter(x => x.part === p); if (!b.length) return null; const s = b[0].t; const nxt = R.beats.find(x => x.t > b[b.length - 1].t && x.part !== p); return { p, s, e: nxt ? nxt.t : L }; }).filter(Boolean);
+  const ticks = [...new Set([0, ...spans.map(s => s.s), L])].sort((a, b) => a - b).filter((v, i, a) => i === 0 || i === a.length - 1 || (v - a[i - 1] >= L * .1 && a[a.length - 1] - v >= L * .1));
+  $("#reel").className = "reel" + (hasVid ? " has-video" : "");
+  $("#reel").innerHTML = `
+    ${hasVid ? `<div class="vid"><video id="reelVid" src="${esc(R.video)}"${R.poster ? ` poster="${esc(R.poster)}"` : ""} controls playsinline preload="metadata"></video></div>` : ""}
+    <div>
+      ${hasVid ? "" : `<span class="ex-tag">example breakdown · 30-second car video</span>`}
+      <div class="track" role="img" aria-label="${spans.map(s => `${PART[s.p][0]} ${mmss(s.s)} to ${mmss(s.e)}`).join(", ")}">
+        <div class="bar4">${spans.map(s => `<div class="c-${s.p}" style="flex:0 0 ${(s.e - s.s) / L * 100}%">${(s.e - s.s) / L > .14 ? PART[s.p][0] : ""}</div>`).join("")}</div>
+        <div class="ticks" aria-hidden="true">${ticks.map(v => `<span style="left:${v / L * 100}%">${mmss(v)}</span>`).join("")}</div>
+      </div>
+      <div class="beats">${R.beats.map(b => { const inner = `<span class="ts">${mmss(b.t)}</span><span><span class="tag" style="background:${PART[b.part][1]}">${PART[b.part][0].toLowerCase()}</span><span class="w">${esc(b.what)}</span>${b.sound ? `<span class="sd">🔊 ${esc(b.sound)}</span>` : ""}</span>`;
+        return hasVid ? `<button type="button" class="beatrow" data-seek="${b.t}">${inner}</button>` : `<div class="beatrow">${inner}</div>`; }).join("")}</div>
+      <p class="reel-note">Notice the pattern: calm and detailed before the drop, fire moments and fast cuts right after it.</p>
+    </div>`;
 }
 
-/* ============ RENDER ============ */
+/* =================== 3 · EFFECTS =================== */
 let filter = "all";
 function renderFilters() {
   $("#filters").innerHTML = [["all", "All 12"], ["easy", "Easy"], ["medium", "Medium"], ["advanced", "Advanced"]]
     .map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${filter === k}">${l}</button>`).join("");
 }
 function renderLibrary() {
-  const n = S.picks.length;
-  const c = $("#pickCount"); c.textContent = `${n} of ${MAX_PICKS} picked`; c.classList.toggle("full", n >= 2);
+  const n = S.picks.length, c = $("#pickCount");
+  c.textContent = `${n} of ${MAX_PICKS} picked`; c.classList.toggle("full", n >= 2);
   $("#library").innerHTML = EFFECTS.filter(e => filter === "all" || e.lvl === filter).map(e => {
     const on = S.picks.includes(e.id);
     return `<article class="card${on ? " on" : ""}" aria-labelledby="fx-${e.id}">
@@ -497,77 +645,103 @@ function renderLibrary() {
         <p class="what">${esc(e.what)}</p>
         <div class="need"><b>Shots you need</b><ul>${e.shots.map(s => `<li>${esc(s.replace(/^[^:]+:\s*/, ""))}</li>`).join("")}</ul></div>
         <div class="meta"><div><b>Gear</b>${esc(e.gear)}</div><div><b>Sound</b>${esc(e.sound)}</div></div>
-        <button type="button" class="pill ${on ? "" : "fill"} sm pick" data-pick="${e.id}" aria-pressed="${on}">${on ? "✓ Picked · remove" : "Pick this"}</button>
+        <button type="button" class="pill ${on ? "" : "fill"} sm pick" data-pick="${e.id}" aria-pressed="${on}">${on ? "✓ In my plan · remove" : "Add to my plan"}</button>
       </div></article>`;
   }).join("");
+}
+
+/* =================== 4 · PRACTICE =================== */
+function renderDrills() {
+  $("#drills").innerHTML = DRILLS.map((d, i) => `
+    <article class="drill${S.drills[d.id] ? " done" : ""}" aria-labelledby="dr-${d.id}">
+      <div class="dt"><h4 id="dr-${d.id}">${i + 1}. ${esc(d.name)}</h4><span class="time">${d.time}</span></div>
+      <p class="need"><b>You need:</b> ${esc(d.need)}</p>
+      <ol>${d.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
+      <p class="learn"><b>Trains:</b> ${esc(d.learn)}</p>
+      ${d.input ? `<label class="sr" for="in-${d.id}">${esc(d.input.ph)}</label><input class="inp" id="in-${d.id}" data-bind="${d.input.key}" placeholder="${esc(d.input.ph)}" autocomplete="off">` : ""}
+      <label class="ckrow" for="dk-${d.id}"><input type="checkbox" class="ck" id="dk-${d.id}" data-drill="${d.id}"${S.drills[d.id] ? " checked" : ""}>${S.drills[d.id] ? "Done" : "Mark as done"}</label>
+    </article>`).join("");
+  const n = DRILLS.filter(d => S.drills[d.id]).length, p = $("#drillProg");
+  p.textContent = n === DRILLS.length ? "All 4 done 🔥" : `${n} of 4 done`; p.classList.toggle("all", n === DRILLS.length);
+}
+
+/* =================== 6 · PLAN =================== */
+function allShots() {
+  const out = [{ title: "The basics", items: BASICS.map((n, i) => ({ key: "b:" + i, name: n })) }];
+  picked().forEach(e => out.push({ title: "🔥 " + e.name, fire: true, items: e.shots.map((n, i) => ({ key: "f:" + e.id + ":" + i, name: n })) }));
+  if (S.custom.length) out.push({ title: "Your extras", items: S.custom.map(c => ({ key: "c:" + c.id, name: c.name, cid: c.id })) });
+  return out;
+}
+function renderPicked() {
+  $("#pickedRow").innerHTML = `<span class="lbl" style="margin:0 6px 0 0">Fire moments:</span>` +
+    (picked().length ? picked().map(e => `<span>🔥 ${esc(e.name)}</span>`).join("") + ` <a href="#effects">change</a>` : `<a href="#effects">Pick 2–3 from the effects →</a>`);
 }
 function renderShots() {
   const groups = allShots(), flat = groups.flatMap(g => g.items), done = flat.filter(x => S.done[x.key]).length;
   $("#shotList").innerHTML = `<div class="progress"><span class="cnt"><b>${done}</b> of ${flat.length} shots</span><div class="bar" aria-hidden="true"><i style="width:${flat.length ? Math.round(done / flat.length * 100) : 0}%"></i></div></div>` +
     groups.map(g => `<div class="group"><div class="group-h${g.fire ? " fire" : ""}"><span>${esc(g.title)}</span><span class="gc">${g.items.filter(x => S.done[x.key]).length}/${g.items.length}</span></div>
       ${g.items.map(x => { const id = "ck-" + x.key.replace(/[^a-z0-9]/gi, "-"); return `<div class="shot${S.done[x.key] ? " done" : ""}"><input type="checkbox" class="ck" id="${id}" data-shot="${esc(x.key)}"${S.done[x.key] ? " checked" : ""}><label for="${id}">${esc(x.name)}</label>${x.cid ? `<button type="button" class="ib" data-del="${x.cid}" aria-label="Remove ${esc(x.name)}">${X}</button>` : "<span></span>"}</div>`; }).join("")}</div>`).join("") +
-    (S.picks.length ? "" : `<p class="nofx">No fire moments yet. <a href="#fire">Pick 2–3 in Step 1</a> and their shots will show up here.</p>`);
-}
-function renderTimeline() {
-  const by = w => picked().filter(e => e.where === w);
-  const chips = (list, empty) => list.length ? `<div class="yours">${list.map(e => `<span>🔥 ${esc(e.name)}</span>`).join("")}</div>` : (empty ? `<p class="muted">${empty}</p>` : "");
-  const dropFx = picked().filter(e => e.where !== "hook"); // hook picks open the video; everything else lands on the drop
-  $("#timeline").innerHTML = `
-    <div class="beat b1"><span class="k">grab attention</span><h4>Hook</h4><p>Open with your craziest angle, a powerful close-up or a quick reveal.</p>${chips(by("hook"), "")}</div>
-    <div class="beat b2"><span class="k">build anticipation</span><h4>Build-up</h4><p>Introduce your subject. Raise the energy as the music rises.</p>${t(S.build) ? `<p class="muted">Your build: ${esc(t(S.build))}</p>` : ""}</div>
-    <div class="beat b3"><span class="k">bring the hype</span><h4>Beat drop</h4><p>Bring in your fire moments, your strongest shots and faster cuts.</p>${chips(dropFx, "Your fire moments land here.")}</div>
-    <div class="beat b4"><span class="k">finish strong</span><h4>Ending</h4><p>End on a powerful final shot or reveal. Don't let the energy fade.</p>${t(S.finish) ? `<p class="muted">Your ending: ${esc(t(S.finish))}</p>` : ""}</div>`;
-}
-function renderSfx() {
-  $("#sfx").innerHTML = SOUNDS.map(s => {
-    const mine = picked().filter(e => e.sound === s.id);
-    return `<div><h4>${s.name}</h4><p>${s.what}</p><p class="use">${mine.length ? "For your " + mine.map(e => esc(e.name.toLowerCase())).join(", ") : s.always}</p></div>`;
-  }).join("");
+    (S.picks.length ? "" : `<p class="nofx">No fire moments yet. <a href="#effects">Add 2–3 from the effects</a> and their shots show up here.</p>`);
 }
 function renderPlan() {
   const flat = allShots().flatMap(g => g.items);
   const story = [["Start", S.start], ["Build", S.build], ["Finish", S.finish]].filter(([, v]) => t(v));
-  const sounds = [...new Set(["riser", "impact", ...picked().map(e => e.sound)])].map(id => SOUNDS.find(s => s.id === id).name.toLowerCase());
+  const sounds = [...new Set(["riser", "impact", ...picked().map(e => e.sound)])];
   $("#planCard").innerHTML = `
     <div class="pc-h"><div><span class="logo">OFF<span>-</span>TAPE</span><b>My hype video plan</b></div><small>plan it · shoot it · make it hype</small></div>
     <div class="pc-b">
-      <div class="pc-sec"><h5>The video</h5>${t(S.idea) ? `<p class="idea">${esc(t(S.idea))}</p>` : `<p class="empty">Add what you're filming in Step 1.</p>`}</div>
-      <div class="pc-sec"><h5>Story</h5>${story.length ? `<div class="pc-story">${story.map(([k, v]) => `<p><b>${k}</b>${esc(t(v))}</p>`).join("")}</div>` : `<p class="empty">Add your start, build and finish in Step 1.</p>`}</div>
-      <div class="pc-sec"><h5>Fire moments</h5>${picked().length ? `<div class="pc-fx">${picked().map(e => `<span>🔥 ${esc(e.name)}</span>`).join("")}</div>` : `<p class="empty">Pick 2–3 in Step 1.</p>`}</div>
+      <div class="pc-sec"><h5>The video</h5>${t(S.idea) ? `<p class="idea">${esc(t(S.idea))}</p>` : `<p class="empty">Add what you're filming above.</p>`}</div>
+      <div class="pc-sec"><h5>Story</h5>${story.length ? `<div class="pc-story">${story.map(([k, v]) => `<p><b>${k}</b>${esc(t(v))}</p>`).join("")}</div>` : `<p class="empty">Add your start, build and finish above.</p>`}</div>
+      <div class="pc-sec"><h5>Fire moments</h5>${picked().length ? `<div class="pc-fx">${picked().map(e => `<span>🔥 ${esc(e.name)}</span>`).join("")}</div>` : `<p class="empty">Pick 2–3 from the effects.</p>`}</div>
       <div class="pc-sec"><h5>Shot list · ${flat.filter(x => S.done[x.key]).length}/${flat.length} done</h5><ul class="pc-shots">${flat.map(x => `<li class="${S.done[x.key] ? "d" : ""}">${esc(x.name)}</li>`).join("")}</ul></div>
-      <div class="pc-sec"><h5>Edit</h5><p>Hook → Build-up → <b>Beat drop</b> → Ending</p><p>Song: ${t(S.song) ? esc(t(S.song)) : '<span class="empty">find one with a beat drop</span>'}</p><p>Sound: ${sounds.join(", ")}</p></div>
+      <div class="pc-sec"><h5>Edit</h5><p>Hook → Build-up → <b>Beat drop</b> → Ending</p><p>Song: ${t(S.song) ? esc(t(S.song)) + (t(S.drop) ? ` · drop at ${esc(t(S.drop))}` : "") : '<span class="empty">find one with a beat drop</span>'}</p><p>Sound: ${sounds.map(s => s + "s").join(", ")}</p></div>
       <p class="pc-foot">free guide by off-tape · @j.david007</p>
     </div>`;
 }
-function renderAll() { renderFilters(); renderLibrary(); renderShots(); renderTimeline(); renderSfx(); renderPlan(); }
+
+function renderAll() { renderReel(); renderFilters(); renderLibrary(); renderDrills(); renderPicked(); renderShots(); renderPlan(); }
 function syncInputs() { $$("[data-bind]").forEach(el => { if (el !== document.activeElement) el.value = S[el.dataset.bind] || ""; }); }
 
-/* ============ EVENTS ============ */
+/* =================== EVENTS =================== */
 document.addEventListener("input", e => {
   const k = e.target.dataset.bind; if (!k) return;
-  S[k] = e.target.value; save();
-  if (k === "build" || k === "finish") renderTimeline();
-  renderPlan();
+  S[k] = e.target.value; save(); renderPlan();
 });
 document.addEventListener("change", e => {
-  const k = e.target.dataset.shot; if (!k) return;
-  if (e.target.checked) S.done[k] = true; else delete S.done[k];
-  save(); renderShots(); renderPlan();
-  const n = $(`[data-shot="${CSS.escape(k)}"]`); if (n) n.focus({ preventScroll: true });
+  const el = e.target;
+  if (el.dataset.shot) {
+    const k = el.dataset.shot;
+    if (el.checked) S.done[k] = true; else delete S.done[k];
+    save(); renderShots(); renderPlan();
+    const n = $(`[data-shot="${CSS.escape(k)}"]`); if (n) n.focus({ preventScroll: true });
+  } else if (el.dataset.drill) {
+    const k = el.dataset.drill;
+    if (el.checked) S.drills[k] = true; else delete S.drills[k];
+    save(); renderDrills(); syncInputs();
+    const n = $(`[data-drill="${k}"]`); if (n) n.focus({ preventScroll: true });
+    if (el.checked) toast(DRILLS.every(d => S.drills[d.id]) ? "All 4 drills done. Post it and tag @j.david007!" : "Nice. Drill done.");
+  }
 });
 document.addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   const d = b.dataset;
+  if (d.seek !== undefined) {
+    const v = $("#reelVid"); if (!v) return;
+    const go = () => { v.currentTime = Number(d.seek); v.play().catch(() => {}); };
+    if (v.readyState >= 1) go(); else { v.addEventListener("loadedmetadata", go, { once: true }); v.load(); }
+    v.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    return;
+  }
   if (d.filter) { filter = d.filter; renderFilters(); renderLibrary(); $(`[data-filter="${d.filter}"]`).focus(); return; }
   if (d.pick) {
     const i = S.picks.indexOf(d.pick);
     if (i >= 0) {
       S.picks.splice(i, 1);
       Object.keys(S.done).forEach(k => { if (k.startsWith("f:" + d.pick + ":")) delete S.done[k]; });
-      toast(fx(d.pick).name + " removed");
+      toast(fx(d.pick).name + " removed from your plan");
     } else if (S.picks.length >= MAX_PICKS) { toast("3 is the sweet spot. Remove one to swap."); return; }
-    else { S.picks.push(d.pick); const n = fx(d.pick).shots.length; toast(`${fx(d.pick).name} added · ${n} shot${n > 1 ? "s" : ""} on your list`); }
-    save(); renderLibrary(); renderShots(); renderTimeline(); renderSfx(); renderPlan();
+    else { S.picks.push(d.pick); const n = fx(d.pick).shots.length; toast(`Added · ${n} shot${n > 1 ? "s" : ""} in your plan`); }
+    save(); renderLibrary(); renderPicked(); renderShots(); renderPlan();
     const n = $(`[data-pick="${d.pick}"]`); if (n) n.focus({ preventScroll: true });
     return;
   }
@@ -577,7 +751,7 @@ document.addEventListener("click", e => {
     case "image": saveImage(b); break;
     case "reset": { const dl = $("#dlgReset"); if (dl.showModal) dl.showModal(); break; }
     case "resetNo": $("#dlgReset").close(); break;
-    case "resetYes": $("#dlgReset").close(); S = fresh(); saveNow(); syncInputs(); renderAll(); $("#startBtn").textContent = "Start planning →"; toast("New video started"); location.hash = "plan"; break;
+    case "resetYes": { $("#dlgReset").close(); const keep = { drills: S.drills, practiceDrop: S.practiceDrop }; S = Object.assign(fresh(), keep); saveNow(); syncInputs(); renderAll(); toast("New plan started"); break; }
   }
 });
 $("#addShot").addEventListener("submit", e => {
@@ -587,7 +761,7 @@ $("#addShot").addEventListener("submit", e => {
   inp.value = ""; save(); renderShots(); renderPlan(); inp.focus(); toast("Shot added");
 });
 
-/* ============ SAVE / COPY ============ */
+/* =================== SAVE / COPY =================== */
 function planText() {
   const L = ["MY HYPE VIDEO PLAN · OFF-TAPE", ""];
   if (t(S.idea)) L.push("Filming: " + t(S.idea));
@@ -596,12 +770,12 @@ function planText() {
   L.push("", "SHOT LIST");
   allShots().forEach(g => { L.push(g.title.replace("🔥 ", "") + ":"); g.items.forEach(x => L.push(`  [${S.done[x.key] ? "x" : " "}] ${x.name}`)); });
   L.push("", "EDIT: Hook → Build-up → Beat drop → Ending");
-  if (t(S.song)) L.push("Song: " + t(S.song));
+  if (t(S.song)) L.push("Song: " + t(S.song) + (t(S.drop) ? " · drop at " + t(S.drop) : ""));
   L.push("Sound: risers into the drop, impacts on key moments, whooshes on moves", "", "Free guide by OFF-TAPE · @j.david007");
   return L.join("\n");
 }
 async function copyPlan() {
-  const txt = planText(), m = $("#saveMsg");
+  const txt = planText(), m = $("#msg-planCard");
   try { await navigator.clipboard.writeText(txt); m.textContent = "Copied. Paste it into your notes."; toast("Plan copied"); return; } catch (e) {}
   const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
   let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
@@ -610,44 +784,45 @@ async function copyPlan() {
 }
 function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
 async function saveImage(btn) {
-  const m = $("#saveMsg"); btn.disabled = true; m.textContent = "Making your image…";
+  const target = btn.dataset.target, name = btn.dataset.name, m = $("#msg-" + target);
+  btn.disabled = true; m.textContent = "Making your image…";
   try {
     if (!window.html2canvas) await loadScript(CONFIG.html2canvasSrc);
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
-    const canvas = await window.html2canvas($("#planCard"), { scale: 2, backgroundColor: "#f7f6fb", useCORS: true, logging: false });
+    const canvas = await window.html2canvas(document.getElementById(target), { scale: 2, backgroundColor: "#f7f6fb", useCORS: true, logging: false });
     const blob = await new Promise(r => canvas.toBlob(r, "image/png"));
-    const name = "hype-video-plan.png";
     const file = new File([blob], name, { type: "image/png" });
     if (navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-      try { await navigator.share({ files: [file], title: "My hype video plan" }); m.textContent = "Tap \"Save Image\" in the share sheet to put it in your photos."; btn.disabled = false; return; }
+      try { await navigator.share({ files: [file], title: name.replace(/\.png$/, "").replace(/-/g, " ") }); m.textContent = "Tap \"Save Image\" in the share sheet to put it in your photos."; btn.disabled = false; return; }
       catch (e) { if (e && e.name === "AbortError") { m.textContent = ""; btn.disabled = false; return; } }
     }
     const url = URL.createObjectURL(blob), a = document.createElement("a");
     a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 4000);
-    m.textContent = "Downloaded " + name; toast("Plan saved");
-  } catch (e) { m.textContent = "Couldn't make the image here. Take a screenshot of your plan, or use Copy."; }
+    m.textContent = "Downloaded " + name; toast("Saved");
+  } catch (e) { m.textContent = "Couldn't make the image here. Take a screenshot instead."; }
   btn.disabled = false;
 }
 
-/* ============ NAV HIGHLIGHT ============ */
+/* =================== NAV HIGHLIGHT =================== */
 if ("IntersectionObserver" in window) {
-  const links = { plan: $('.jump a[href="#plan"]'), shoot: $('.jump a[href="#shoot"]'), edit: $('.jump a[href="#edit"]'), "my-plan": $('.jump a[href="#my-plan"]') };
-  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { Object.values(links).forEach(a => a.classList.remove("on")); if (links[en.target.id]) links[en.target.id].classList.add("on"); } }), { rootMargin: "-45% 0px -50% 0px" });
-  ["plan", "shoot", "edit", "my-plan"].forEach(id => io.observe(document.getElementById(id)));
+  const ids = ["breakdown", "steps", "effects", "practice", "cheat-sheet", "my-plan"];
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    $$(".jump a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id));
+    const on = $(".jump a.on"), nav = $(".jump"); if (on && nav) nav.scrollLeft = on.offsetLeft - (nav.clientWidth - on.offsetWidth) / 2;
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  ids.forEach(id => io.observe(document.getElementById(id)));
 }
 
-/* ============ BOOT ============ */
+/* =================== BOOT =================== */
 (function () {
   const ig = CONFIG.instagramUrl;
   $("#igLink").href = ig;
   if (CONFIG.mentorshipUrl) $("#mentorLink").href = CONFIG.mentorshipUrl; else $("#mentBox").hidden = true;
-  $$("[data-breakdown]").forEach(el => {
-    const u = CONFIG.breakdowns[el.dataset.breakdown], step = { plan: "planning", shoot: "shooting", edit: "editing" }[el.dataset.breakdown];
-    el.innerHTML = `<a class="bdn" href="${esc(u || ig)}" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span>${u ? `Watch the full ${step} breakdown` : `Full ${step} breakdown coming soon`}<small>${u ? "On Instagram ↗" : "Follow @j.david007 so you don't miss it ↗"}</small></span></a>`;
-  });
-  if (S.idea || S.start || S.picks.length) $("#startBtn").textContent = "Continue my plan →";
-  if (!storageOk) $(".saved-note").textContent = "This browser is blocking storage, so your plan won't be saved if you leave. Save it as an image before you go.";
+  const u = CONFIG.breakdownsUrl;
+  $$("[data-breakdown]").forEach(el => { el.innerHTML = `<a class="bdn" href="${esc(u || ig)}" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span>${u ? "Watch the deep-dive breakdowns" : "Deep-dive breakdowns of each step coming soon"}<small>${u ? "On Instagram ↗" : "Follow @j.david007 so you don't miss them ↗"}</small></span></a>`; });
+  if (!storageOk) $("#savedNote").textContent = "This browser is blocking storage, so your plan won't be saved if you leave. Save it as an image before you go.";
   syncInputs(); renderAll();
 })();
 </script>
