@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Hype Video Blueprint · OFF-TAPE</title>
-<meta name="description" content="Free interactive guide from OFF-TAPE. Plan it. Shoot it. Make it hype. Build your story, fire moments, shot list, edit and sound design, then download your blueprint.">
+<title>Hype Video Blueprint · OFF-TAPE</title>
+<meta name="description" content="Free guide from OFF-TAPE. Plan, shoot and edit your next hype video in three steps. Pick your fire moments, get your shot list, save your plan.">
 <meta name="theme-color" content="#050608">
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
 <link rel="icon" href="../favicon-32.png?v=2" sizes="32x32" type="image/png">
@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Sans:wght@400;500;600;700&family=Unbounded:wght@700;900&display=swap">
 <style>
-/* OFF-TAPE design tokens — copied from off-tape.com so the guide is a natural extension of the main site */
+/* Layout: one scroll that follows the reel — Plan, Shoot, Edit — then the plan card. OFF-TAPE tokens copied from off-tape.com. */
 :root {
   --ink: #050608;
   --ink-2: #11131d;
@@ -25,6 +25,7 @@
   --violet: #ff3b2f;
   --aqua: #19c3ff;
   --navy: #0b1440;
+  --green: #12a150;
   --line-d: rgba(143,184,255,.2);
   --line-l: rgba(11,20,64,.16);
   --mute-d: #9aa2ba;
@@ -36,20 +37,19 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { overflow-x: clip; -webkit-text-size-adjust: 100%; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 76px; -webkit-text-size-adjust: 100%; }
 [hidden] { display: none !important; }
 body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--body); font-size: 17px; line-height: 1.5; overflow-x: hidden; overflow-x: clip; }
 a { color: inherit; }
-button, input, textarea, select { font: inherit; color: inherit; }
-img { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; color: inherit; }
+img, video { display: block; max-width: 100%; }
 :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 p { margin: 0; }
 h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .9; letter-spacing: .005em; text-wrap: balance; }
-.wrap { max-width: 920px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 900px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 .eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--violet); }
 .it { font-family: var(--serif); font-style: normal; text-transform: none; font-weight: 400; letter-spacing: 0; display: inline-block; transform: rotate(-3deg); line-height: 1; }
-.chunk { font-family: var(--chunky); font-weight: 900; text-transform: lowercase; letter-spacing: -.03em; }
 .pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 24px; border-radius: 999px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1.5px solid currentColor; background: none; cursor: pointer; transition: background .2s, color .2s, transform .2s; text-align: center; }
 .pill:hover { transform: translateY(-2px); }
 .pill.fill { background: var(--blue); border-color: var(--blue); color: #fff; }
@@ -57,1216 +57,598 @@ h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 400; text-
 .pill.white { background: #fff; border-color: #fff; color: var(--blue); }
 .pill.white:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
 .pill.sm { min-height: 40px; padding: 8px 16px; font-size: 14px; }
-.pill:disabled { opacity: .4; cursor: not-allowed; transform: none; }
-.halftone { background-image: radial-gradient(circle, currentColor 1.6px, transparent 2px); background-size: 12px 12px; }
+.pill:disabled { opacity: .45; cursor: wait; transform: none; }
 body::after { content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .07; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ---------- top bar + progress ---------- */
-.top { position: sticky; top: 0; z-index: 20; background: rgba(5,6,8,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding-top: env(safe-area-inset-top, 0px); border-bottom: 1px solid var(--line-d); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 60px; }
-.logo { font-family: var(--display); font-size: 30px; line-height: 1; text-decoration: none; letter-spacing: .02em; }
-.top-meta { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--mute-d); text-align: right; }
-.top-meta b { color: #fff; font-weight: 600; }
-.prog { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; padding-bottom: 10px; }
-.prog button { position: relative; height: 26px; border: 0; padding: 0; background: none; cursor: pointer; }
-.prog button::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 5px; border-radius: 3px; background: #262a3b; transition: background .2s; }
-.prog button.done::before { background: var(--sky); box-shadow: none; }
-.prog button.cur::before { background: var(--blue); box-shadow: 0 0 12px rgba(35,80,255,.8); }
-.prog button:hover::before { background: var(--violet); }
+/* sticky nav */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: var(--ink); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(5,6,8,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-d); }
+.top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+.logo { font-family: var(--display); font-size: 28px; line-height: 1; text-decoration: none; letter-spacing: .02em; flex: none; }
+.jump { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+.jump::-webkit-scrollbar { display: none; }
+.jump a { text-decoration: none; padding: 8px 12px; border-radius: 999px; background: var(--ink-2); font-weight: 600; font-size: 13px; white-space: nowrap; transition: background .2s; }
+.jump a:hover, .jump a.on { background: var(--blue); color: #fff; }
+.jump a .n { font-family: var(--chunky); font-weight: 900; font-size: 11px; color: var(--sky); margin-right: 4px; }
+.jump a.on .n { color: #fff; }
+@media (max-width: 420px) { .jump a .lbl { display: none; } .jump a .n { margin: 0; color: #fff; } .jump a.plan .lbl { display: inline; } }
 
-/* ---------- screens ---------- */
-.screen { padding-block: clamp(36px, 7vw, 80px) 40px; }
-.step-head .num { font-family: var(--display); font-size: clamp(88px, 20vw, 170px); line-height: .8; color: var(--blue); -webkit-text-stroke: 0; display: block; }
-.step-head h2 { font-size: clamp(44px, 9vw, 92px); margin-top: 10px; }
-.step-head .sub { margin-top: 14px; font-family: var(--serif); color: var(--sky); font-size: clamp(20px, 3.4vw, 28px); transform: rotate(-1.5deg); display: inline-block; line-height: 1.2; }
-.lesson { margin-top: 36px; display: grid; gap: 16px; max-width: 680px; font-size: 18px; }
-.lesson strong { color: #fff; }
-.lesson .big { font-size: 22px; font-weight: 600; color: #fff; line-height: 1.3; }
-.sec-h { font-size: clamp(30px, 6vw, 46px); margin-top: 48px; margin-bottom: 16px; }
-.sec-h small { display: block; font-family: var(--body); font-size: 13px; font-weight: 600; letter-spacing: .14em; color: var(--sky); margin-bottom: 8px; }
+/* hero */
+.hero { padding-block: clamp(40px, 8vw, 88px) 40px; position: relative; overflow: hidden; }
+.hero .slash { position: absolute; left: -10%; width: 120%; transform: rotate(-12deg); pointer-events: none; }
+.hero .s1 { top: 52%; height: 40px; background: var(--blue); opacity: .35; }
+.hero .s2 { top: 60%; height: 12px; background: var(--violet); opacity: .45; }
+.hero .inner { position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(60px, 14vw, 140px); margin-top: 16px; }
+.hero h1 .it { color: var(--sky); font-size: .6em; vertical-align: .1em; }
+.hero .lead { margin-top: 22px; font-size: clamp(19px, 2.6vw, 24px); font-weight: 600; max-width: 600px; line-height: 1.3; }
+.three { margin-top: 26px; display: grid; gap: 10px; max-width: 640px; }
+@media (min-width: 640px) { .three { grid-template-columns: repeat(3, 1fr); } }
+.three a { display: block; text-decoration: none; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 18px; padding: 14px 16px; transition: border-color .2s, transform .2s; }
+.three a:hover { border-color: var(--blue); transform: translateY(-2px); }
+.three b { font-family: var(--display); font-weight: 400; font-size: 28px; text-transform: uppercase; display: block; line-height: 1; }
+.three b i { font-style: normal; color: var(--blue); margin-right: 6px; }
+.three span { color: var(--mute-d); font-size: 14px; }
+.hero .cta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.hero .cta .pill.fill { font-size: 17px; min-height: 56px; padding-inline: 30px; }
+.hero .note { font-size: 13px; color: var(--mute-d); }
+.zap { position: absolute; right: max(4%, 10px); top: 22px; width: 64px; height: 92px; z-index: 1; transform: rotate(12deg); }
+@media (min-width: 720px) { .zap { width: 110px; height: 156px; top: 56px; } }
 
-/* example cards (story, shots, edit parts) */
-.ex-grid { display: grid; gap: 12px; margin-top: 20px; }
-@media (min-width: 720px) { .ex-grid.c3 { grid-template-columns: repeat(3, 1fr); } .ex-grid.c2 { grid-template-columns: repeat(2, 1fr); } }
-.ex { background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 20px; padding: 20px; }
-.ex h3, .ex h4 { font-size: 28px; margin-bottom: 8px; }
-.ex .tag { display: inline-block; font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--blue); color: #fff; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
-.ex p + p { margin-top: 8px; }
-.ex .eg { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line-d); color: var(--mute-d); font-size: 15px; }
-.ex .eg b { color: var(--sky); font-weight: 600; letter-spacing: .1em; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 2px; }
-.ex ol, .ex ul { margin: 8px 0 0; padding-left: 20px; }
-.ex li + li { margin-top: 4px; }
-details.ex summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-details.ex summary::-webkit-details-marker { display: none; }
-details.ex summary::after { content: "+"; font-family: var(--chunky); font-weight: 900; font-size: 22px; color: var(--sky); transition: transform .2s; }
-details.ex[open] summary::after { transform: rotate(45deg); }
-details.ex summary h3 { margin: 0; }
-details.ex > div { margin-top: 12px; }
+/* step sections */
+.step { padding-block: clamp(48px, 8vw, 90px) 20px; border-top: 1px solid var(--line-d); }
+.step-head { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; align-items: end; }
+.step-head .num { font-family: var(--display); font-size: clamp(90px, 20vw, 150px); line-height: .78; color: var(--blue); grid-row: span 2; }
+.step-head h2 { font-size: clamp(42px, 9vw, 80px); }
+.step-head .sub { font-family: var(--serif); color: var(--sky); font-size: clamp(18px, 3.2vw, 24px); transform: rotate(-1.5deg); display: inline-block; line-height: 1.2; }
+.say { margin-top: 26px; display: grid; gap: 12px; max-width: 640px; font-size: 18px; }
+.say strong { color: #fff; }
+.part-h { margin-top: 40px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.part-h h3 { font-size: clamp(28px, 6vw, 42px); }
+.part-h p { color: var(--mute-d); font-size: 15px; }
 
-/* ---------- exercise (paper) panel ---------- */
-.work { margin-top: 44px; background: var(--paper); color: var(--ink); border-radius: 26px; padding: clamp(20px, 4vw, 36px); position: relative; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); border: 6px solid #fff; }
-.work-h { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap; }
-.work-h h3 { font-size: clamp(30px, 6vw, 44px); }
-.work-h .badge { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--ink); color: #fff; padding: 6px 12px; border-radius: 999px; }
-.work label, .work .lbl { display: block; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
-.work .q { font-family: var(--chunky); font-weight: 900; color: var(--blue); font-size: 12px; margin-right: 6px; }
-.field { margin-bottom: 20px; }
+/* paper panel */
+.work { margin-top: 18px; background: var(--paper); color: var(--ink); border-radius: 24px; padding: clamp(18px, 4vw, 30px); border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); }
+.work label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
 .inp { width: 100%; background: #fff; border: 1.5px solid var(--line-l); border-radius: 14px; padding: 12px 14px; font-size: 16px; color: var(--ink); min-height: 48px; transition: border-color .15s, box-shadow .15s; }
 .inp::placeholder { color: #9095a8; }
 .inp:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(35,80,255,.18); }
-textarea.inp { min-height: 96px; resize: vertical; line-height: 1.45; }
-select.inp { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--ink) 50%), linear-gradient(135deg, var(--ink) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
-.hint { font-size: 13px; color: var(--mute-l); margin-top: 6px; }
-.row2 { display: grid; gap: 0 14px; }
-@media (min-width: 640px) { .row2 { grid-template-columns: 1fr 1fr; } }
+textarea.inp { min-height: 74px; resize: vertical; line-height: 1.45; }
+.story3 { display: grid; gap: 12px; margin-top: 16px; }
+@media (min-width: 720px) { .story3 { grid-template-columns: repeat(3, 1fr); } }
+.story3 label .tag { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: #fff; background: var(--ink); padding: 3px 9px; border-radius: 999px; margin-right: 6px; }
+.story3 .f2 label .tag { background: var(--blue); } .story3 .f3 label .tag { background: var(--violet); }
 
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chip { min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); font-weight: 600; font-size: 15px; cursor: pointer; transition: background .15s, color .15s; }
-.chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: #fff; }
-.chip[aria-pressed="true"]::before { content: "✓ "; }
+/* effects library */
+.lib-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { min-height: 40px; padding: 7px 14px; border-radius: 999px; border: 1.5px solid var(--line-d); background: var(--ink-2); color: var(--paper); font-weight: 600; font-size: 14px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
+.count { font-family: var(--chunky); font-weight: 900; font-size: 12px; text-transform: lowercase; padding: 8px 14px; border-radius: 999px; background: var(--ink-2); border: 1.5px solid var(--line-d); }
+.count.full { background: var(--blue); border-color: var(--blue); }
+.fx { margin-top: 14px; display: grid; gap: 12px; }
+@media (min-width: 720px) { .fx { grid-template-columns: 1fr 1fr; } }
+.card { background: var(--ink-2); border: 1.5px solid var(--line-d); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s; min-width: 0; }
+.card.on { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue); }
+.card .demo { aspect-ratio: 16/9; background: #000; max-width: 100%; }
+.card .demo video { width: 100%; height: 100%; object-fit: cover; }
+.card .bd { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card .tt { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.card h4 { font-size: 28px; }
+.lvl { flex: none; font-family: var(--chunky); font-weight: 900; font-size: 10.5px; text-transform: lowercase; padding: 4px 9px; border-radius: 999px; }
+.lvl.easy { background: var(--green); color: #fff; } .lvl.medium { background: var(--aqua); color: var(--ink); } .lvl.advanced { background: var(--violet); color: #fff; }
+.card .what { color: #d9dcea; font-size: 16px; }
+.card .need { font-size: 14px; }
+.card .need b, .card .meta b { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--sky); font-weight: 600; margin-bottom: 4px; }
+.card .need ul { margin: 0; padding-left: 18px; color: #d9dcea; }
+.card .meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: #d9dcea; }
+.card .pick { margin-top: auto; width: 100%; }
+.card.on .pick { background: #fff; border-color: #fff; color: var(--blue); }
 
-/* story summary */
-.summary { margin-top: 28px; display: grid; gap: 10px; }
-@media (min-width: 720px) { .summary { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; } }
-.summary .beat { background: var(--ink); color: #fff; border-radius: 18px; padding: 16px; min-height: 120px; }
-.summary .beat h4 { font-size: 22px; color: var(--sky); margin-bottom: 8px; }
-.summary .beat p { font-size: 15px; white-space: pre-wrap; word-break: break-word; }
-.summary .arrow { display: grid; place-items: center; font-family: var(--chunky); font-weight: 900; color: var(--blue); font-size: 22px; }
-@media (max-width: 719px) { .summary .arrow { transform: rotate(90deg); height: 18px; } }
-.empty { color: var(--mute-d); font-style: italic; }
-.work .empty { color: var(--mute-l); }
-
-/* tip + reminder */
-.tip { margin-top: 40px; background: var(--blue); color: #fff; border-radius: 24px; padding: 26px 22px 22px; position: relative; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
-.tip svg { width: 44px; height: 60px; flex: none; }
-.tip .tl { font-family: var(--serif); font-size: 22px; transform: rotate(-3deg); display: inline-block; margin-bottom: 6px; }
-.tip p { font-size: 18px; font-weight: 500; line-height: 1.4; }
-.remind { margin-top: 40px; background: var(--violet); color: #fff; border-radius: 24px; padding: 26px 22px; transform: rotate(-.6deg); box-shadow: 6px 8px 0 rgba(0,0,0,.4); }
-.remind h3 { font-size: clamp(32px, 7vw, 54px); margin-bottom: 10px; }
-.remind p { font-size: 18px; font-weight: 500; }
-.remind p + p { margin-top: 6px; }
-
-/* step nav */
-.stepnav { margin-top: 44px; display: flex; gap: 10px; justify-content: space-between; flex-wrap: wrap; }
-.stepnav .pill.fill { flex: 1 1 260px; }
-.saved { margin-top: 18px; font-size: 13px; color: var(--mute-d); display: flex; gap: 8px; align-items: center; }
-.saved::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--aqua); flex: none; }
-
-/* ---------- hero ---------- */
-.hero { padding-block: clamp(40px, 8vw, 96px) 56px; position: relative; overflow: hidden; }
-.hero .slash { position: absolute; left: -10%; width: 120%; transform: rotate(-12deg); pointer-events: none; }
-.hero .s1 { top: 46%; height: 40px; background: var(--blue); opacity: .35; }
-.hero .s2 { top: 54%; height: 12px; background: var(--violet); opacity: .45; }
-.hero .inner { position: relative; z-index: 2; }
-.hero h1 { font-size: clamp(64px, 15vw, 150px); margin-top: 18px; }
-.hero h1 .it { color: var(--sky); font-size: .62em; vertical-align: .08em; }
-.hero .lead { margin-top: 22px; font-size: clamp(19px, 2.6vw, 24px); font-weight: 600; max-width: 640px; line-height: 1.3; }
-.hero .copy { margin-top: 26px; max-width: 600px; display: grid; gap: 12px; color: #d9dcea; }
-.hero .copy strong { color: #fff; }
-.hero .cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.hero .cta .pill.fill { font-size: 17px; min-height: 58px; padding-inline: 30px; }
-.meta-row { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px; }
-.meta-row span { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; border: 1.5px solid var(--line-d); border-radius: 999px; padding: 7px 12px; color: var(--sky); }
-.tagline { margin-top: 30px; font-family: var(--chunky); font-weight: 900; text-transform: lowercase; font-size: clamp(15px, 2.4vw, 20px); color: var(--mute-d); letter-spacing: -.02em; }
-.tagline b { color: #fff; font-weight: 900; }
-.resume { margin-top: 28px; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 20px; padding: 18px; display: grid; gap: 12px; }
-.resume p b { color: #fff; }
-.resume .btns { display: flex; flex-wrap: wrap; gap: 10px; }
-.zap { position: absolute; right: max(4%, 10px); top: 26px; width: 70px; height: 100px; z-index: 1; transform: rotate(12deg); }
-@media (min-width: 720px) { .zap { width: 120px; height: 170px; top: 60px; } }
-.principles { margin-top: 44px; display: grid; gap: 10px; }
-@media (min-width: 720px) { .principles { grid-template-columns: repeat(3, 1fr); } }
-.principles div { border-top: 3px solid var(--blue); padding-top: 12px; }
-.principles b { font-family: var(--display); font-size: 26px; text-transform: uppercase; font-weight: 400; display: block; line-height: 1; margin-bottom: 6px; }
-.principles span { color: var(--mute-d); font-size: 15px; }
-
-/* ---------- fire moments ---------- */
-.fires { display: grid; gap: 18px; }
-.fire { border: 2px solid var(--ink); border-radius: 20px; padding: 18px; background: #fff; }
-.fire-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-.fire-top h4 { font-size: 26px; display: flex; align-items: center; gap: 8px; }
-.fire-top h4 .fl { font-size: 22px; }
-.seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
-.seg button { border: 0; background: #fff; color: var(--ink); padding: 8px 12px; min-height: 40px; font-size: 13px; font-weight: 600; cursor: pointer; }
-.seg button + button { border-left: 1.5px solid var(--ink); }
-.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
-.seg button[aria-pressed="true"].s-planned { background: var(--blue); }
-.seg button[aria-pressed="true"].s-filmed { background: #12a150; }
-.seg button[aria-pressed="true"].s-na { background: var(--mute-l); }
-.linkbox { margin-top: 4px; background: var(--paper-2); border-radius: 14px; padding: 14px; display: grid; gap: 10px; }
-.linkbox p { font-size: 14px; }
-.linkbox .linked { display: flex; flex-wrap: wrap; gap: 6px; }
-.linkbox .linked span { background: var(--blue); color: #fff; font-size: 13px; padding: 4px 10px; border-radius: 999px; font-weight: 600; }
-
-/* ---------- shot list ---------- */
-.progress-line { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
-.progress-line .cnt { font-family: var(--display); font-size: 30px; line-height: 1; text-transform: uppercase; }
-.progress-line .cnt b { color: var(--blue); font-weight: 400; }
-.bar { flex: 1 1 160px; height: 12px; background: var(--paper-2); border-radius: 999px; overflow: hidden; box-shadow: inset 0 0 0 1.5px var(--ink); }
+/* shot list */
+.progress { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.progress .cnt { font-family: var(--display); font-size: 30px; line-height: 1; text-transform: uppercase; }
+.progress .cnt b { color: var(--blue); font-weight: 400; }
+.bar { flex: 1 1 140px; height: 12px; background: var(--paper-2); border-radius: 999px; overflow: hidden; box-shadow: inset 0 0 0 1.5px var(--ink); }
 .bar i { display: block; height: 100%; background: var(--blue); transition: width .3s; }
-.dark .bar { background: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line-d); }
-.group { margin-top: 20px; }
-.group-h { font-family: var(--chunky); font-weight: 900; text-transform: lowercase; font-size: 13px; letter-spacing: -.01em; display: flex; justify-content: space-between; gap: 8px; padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); margin-bottom: 8px; }
-.group-h .gc { color: var(--mute-l); }
-.group-h.fireg { color: var(--violet); }
-.shot { border-bottom: 1px solid var(--line-l); }
-.shot-row { display: grid; grid-template-columns: 44px 1fr auto auto; align-items: center; gap: 6px; padding: 6px 0; }
-.ck { appearance: none; -webkit-appearance: none; width: 30px; height: 30px; margin: 7px; border: 2px solid var(--ink); border-radius: 9px; background: #fff; cursor: pointer; display: grid; place-items: center; transition: background .15s; }
+.group { margin-top: 18px; }
+.group-h { font-family: var(--chunky); font-weight: 900; text-transform: lowercase; font-size: 13px; display: flex; justify-content: space-between; gap: 8px; padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
+.group-h.fire { color: var(--violet); }
+.group-h .gc { color: var(--mute-l); flex: none; }
+.shot { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 4px; border-bottom: 1px solid var(--line-l); }
+.shot label { margin: 0; font-weight: 600; font-size: 16px; padding: 12px 0; cursor: pointer; word-break: break-word; min-width: 0; }
+.shot.done label { text-decoration: line-through; text-decoration-thickness: 2px; color: var(--mute-l); }
+.ck { appearance: none; -webkit-appearance: none; width: 30px; height: 30px; margin: 7px; border: 2px solid var(--ink); border-radius: 9px; background: #fff; cursor: pointer; display: grid; place-items: center; }
 .ck:checked { background: var(--blue); border-color: var(--blue); }
 .ck:checked::after { content: ""; width: 8px; height: 14px; border: solid #fff; border-width: 0 3px 3px 0; transform: translateY(-2px) rotate(45deg); }
-.shot-name { border: 0; background: transparent; font-size: 16px; font-weight: 600; padding: 10px 6px; border-radius: 8px; width: 100%; min-width: 0; color: var(--ink); }
-.shot-name:focus { outline: none; background: #fff; box-shadow: 0 0 0 2px var(--blue); }
-.shot.done .shot-name { text-decoration: line-through; text-decoration-thickness: 2px; color: var(--mute-l); }
-.ib { width: 42px; height: 42px; border-radius: 12px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; color: var(--ink); font-size: 18px; }
-.ib:hover { background: var(--paper-2); }
-.ib svg { width: 20px; height: 20px; }
-.ib[aria-expanded="true"] svg { transform: rotate(180deg); }
-.shot-detail { padding: 4px 0 16px 50px; }
-@media (max-width: 520px) { .shot-detail { padding-left: 0; } }
-.shot-note { font-size: 13px; color: var(--mute-l); padding: 0 0 8px 50px; margin-top: -4px; white-space: pre-wrap; }
-.addrow { margin-top: 22px; display: grid; gap: 8px; grid-template-columns: 1fr; }
-@media (min-width: 640px) { .addrow { grid-template-columns: 1fr 200px auto; } }
-.addfire { display: flex; gap: 8px; margin: 8px 0 4px; }
-.addfire .inp { min-height: 42px; padding: 8px 12px; font-size: 15px; }
-.minor { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
-.textbtn { background: none; border: 0; color: var(--blue); font-weight: 600; text-decoration: underline; cursor: pointer; padding: 8px 0; font-size: 14px; }
+.ib { width: 42px; height: 42px; border-radius: 12px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; color: var(--mute-l); }
+.ib:hover { background: var(--paper-2); color: var(--ink); }
+.ib svg { width: 18px; height: 18px; }
+.add { margin-top: 18px; display: flex; gap: 8px; }
+.add .inp { flex: 1; min-width: 0; }
+.nofx { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: var(--paper-2); font-size: 15px; }
+.nofx a { color: var(--blue); font-weight: 700; }
 
-/* checklist (generic) */
-.cl { list-style: none; margin: 0; padding: 0; }
-.cl li { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 6px; border-bottom: 1px solid var(--line-l); }
-.cl label { margin: 0; font-weight: 600; font-size: 16px; padding: 10px 0; cursor: pointer; }
-.cl li.done label { text-decoration: line-through; color: var(--mute-l); }
-.tri { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line-l); }
-.tri .t { font-weight: 600; }
-.tri.done .t { color: var(--mute-l); text-decoration: line-through; }
-.tri.na .t { color: var(--mute-l); }
-@media (max-width: 520px) { .tri { grid-template-columns: 1fr; gap: 6px; } }
+/* edit timeline */
+.tl { margin-top: 18px; display: grid; gap: 10px; }
+@media (min-width: 720px) { .tl { grid-template-columns: 1fr 1.3fr 1.8fr 1fr; } }
+.beat { border-radius: 18px; padding: 16px; color: #fff; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.beat.b1 { background: var(--ink-2); border: 1.5px solid var(--line-d); } .beat.b2 { background: var(--navy); } .beat.b3 { background: var(--blue); } .beat.b4 { background: var(--violet); }
+.beat h4 { font-size: 28px; }
+.beat .k { font-family: var(--serif); font-size: 17px; transform: rotate(-2deg); display: inline-block; }
+.beat p { font-size: 15px; }
+.beat .yours { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px; }
+.beat .yours span { background: #fff; color: var(--ink); font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.beat .muted { font-size: 13px; opacity: .85; font-style: italic; word-break: break-word; }
+.sfx { margin-top: 12px; display: grid; gap: 10px; }
+@media (min-width: 720px) { .sfx { grid-template-columns: repeat(3, 1fr); } }
+.sfx div { background: var(--ink-2); border: 1.5px solid var(--line-d); border-radius: 18px; padding: 16px; }
+.sfx h4 { font-size: 26px; margin-bottom: 6px; }
+.sfx p { font-size: 15px; color: #d9dcea; }
+.sfx .use { margin-top: 10px; font-size: 13px; color: var(--sky); font-weight: 600; }
 
-/* ---------- timeline ---------- */
-.lens { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.tl-bar { display: flex; height: 64px; border-radius: 14px; overflow: hidden; margin-top: 20px; border: 2px solid var(--ink); background: var(--paper-2); }
-.tl-bar div { min-width: 0; display: grid; place-items: center; color: #fff; font-family: var(--display); text-transform: uppercase; font-size: 15px; line-height: 1; text-align: center; padding: 2px; overflow: hidden; transition: flex-basis .3s; }
-.tl-bar div small { display: block; font-family: var(--body); font-size: 11px; font-weight: 600; opacity: .85; margin-top: 3px; }
-.p-hook { background: var(--ink); } .p-build { background: var(--navy); } .p-drop { background: var(--blue); } .p-end { background: var(--violet); }
-.tl-bar .gap { background: repeating-linear-gradient(-45deg, var(--paper-2) 0 6px, #d7d3e6 6px 12px); color: var(--ink); }
-.tl-status { margin-top: 10px; font-weight: 600; font-size: 15px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.tl-status.ok { color: #12813f; }
-.tl-status.warn { color: #c4251b; }
-.parts { margin-top: 22px; display: grid; gap: 14px; }
-.part { border: 2px solid var(--ink); border-radius: 18px; padding: 16px; background: #fff; border-left-width: 10px; }
-.part.p1 { border-left-color: var(--ink); } .part.p2 { border-left-color: var(--navy); } .part.p3 { border-left-color: var(--blue); } .part.p4 { border-left-color: var(--violet); }
-.part-h { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-.part-h h4 { font-size: 26px; }
-.part-h .range { font-family: var(--chunky); font-weight: 900; font-size: 12px; color: var(--mute-l); }
-.stepper { display: inline-flex; align-items: center; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
-.stepper button { width: 42px; height: 42px; border: 0; background: #fff; font-size: 20px; font-weight: 700; cursor: pointer; color: var(--ink); }
-.stepper button:hover { background: var(--paper-2); }
-.stepper input { width: 52px; height: 42px; border: 0; text-align: center; font-weight: 700; font-size: 16px; background: #fff; color: var(--ink); -moz-appearance: textfield; }
-.stepper input::-webkit-inner-spin-button { -webkit-appearance: none; }
-.stepper span { padding-right: 10px; font-size: 13px; font-weight: 600; background: #fff; line-height: 42px; }
-.firechips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.firechips .chip { min-height: 38px; font-size: 13px; padding: 6px 12px; }
+/* tips + breakdown */
+.tip { margin-top: 28px; background: var(--blue); color: #fff; border-radius: 22px; padding: 20px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: start; }
+.tip svg { width: 36px; height: 50px; }
+.tip .tl2 { font-family: var(--serif); font-size: 20px; transform: rotate(-3deg); display: inline-block; margin-bottom: 4px; }
+.tip p { font-size: 17px; font-weight: 500; line-height: 1.4; }
+.bdn { margin-top: 12px; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; border: 1.5px dashed var(--line-d); text-decoration: none; font-weight: 600; font-size: 15px; }
+.bdn:hover { border-color: var(--sky); }
+.bdn .play { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--violet); display: grid; place-items: center; }
+.bdn .play::after { content: ""; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
+.bdn small { display: block; color: var(--mute-d); font-weight: 500; }
 
-/* ---------- blueprint ---------- */
-.bp { background: var(--paper); color: var(--ink); border-radius: 26px; overflow: hidden; margin-top: 36px; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); }
-.bp-head { background: var(--blue); color: #fff; padding: 22px; display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
-.bp-head .logo { font-size: 34px; }
-.bp-head h3 { font-size: clamp(26px, 5vw, 40px); }
-.bp-head .d { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; opacity: .9; }
-.bp-body { padding: clamp(18px, 4vw, 32px); display: grid; gap: 30px; }
-.bp-sec h4 { font-size: 30px; display: flex; gap: 10px; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 12px; }
-.bp-sec h4 i { font-style: normal; font-family: var(--chunky); font-weight: 900; font-size: 13px; color: var(--blue); }
-.kv { display: grid; grid-template-columns: 1fr; gap: 2px 16px; }
-@media (min-width: 640px) { .kv { grid-template-columns: 170px 1fr; } }
-.kv dt { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mute-l); padding-top: 8px; }
-.kv dd { margin: 0; padding: 0 0 8px; font-weight: 500; white-space: pre-wrap; word-break: break-word; border-bottom: 1px solid var(--line-l); }
-@media (min-width: 640px) { .kv dt { border-bottom: 1px solid var(--line-l); padding-bottom: 8px; } .kv dd { padding-top: 8px; } }
-.bp-fire { border: 1.5px solid var(--ink); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
-.bp-fire .ft { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
-.bp-fire b { font-family: var(--display); font-size: 22px; text-transform: uppercase; font-weight: 400; }
-.status { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; padding: 4px 10px; border-radius: 999px; background: var(--paper-2); }
-.status.planned { background: var(--blue); color: #fff; } .status.filmed { background: #12a150; color: #fff; } .status.na { background: var(--mute-l); color: #fff; } .status.done { background: #12a150; color: #fff; }
-.bp-table { width: 100%; border-collapse: collapse; font-size: 15px; }
-.bp-table th { text-align: left; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute-l); padding: 6px 6px 6px 0; border-bottom: 2px solid var(--ink); }
-.bp-table td { padding: 8px 6px 8px 0; border-bottom: 1px solid var(--line-l); vertical-align: top; word-break: break-word; }
-.bp-table td.c { width: 28px; font-weight: 700; color: var(--blue); }
-.bp-table .nt { display: block; color: var(--mute-l); font-size: 13px; }
-.bp-edit { display: grid; gap: 8px; }
-.bp-edit div { display: grid; grid-template-columns: 118px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line-l); }
-.bp-edit b { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 20px; line-height: 1; }
-.bp-edit b small { display: block; font-family: var(--body); font-size: 12px; color: var(--mute-l); margin-top: 4px; }
-.bp-edit span { white-space: pre-wrap; word-break: break-word; }
+/* plan card */
+.plan { padding-block: clamp(48px, 8vw, 90px) 20px; border-top: 1px solid var(--line-d); }
+.plan h2 { font-size: clamp(46px, 10vw, 92px); }
+.plan h2 .it { color: var(--sky); }
+.pc { margin-top: 26px; background: var(--paper); color: var(--ink); border-radius: 24px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); max-width: 560px; }
+.pc-h { background: var(--blue); color: #fff; padding: 18px 20px; display: flex; justify-content: space-between; align-items: end; gap: 10px; flex-wrap: wrap; }
+.pc-h .logo { font-size: 26px; }
+.pc-h b { font-family: var(--display); font-weight: 400; font-size: 26px; text-transform: uppercase; line-height: 1; display: block; margin-top: 4px; }
+.pc-h small { font-family: var(--chunky); font-weight: 900; font-size: 10px; text-transform: lowercase; opacity: .9; }
+.pc-b { padding: 18px 20px 20px; display: grid; gap: 16px; }
+.pc-sec h5 { margin: 0 0 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+.pc-sec p, .pc-sec li { font-size: 15px; font-weight: 500; word-break: break-word; }
+.pc-sec .idea { font-family: var(--display); font-size: 26px; text-transform: uppercase; line-height: 1; font-weight: 400; }
+.pc-story { display: grid; gap: 6px; }
+.pc-story p b { font-weight: 700; color: var(--mute-l); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-right: 6px; }
+.pc-fx { display: flex; flex-wrap: wrap; gap: 6px; }
+.pc-fx span { display: inline-block; line-height: 1.25; background: var(--violet); color: #fff; font-weight: 700; font-size: 13px; padding: 5px 11px; border-radius: 999px; }
+.pc-shots { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px 16px; }
+@media (min-width: 520px) { .pc-shots { grid-template-columns: 1fr 1fr; } }
+.pc-shots li { padding: 3px 0 3px 22px; position: relative; font-size: 14px; }
+.pc-shots li::before { content: ""; position: absolute; left: 0; top: 7px; width: 13px; height: 13px; border: 1.5px solid var(--ink); border-radius: 4px; }
+.pc-shots li.d::before { background: var(--blue); border-color: var(--blue); }
+.pc-shots li.d { color: var(--mute-l); }
+.pc-sec .empty { color: var(--mute-l); font-style: italic; font-weight: 400; }
+.pc-foot { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: var(--mute-l); border-top: 1px solid var(--line-l); padding-top: 12px; }
+.save { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; max-width: 560px; }
+.save .pill.fill { flex: 1 1 220px; }
+.save-msg { margin-top: 10px; font-size: 14px; color: var(--aqua); min-height: 1.4em; max-width: 560px; }
+.saved-note { margin-top: 6px; font-size: 13px; color: var(--mute-d); }
+.reset { background: none; border: 0; color: var(--mute-d); text-decoration: underline; cursor: pointer; font-size: 14px; padding: 8px 0; }
 
-.master { margin-top: 36px; }
-.pct { font-family: var(--display); font-size: clamp(64px, 14vw, 110px); line-height: .85; color: var(--blue); }
-.finale { margin-top: 40px; text-align: left; }
-.finale h2 { font-size: clamp(46px, 10vw, 100px); }
-.finale h2 .it { color: var(--sky); }
-.finale p { margin-top: 12px; max-width: 560px; color: #d9dcea; font-size: 18px; }
-.dl { margin-top: 36px; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 24px; padding: 24px 20px; }
-.dl h3 { font-size: clamp(32px, 6vw, 48px); margin-bottom: 8px; }
-.dl .btns { margin-top: 18px; display: grid; gap: 10px; }
-@media (min-width: 640px) { .dl .btns { grid-template-columns: 1fr 1fr; } .dl .btns .new { grid-column: 1 / -1; justify-self: start; } }
-.dl .msg { margin-top: 10px; font-size: 14px; color: var(--aqua); min-height: 1.4em; }
-
-/* about + mentorship */
-.about { margin-top: 64px; background: var(--blue); color: #fff; border-radius: 26px; padding: clamp(22px, 4vw, 40px); display: grid; gap: 24px; align-items: center; position: relative; }
-@media (min-width: 720px) { .about { grid-template-columns: 260px 1fr; } }
-.about .por { border: 8px solid #fff; border-radius: 26px; box-shadow: 0 0 0 4px var(--ink), 0 24px 50px rgba(0,0,0,.4); overflow: hidden; transform: rotate(-2deg); background: var(--navy); aspect-ratio: 4/5; max-width: 260px; }
-.about .por img { width: 100%; height: 100%; object-fit: cover; }
-.about h2 { font-size: clamp(38px, 7vw, 64px); margin-bottom: 14px; }
-.about p + p { margin-top: 10px; }
-.about p { font-size: 17px; }
-.about .ig { margin-top: 16px; display: inline-block; font-weight: 600; }
-.ment { margin-top: 28px; border: 1.5px solid var(--line-d); border-radius: 26px; padding: clamp(22px, 4vw, 36px); }
-.ment h3 { font-size: clamp(30px, 6vw, 48px); margin-bottom: 12px; }
-.ment p { color: #d9dcea; max-width: 620px; }
-.ment p + p { margin-top: 8px; }
-.ment .pill { margin-top: 20px; }
-.foot { padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--mute-d); font-size: 13px; border-top: 1px solid var(--line-d); margin-top: 60px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+/* outro */
+.outro { margin-top: 56px; display: grid; gap: 14px; }
+.follow { background: var(--blue); color: #fff; border-radius: 24px; padding: clamp(22px, 4vw, 34px); display: grid; gap: 18px; align-items: center; }
+@media (min-width: 720px) { .follow { grid-template-columns: 200px 1fr; } }
+.follow .por { border: 6px solid #fff; border-radius: 22px; box-shadow: 0 0 0 4px var(--ink); overflow: hidden; transform: rotate(-2deg); aspect-ratio: 4/5; max-width: 200px; background: var(--navy); }
+.follow .por img { width: 100%; height: 100%; object-fit: cover; }
+.follow h3 { font-size: clamp(32px, 6vw, 52px); margin-bottom: 10px; }
+.follow p + p { margin-top: 8px; }
+.follow .pill { margin-top: 14px; }
+.ment { border: 1.5px solid var(--line-d); border-radius: 24px; padding: clamp(20px, 4vw, 30px); }
+.ment h3 { font-size: clamp(26px, 5vw, 38px); margin-bottom: 8px; }
+.ment p { color: #d9dcea; max-width: 600px; font-size: 16px; }
+.ment a { display: inline-block; margin-top: 12px; color: var(--sky); font-weight: 700; }
+.foot { padding: 40px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--mute-d); font-size: 13px; border-top: 1px solid var(--line-d); margin-top: 56px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .foot a { color: var(--sky); }
 
-/* dialog + toast */
-dialog { border: 0; border-radius: 24px; padding: 26px 22px; background: var(--paper); color: var(--ink); max-width: min(440px, calc(100vw - 32px)); box-shadow: 0 0 0 4px var(--blue), 0 30px 80px rgba(0,0,0,.6); }
+dialog { border: 0; border-radius: 24px; padding: 24px 20px; background: var(--paper); color: var(--ink); max-width: min(420px, calc(100vw - 32px)); box-shadow: 0 0 0 4px var(--blue), 0 30px 80px rgba(0,0,0,.6); }
 dialog::backdrop { background: rgba(5,6,8,.75); }
-dialog h3 { font-size: 34px; margin-bottom: 10px; }
+dialog h3 { font-size: 32px; margin-bottom: 8px; }
 dialog p { color: var(--mute-l); }
-dialog .btns { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-dialog .pill.danger { background: var(--violet); border-color: var(--violet); color: #fff; }
-.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 140%); background: var(--blue); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; z-index: 60; transition: transform .3s; box-shadow: 0 10px 30px rgba(0,0,0,.5); max-width: calc(100vw - 32px); text-align: center; }
+dialog .btns { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+dialog .danger { background: var(--violet); border-color: var(--violet); color: #fff; }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 160%); background: var(--blue); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px; z-index: 60; transition: transform .3s; box-shadow: 0 10px 30px rgba(0,0,0,.5); max-width: calc(100vw - 32px); text-align: center; }
 .toast.on { transform: translate(-50%, 0); }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-  .pill:hover { transform: none; }
-}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } .pill:hover, .three a:hover { transform: none; } }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <a class="logo" href="../">OFF<span>-</span>TAPE</a>
-    <div class="top-meta" aria-live="polite"><span id="stepLabel">Hype Video Blueprint</span></div>
+    <nav class="jump" aria-label="Guide sections">
+      <a href="#plan"><span class="n">1</span><span class="lbl">Plan</span></a>
+      <a href="#shoot"><span class="n">2</span><span class="lbl">Shoot</span></a>
+      <a href="#edit"><span class="n">3</span><span class="lbl">Edit</span></a>
+      <a href="#my-plan" class="plan"><span class="lbl">My plan</span></a>
+    </nav>
   </div>
-  <nav class="wrap prog" id="prog" aria-label="Guide progress"></nav>
 </header>
 
-<main id="main">
-
-<!-- ================= 0 · INTRO ================= -->
-<section class="screen hero" data-screen="0" aria-labelledby="h0">
+<main>
+<section class="hero" aria-labelledby="h-hero">
   <i class="slash s1" aria-hidden="true"></i><i class="slash s2" aria-hidden="true"></i>
   <svg class="zap" viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="var(--blue)" stroke="#fff" stroke-width="5" stroke-linejoin="round"/></svg>
   <div class="wrap inner">
     <span class="eyebrow">The Hype Video Blueprint</span>
-    <h1 id="h0" tabindex="-1">Make your next video <span class="it">hype.</span></h1>
-    <p class="lead">The step-by-step blueprint to plan, shoot, and edit cinematic hype videos.</p>
-    <div class="copy">
-      <p>Great hype videos don't happen by accident.</p>
-      <p>They start with a plan, the right shots, and an edit that brings everything together.</p>
-      <p>Inside this free guide, I'll walk you through my process for creating hype videos, from the first idea to the final edit. You'll learn how to plan your story, create your shot list, capture your best moments, and bring everything together through editing and sound design.</p>
-      <p><strong>And the best part?</strong> You won't just learn the process. You'll actually build your own hype video blueprint along the way.</p>
-      <p>By the end, you'll have a complete plan ready for your next shoot.</p>
+    <h1 id="h-hero">Make your next video <span class="it">hype.</span></h1>
+    <p class="lead">Want to make a hype video like mine? Here's my process in three steps. Fill it in as you go and you'll leave with a plan for your next shoot.</p>
+    <div class="three">
+      <a href="#plan"><b><i>1</i>Plan it</b><span>Story + your fire moments</span></a>
+      <a href="#shoot"><b><i>2</i>Shoot it</b><span>Your shot list, ready for set</span></a>
+      <a href="#edit"><b><i>3</i>Edit it</b><span>Music, pacing, sound design</span></a>
     </div>
-    <div class="resume" id="resume" hidden>
-      <p><b>Welcome back.</b> <span id="resumeInfo">You've got a plan in progress.</span></p>
-      <div class="btns">
-        <button class="pill fill" type="button" data-act="resume">Continue my plan →</button>
-        <button class="pill sm" type="button" data-act="new">Start a new video</button>
+    <div class="cta"><a class="pill fill" href="#plan" id="startBtn">Start planning →</a><span class="note">Free · no sign-up · about 5 minutes</span></div>
+  </div>
+</section>
+
+<section class="step" id="plan" aria-labelledby="h-plan">
+  <div class="wrap">
+    <div class="step-head"><span class="num" aria-hidden="true">1</span><h2 id="h-plan">Plan it</h2><span class="sub">Plan your video before you shoot.</span></div>
+    <div class="say">
+      <p>Create a storyline with a <strong>start, middle, and end.</strong></p>
+      <p>If you're filming a car video, start with the driver grabbing the keys and starting the engine. Build the energy as they drive off, then finish with them arriving and stepping out.</p>
+    </div>
+
+    <div class="part-h"><h3>Your story</h3><p>Keep it simple. One line each is enough.</p></div>
+    <div class="work">
+      <label for="f-idea">What are you filming?</label><input class="inp" id="f-idea" data-bind="idea" placeholder="A sports car, an athlete, a product, a trip…" autocomplete="off">
+      <div class="story3">
+        <div class="f1"><label for="f-start"><span class="tag">start</span>How it opens</label><textarea class="inp" id="f-start" data-bind="start" placeholder="Driver grabs the keys and starts the engine"></textarea></div>
+        <div class="f2"><label for="f-build"><span class="tag">build</span>How the energy builds</label><textarea class="inp" id="f-build" data-bind="build" placeholder="Car pulls away. Driving shots, details, angles"></textarea></div>
+        <div class="f3"><label for="f-finish"><span class="tag">finish</span>How it ends</label><textarea class="inp" id="f-finish" data-bind="finish" placeholder="Car arrives, driver steps out, final hero shot"></textarea></div>
       </div>
     </div>
-    <div class="cta">
-      <button class="pill fill" type="button" data-go="1" id="startBtn">Let's build your hype video →</button>
+
+    <div class="part-h" id="fire"><h3>Pick your fire moments</h3><p>A crazy angle, a transition, or a creative camera move.</p></div>
+    <div class="say" style="margin-top:10px">
+      <p>I plan <strong>two or three fire moments</strong> before every shoot and add them to my shot list. Some need specific shots, angles or movement. Plan them now so you don't get to the edit and realize you never filmed what you needed.</p>
+      <p>Tap <strong>Pick this</strong> on 2–3 below. The shots each one needs go straight into your shot list.</p>
     </div>
-    <div class="meta-row"><span>free interactive guide</span><span>created by off-tape</span><span>no account required</span></div>
-    <div class="principles">
-      <div><b>01 · Plan your story</b><span>Know how it begins, builds and ends.</span></div>
-      <div><b>02 · Plan your fire moments</b><span>2–3 transitions or moves, planned before you shoot.</span></div>
-      <div><b>03 · Bring it together</b><span>Music, pacing and sound design make it hit.</span></div>
+    <div class="lib-bar">
+      <div class="filters" role="group" aria-label="Filter by difficulty" id="filters"></div>
+      <span class="count" id="pickCount" aria-live="polite">0 of 3 picked</span>
     </div>
-    <p class="tagline">plan it. <b>shoot it.</b> make it hype.</p>
+    <div class="fx" id="library"></div>
+
+    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Keep your story simple. Your camera movement, fire moments, music and edit are what bring the energy.</p></div></div>
+    <div data-breakdown="plan"></div>
   </div>
 </section>
 
-<!-- ================= 1 · PLAN ================= -->
-<section class="screen" data-screen="1" aria-labelledby="h1" hidden>
+<section class="step" id="shoot" aria-labelledby="h-shoot">
   <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">01</span><h2 id="h1" tabindex="-1"><span class="sr">01 / </span>Plan your video</h2><span class="sub">Every great hype video starts with a plan.</span></div>
-    <div class="lesson">
-      <p class="big">Before picking up your camera, figure out what you're creating.</p>
-      <p>Start with a simple idea and build a storyline around it. Your story doesn't have to be complicated. You just need a <strong>beginning, middle, and end.</strong></p>
-      <p>Think about what you're showing, how you're building excitement, and how you want your video to finish. For example, let's say you're creating a hype video of a sports car.</p>
+    <div class="step-head"><span class="num" aria-hidden="true">2</span><h2 id="h-shoot">Shoot it</h2><span class="sub">Shoot variety.</span></div>
+    <div class="say">
+      <p>Get <strong>wide shots</strong> to show the scene, <strong>close-ups</strong> for details, and <strong>different angles</strong> to give yourself options in the edit.</p>
+      <p>Then make sure you get every shot your fire moments need. Take this list to set and check shots off as you go.</p>
     </div>
-    <div class="ex-grid c3">
-      <div class="ex"><span class="tag">beginning</span><p>The driver grabs the keys, walks toward the car, and starts the engine.</p></div>
-      <div class="ex"><span class="tag">middle</span><p>The car pulls away. You start showing driving sequences, close-up details, and different camera angles. The energy begins to build.</p></div>
-      <div class="ex"><span class="tag">ending</span><p>The car arrives at its destination. The driver steps out, and you finish with a final hero shot.</p></div>
-    </div>
-    <div class="lesson"><p>That's your basic storyline. Now you can start building creative shots and transitions around it.</p></div>
-
+    <div class="part-h"><h3>Your shot list</h3><p>Saved on this device. Tap to check off.</p></div>
     <div class="work">
-      <div class="work-h"><h3>Let's plan your video</h3><span class="badge">your turn</span></div>
-      <div class="field"><label for="f-about"><span class="q">Q1</span>What's your video about?</label><input class="inp" id="f-about" data-bind="story.about" placeholder="A cinematic hype video of a sports car..." autocomplete="off"></div>
-      <div class="field"><label for="f-subject"><span class="q">Q2</span>What's your main subject?</label><input class="inp" id="f-subject" data-bind="story.subject" placeholder="A car, athlete, product, person, or location..." autocomplete="off"></div>
-      <div class="field" role="group" aria-labelledby="l-feel">
-        <span class="lbl" id="l-feel"><span class="q">Q3</span>What feeling do you want your video to create?</span>
-        <p class="hint" style="margin:0 0 10px">Pick as many as you want.</p>
-        <div class="chips" id="feelChips"></div>
-        <div style="margin-top:10px"><label class="sr" for="f-feel">Custom feeling</label><input class="inp" id="f-feel" data-bind="story.customFeeling" placeholder="Or type your own feeling..." autocomplete="off"></div>
-      </div>
-      <div class="field"><label for="f-beg"><span class="q">Q4</span>What's the beginning of your video?</label><textarea class="inp" id="f-beg" data-bind="story.beginning" placeholder="How does it open? What's the first thing we see?"></textarea></div>
-      <div class="field"><label for="f-mid"><span class="q">Q5</span>What happens in the middle?</label><textarea class="inp" id="f-mid" data-bind="story.middle" placeholder="How does the energy build?"></textarea></div>
-      <div class="field"><label for="f-end"><span class="q">Q6</span>How does your video end?</label><textarea class="inp" id="f-end" data-bind="story.end" placeholder="What's your final moment or hero shot?"></textarea></div>
-      <h3 style="font-size:28px;margin-top:8px">Your story <span class="it" style="color:var(--blue);font-size:.8em">live</span></h3>
-      <div class="summary" id="storySummary" aria-live="polite"></div>
-    </div>
-
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Keep your storyline simple. Your camera movements, creative moments, music, and editing are what will bring the energy.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="0">← Back</button><button class="pill fill" type="button" data-go="2">Next: Plan your fire moments →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
-  </div>
-</section>
-
-<!-- ================= 2 · FIRE MOMENTS ================= -->
-<section class="screen" data-screen="2" aria-labelledby="h2" hidden>
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">02</span><h2 id="h2" tabindex="-1"><span class="sr">02 / </span>Plan your fire moments</h2><span class="sub">Don't wait until the edit to figure out your best shots.</span></div>
-    <div class="lesson">
-      <p class="big">Before your shoot, find 2–3 creative effects, transitions, or camera movements you want to include in your video.</p>
-      <p>This is what I like to call planning your <strong>fire moments.</strong> These are the shots or transitions that make your video stand out. You can find inspiration from other videos and study how certain effects or camera movements were created.</p>
-      <p>But here's the important part: <strong>you need to plan these moments BEFORE filming.</strong></p>
-      <p>Some effects and transitions require specific camera movements, angles, framing, or multiple shots. If you don't plan them ahead of time, you might get to the editing process and realize you never captured the footage you needed.</p>
-      <p>That's why I like to choose my creative moments first and then build them into my shot list.</p>
-    </div>
-    <div class="ex-grid">
-      <details class="ex" open><summary><h3>Example 1 · Match cut</h3></summary><div>
-        <p>A match cut connects two shots that share similar framing, composition, or movement.</p>
-        <ol><li>Decide which two shots you want to connect.</li><li>Find a similar visual element or movement between them.</li><li>Plan the framing for both shots.</li><li>Make sure you capture the footage needed for the transition.</li></ol>
-        <p class="eg"><b>Example</b>A close-up of a spinning car wheel transitions into another circular object.</p></div></details>
-      <details class="ex"><summary><h3>Example 2 · Whip transition</h3></summary><div>
-        <p>A whip transition connects two shots using fast camera movement.</p>
-        <ol><li>Decide which two scenes you're connecting.</li><li>Film the end of the first shot with a fast camera movement.</li><li>Begin the second shot with a similar movement in the same direction.</li><li>Use the motion blur to help hide the cut.</li></ol>
-        <p class="eg"><b>Example</b>The camera whips past a car, and the next shot reveals the vehicle in a completely different location.</p></div></details>
-      <details class="ex"><summary><h3>Example 3 · Creative camera movement</h3></summary><div>
-        <p>Use a unique camera movement to make an important moment stand out.</p>
-        <ol><li>Choose the camera movement.</li><li>Decide where the camera starts.</li><li>Decide where the camera ends.</li><li>Plan the equipment, space, or additional footage needed.</li></ol>
-        <p class="eg"><b>Example</b>A dramatic FPV-style movement flies toward a car, circles around it, and reveals the entire vehicle.</p></div></details>
-    </div>
-
-    <div class="work">
-      <div class="work-h"><h3>Plan your 3 fire moments</h3><span class="badge">2 is fine too</span></div>
-      <p style="margin:-8px 0 18px;color:var(--mute-l)">List every shot each moment needs, one per line, then send them straight to your shot list.</p>
-      <div class="fires" id="fireCards"></div>
-    </div>
-
-    <div class="remind"><h3>Plan it before you shoot it.</h3><p>Your best transitions should never be an afterthought.</p><p>Know which shots you need before arriving on set.</p></div>
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Find 2–3 fire moments you want to create, study how they work, and plan exactly what you need to film. This makes your shoot more intentional and gives you the footage you need when it's time to edit.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="1">← Back</button><button class="pill fill" type="button" data-go="3">Next: Build your shot list →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
-  </div>
-</section>
-
-<!-- ================= 3 · SHOT LIST ================= -->
-<section class="screen" data-screen="3" aria-labelledby="h3" hidden>
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">03</span><h2 id="h3" tabindex="-1"><span class="sr">03 / </span>Build your shot list</h2><span class="sub">Shoot with a purpose, not just a camera.</span></div>
-    <div class="lesson">
-      <p class="big">Now that you have your storyline and fire moments planned, it's time to figure out what you need to film.</p>
-      <p>The secret to having more creative freedom during editing is capturing a <strong>variety of shots.</strong> Don't film everything from the same angle. Get wide shots, close-ups, different perspectives, and creative camera movements. This gives you more options when you're putting your video together.</p>
-      <p>Here are some shots I recommend capturing.</p>
-    </div>
-    <div class="ex-grid c2">
-      <div class="ex"><span class="tag">1</span><h3>Wide shots</h3><p>Wide shots establish your location and show the full scene.</p><p class="eg"><b>Example</b>A wide shot of a sports car parked in an empty lot.</p></div>
-      <div class="ex"><span class="tag">2</span><h3>Close-ups</h3><p>Close-ups capture the little details that make a big difference.</p><p class="eg"><b>Example</b>A hand grabbing the keys, a wheel spinning, or headlights turning on.</p></div>
-      <div class="ex"><span class="tag">3</span><h3>Low-angle shots</h3><p>Place the camera low and point it upward. This can make your subject look bigger, stronger, and more powerful.</p><p class="eg"><b>Example</b>A low-angle shot of the front of a sports car.</p></div>
-      <div class="ex"><span class="tag">4</span><h3>High-angle shots</h3><p>Place your camera above the subject and angle downward. This gives viewers a different perspective.</p><p class="eg"><b>Example</b>An overhead view of the vehicle and surrounding location.</p></div>
-      <div class="ex"><span class="tag">5</span><h3>Camera movements</h3><p>Use different camera movements to bring energy into your footage.</p><p class="eg"><b>Examples</b>Push-in · Pull-out · Orbit · Tracking movement · Creative FPV-style movement</p></div>
-      <div class="ex" style="border-color:var(--violet)"><span class="tag" style="background:var(--violet)">6</span><h3>Your fire moments</h3><p>Don't forget to include the transitions and effects you planned in Step 2. Make sure you film every shot needed to create those moments.</p></div>
-    </div>
-
-    <div class="work">
-      <div class="work-h"><h3>Your shot list</h3><span class="badge">tap to check off</span></div>
       <div id="shotList"></div>
-      <form class="addrow" id="addShot" autocomplete="off">
-        <label class="sr" for="ns-name">New shot name</label><input class="inp" id="ns-name" placeholder="Add a custom shot..." required>
-        <label class="sr" for="ns-type">Shot type</label><select class="inp" id="ns-type"></select>
-        <button class="pill fill" type="submit">+ Add shot</button>
-      </form>
-      <div class="minor" id="shotMinor"></div>
+      <form class="add" id="addShot" autocomplete="off"><label class="sr" for="f-newshot">Add your own shot</label><input class="inp" id="f-newshot" placeholder="+ Add your own shot"><button class="pill fill sm" type="submit">Add</button></form>
     </div>
-
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Always capture more variety than you think you need. Different angles and details give you more freedom when editing.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="2">← Back</button><button class="pill fill" type="button" data-go="4">Next: Shoot your video →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
+    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Capture more variety than you think you need. Before you wrap, check you got every shot for your fire moments.</p></div></div>
+    <div data-breakdown="shoot"></div>
   </div>
 </section>
 
-<!-- ================= 4 · SHOOT ================= -->
-<section class="screen" data-screen="4" aria-labelledby="h4" hidden>
+<section class="step" id="edit" aria-labelledby="h-edit">
   <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">04</span><h2 id="h4" tabindex="-1"><span class="sr">04 / </span>Shoot your video</h2><span class="sub">Turn your plan into footage.</span></div>
-    <div class="lesson">
-      <p class="big">Now it's time to bring your ideas to life.</p>
-      <p>Use the shot list you created as a guide. Start by filming the shots you need to tell your story. Capture your beginning, middle, and ending.</p>
-      <p>Then focus on your creative moments. Remember those effects and transitions you planned earlier? <strong>This is where they come to life.</strong> Make sure you're capturing the exact angles, framing, and movements needed to make them work.</p>
-      <p>And don't be afraid to experiment. Sometimes your best shots happen when you try something unexpected.</p>
+    <div class="step-head"><span class="num" aria-hidden="true">3</span><h2 id="h-edit">Edit it</h2><span class="sub">Build to the beat drop.</span></div>
+    <div class="say">
+      <p>You can choose music anytime. I usually find mine while editing. I look for a song that <strong>builds up to a beat drop.</strong></p>
+      <p>Open with something that grabs attention, then build anticipation as the music rises. When the beat drops, that's where the hype begins.</p>
     </div>
+    <div class="work" style="margin-top:22px">
+      <label for="f-song">Your song (one with a beat drop)</label>
+      <input class="inp" id="f-song" data-bind="song" placeholder="Song – artist" autocomplete="off">
+    </div>
+    <div class="part-h"><h3>Your edit</h3><p>Four parts, in this order.</p></div>
+    <div class="tl" id="timeline"></div>
 
-    <div class="work">
-      <div class="work-h"><h3>On-set checklist</h3><span class="badge">use this on the shoot</span></div>
-      <ul class="cl" id="shootChecklist"></ul>
-    </div>
-    <div class="work">
-      <div class="work-h"><h3>Your shot list</h3><span class="badge">same list as step 3</span></div>
-      <p style="margin:-8px 0 14px;color:var(--mute-l);font-size:15px">Checking a shot here checks it everywhere. Mark a fire moment as filmed once you've got every shot for it.</p>
-      <div id="shootShots"></div>
-    </div>
-
-    <div class="remind"><h3>Before you wrap your shoot…</h3><p>Review your shot list. Make sure you captured everything you need, especially the shots for your planned transitions.</p><p>You don't want to discover you're missing an important shot when you start editing.</p></div>
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Use your shot list to stay organized, but leave room for creativity. A plan gives you direction. Experimenting gives you new possibilities.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="3">← Back</button><button class="pill fill" type="button" data-go="5">Next: Build your edit →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
+    <div class="part-h"><h3>Then add sound design</h3><p>Every sound should have a reason.</p></div>
+    <div class="sfx" id="sfx"></div>
+    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl2">OFF-TAPE tip</span><p>Don't just cut randomly to the beat. Build anticipation, then make your biggest moments hit when the drop does.</p></div></div>
+    <div data-breakdown="edit"></div>
   </div>
 </section>
 
-<!-- ================= 5 · EDIT ================= -->
-<section class="screen" data-screen="5" aria-labelledby="h5" hidden>
+<section class="plan" id="my-plan" aria-labelledby="h-myplan">
   <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">05</span><h2 id="h5" tabindex="-1"><span class="sr">05 / </span>Build your edit</h2><span class="sub">This is where everything comes together.</span></div>
-    <div class="lesson">
-      <p class="big">Now that you've captured your footage, it's time to bring your hype video to life.</p>
-      <p>One of the first things I look for is <strong>music.</strong> You can choose your song before filming or during editing. I personally like finding music while I'm editing. I look for songs that build anticipation and have a strong beat drop.</p>
-      <p>Why? Because music helps me decide how to build energy throughout the video. I usually break my edit into four parts.</p>
+    <span class="eyebrow">Your blueprint</span>
+    <h2 id="h-myplan" style="margin-top:12px">Your plan. <span class="it">Now go shoot.</span></h2>
+    <div class="pc" id="planCard"></div>
+    <div class="save">
+      <button class="pill fill" type="button" data-act="image">↓ Save as image</button>
+      <button class="pill" type="button" data-act="copy">Copy my plan</button>
     </div>
-    <div class="ex-grid c2">
-      <div class="ex"><span class="tag" style="background:var(--ink);border:1px solid var(--line-d)">part 1</span><h3>The hook</h3><p><strong>Grab attention.</strong> Start with something that immediately makes people want to keep watching. It could be:</p><ul><li>A crazy camera angle.</li><li>An unexpected moment.</li><li>A powerful close-up.</li><li>A creative transition.</li><li>A unique visual reveal.</li></ul><p class="eg">The goal is to make the viewer interested in what happens next.</p></div>
-      <div class="ex"><span class="tag" style="background:var(--navy);border:1px solid var(--line-d)">part 2</span><h3>The build-up</h3><p><strong>Create anticipation.</strong> Start developing the story. Introduce your subject and show what's happening.</p><p>As the music builds, increase the energy. Use your shots to lead viewers toward your biggest moment.</p></div>
-      <div class="ex" style="border-color:var(--blue)"><span class="tag">part 3</span><h3>The beat drop</h3><p><strong>Bring the hype.</strong> When the beat drops, this is where the energy takes off. Bring in your:</p><ul><li>Fire moments.</li><li>Creative transitions.</li><li>Dynamic camera movements.</li><li>Strongest shots.</li><li>Faster cuts.</li></ul><p class="eg">Use the music to help emphasize important visual moments.</p></div>
-      <div class="ex"><span class="tag" style="background:var(--violet)">part 4</span><h3>The ending</h3><p><strong>Finish strong.</strong> Bring your video to a satisfying conclusion. End with a powerful shot, creative reveal, or final moment that completes your story.</p><p class="eg">Don't let the energy disappear at the end.</p></div>
-    </div>
+    <p class="save-msg" id="saveMsg" role="status"></p>
+    <p class="saved-note">Your plan saves automatically in this browser. Save the image to keep a copy anywhere.</p>
+    <button class="reset" type="button" data-act="reset">Start a new video</button>
 
-    <div class="work">
-      <div class="work-h"><h3>Your edit timeline</h3><span class="badge">hook → build-up → beat drop → ending</span></div>
-      <div id="timeline"></div>
-      <div class="row2" style="margin-top:22px">
-        <div class="field"><label for="f-music">Music reference</label><input class="inp" id="f-music" data-bind="edit.music" placeholder="Song title – artist" autocomplete="off"></div>
-        <div class="field"><label for="f-mlink">Link to the song <span style="font-weight:500;color:var(--mute-l)">(optional)</span></label><input class="inp" id="f-mlink" type="url" inputmode="url" data-bind="edit.musicLink" placeholder="https://" autocomplete="off"></div>
-      </div>
-      <p class="hint" style="margin-top:-8px">These timings are only examples. Different videos and songs may need different pacing.</p>
+    <div class="outro">
+      <section class="follow" aria-labelledby="h-follow">
+        <div class="por"><img src="../media/david-hype.jpg" alt="David, founder of OFF-TAPE" loading="lazy" width="400" height="500"></div>
+        <div>
+          <h3 id="h-follow">More breakdowns <span class="it">coming.</span></h3>
+          <p>I'm David, a filmmaker and the founder of OFF-TAPE. I've created content for brands like Royal Caribbean, United Airlines, and Norwegian Cruise Line.</p>
+          <p>I'll go deeper into each step in my next videos. Follow so you catch them.</p>
+          <a class="pill white" id="igLink" href="#" target="_blank" rel="noopener">Follow on Instagram →</a>
+        </div>
+      </section>
+      <section class="ment" aria-labelledby="h-ment" id="mentBox">
+        <h3 id="h-ment">Want to turn your videos into income?</h3>
+        <p>In my Passion to Profit Mentorship I help creatives sharpen their skills, build their brand, and land clients.</p>
+        <a id="mentorLink" href="#" target="_blank" rel="noopener">Learn about the mentorship →</a>
+      </section>
     </div>
-
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Don't just cut randomly to the beat. Build anticipation, create energy, and make your biggest moments hit at the right time.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="4">← Back</button><button class="pill fill" type="button" data-go="6">Next: Add sound design →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
   </div>
 </section>
 
-<!-- ================= 6 · SOUND ================= -->
-<section class="screen" data-screen="6" aria-labelledby="h6" hidden>
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">06</span><h2 id="h6" tabindex="-1"><span class="sr">06 / </span>Make it hit with sound design</h2><span class="sub">The little sounds can make a big difference.</span></div>
-    <div class="lesson">
-      <p class="big">Sound design is one of my favorite parts of editing.</p>
-      <p>The right sound effects can make your shots feel more powerful, your camera movements smoother, and your biggest moments more impactful. Here are three sound effects I commonly use.</p>
-    </div>
-    <div class="ex-grid c3">
-      <div class="ex"><span class="tag">1</span><h3>Risers</h3><p>Risers help create tension and anticipation. They're great for building toward an important moment.</p><p class="eg"><b>Example</b>A rising sound effect leading into the beat drop of your song.</p></div>
-      <div class="ex"><span class="tag">2</span><h3>Impacts</h3><p>Impact sounds emphasize powerful moments.</p><p class="eg"><b>Example</b>A heavy impact sound as a car is revealed or a major transition happens.</p></div>
-      <div class="ex"><span class="tag">3</span><h3>Whooshes</h3><p>Whooshes help accent camera movements and transitions.</p><p class="eg"><b>Example</b>A whoosh as your camera whips from one scene to another.</p></div>
-    </div>
-    <div class="ex" style="margin-top:12px"><span class="tag" style="background:var(--violet)">bonus</span><h3>Natural sounds</h3><p>Sometimes the best sound effects come from the environment. Engines starting, footsteps, doors closing, tires rolling, clothing movement, mechanical sounds. These details can make your footage feel more alive.</p></div>
-
-    <div class="work">
-      <div class="work-h"><h3>Sound design checklist</h3><span class="badge">not every project needs every sound</span></div>
-      <div id="soundList"></div>
-    </div>
-
-    <div class="tip"><svg viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="#fff" stroke="var(--ink)" stroke-width="5" stroke-linejoin="round"/></svg><div><span class="tl">OFF-TAPE tip</span><p>Don't add sound effects just to add them. Every sound should serve a purpose. Sometimes less is more.</p></div></div>
-    <div class="stepnav"><button class="pill sm" type="button" data-go="5">← Back</button><button class="pill fill" type="button" data-go="7">Next: Review your blueprint →</button></div>
-    <p class="saved">Your progress is saved in this browser. Download your blueprint to keep a copy.</p>
-  </div>
-</section>
-
-<!-- ================= 7 · BLUEPRINT ================= -->
-<section class="screen" data-screen="7" aria-labelledby="h7" hidden>
-  <div class="wrap">
-    <div class="step-head"><span class="num" aria-hidden="true">✦</span><h2 id="h7" tabindex="-1">Your hype video blueprint</h2><span class="sub">Your idea. Your shots. Your next creation.</span></div>
-    <div class="bp" id="blueprint"></div>
-
-    <div class="work master">
-      <div class="work-h"><h3>Ready to make it hype?</h3></div>
-      <div class="progress-line"><span class="pct" id="masterPct">0%</span><div class="bar" aria-hidden="true"><i id="masterBar" style="width:0"></i></div></div>
-      <ul class="cl" id="masterList"></ul>
-    </div>
-
-    <div class="finale">
-      <h2>You've got the blueprint. <span class="it">Now go create.</span></h2>
-      <p>The best way to become a better creative is to keep creating. Use this process for your next project, experiment with new ideas, and improve with every video.</p>
-      <p><strong style="color:#fff">Your next great video starts with taking action.</strong></p>
-    </div>
-
-    <div class="dl" id="download">
-      <h3>Download your blueprint</h3>
-      <p style="color:var(--mute-d)">Take your plan to set. The PDF includes everything you've filled in so far.</p>
-      <div class="btns">
-        <button class="pill fill" type="button" data-act="pdf">↓ Download my blueprint</button>
-        <button class="pill" type="button" data-act="copy">Copy my video plan</button>
-        <button class="pill sm new" type="button" data-act="new">Start a new video</button>
-      </div>
-      <p class="msg" id="dlMsg" role="status"></p>
-    </div>
-
-    <section class="about" aria-labelledby="hAbout">
-      <div class="por"><img src="../media/david-hype.jpg" alt="David, founder of OFF-TAPE, in a red jacket and cap" loading="lazy" width="520" height="650"></div>
-      <div>
-        <span class="eyebrow" style="color:#fff">Created by OFF-TAPE</span>
-        <h2 id="hAbout" style="margin-top:10px">Hey, I'm <span class="it">David.</span></h2>
-        <p>I'm David, a filmmaker and the founder of OFF-TAPE. I've had the opportunity to create content for brands like Royal Caribbean, United Airlines, and Norwegian Cruise Line.</p>
-        <p>Over the years, I've developed my own approach to creating high-energy, cinematic videos. I created this guide to help other creatives learn the process, plan their ideas, and create videos they're excited to share.</p>
-        <p><strong>Because becoming a better creative starts with taking action.</strong></p>
-        <a class="ig" href="https://instagram.com/j.david007" target="_blank" rel="noopener">@j.david007 on Instagram ↗</a>
-      </div>
-    </section>
-
-    <section class="ment" aria-labelledby="hMent">
-      <span class="eyebrow">Next step</span>
-      <h3 id="hMent" style="margin-top:10px">Ready to turn your passion into profit?</h3>
-      <p>Making great videos is one thing. Learning how to turn those skills into a business is another.</p>
-      <p>Inside my Passion to Profit Mentorship, I help creatives improve their skills, build their personal brand, attract clients, and turn their creativity into a profitable business.</p>
-      <p>If you're ready to take that next step, I'd love to help you.</p>
-      <a class="pill white" id="mentorLink" href="#" target="_blank" rel="noopener">Learn about the mentorship →</a>
-    </section>
-
-    <div class="stepnav"><button class="pill sm" type="button" data-go="6">← Back</button><button class="pill sm" type="button" data-go="0">Back to start</button></div>
-  </div>
-</section>
-
-<div class="wrap"><footer class="foot"><span>© OFF-TAPE · The Hype Video Blueprint</span><span>Your plan stays in this browser. Nothing is sent to a server.</span><a href="../">off-tape.com</a></footer></div>
+<div class="wrap"><footer class="foot"><span>© OFF-TAPE · Hype Video Blueprint</span><span>Your plan stays on your device.</span><a href="../">off-tape.com</a></footer></div>
 </main>
 
-<dialog id="confirmNew" aria-labelledby="cnH">
-  <h3 id="cnH">Start a new video?</h3>
-  <p>This clears your current plan from this browser: story, fire moments, shot list, timeline and checklists. Download your blueprint first if you want to keep a copy.</p>
-  <div class="btns"><button class="pill danger" type="button" data-act="confirmNew">Yes, clear it</button><button class="pill sm" type="button" data-act="cancelNew" autofocus>Keep my plan</button></div>
+<dialog id="dlgReset" aria-labelledby="dr-h">
+  <h3 id="dr-h">Start a new video?</h3>
+  <p>This clears your story, fire moments and shot list from this browser. Save your plan as an image first if you want to keep it.</p>
+  <div class="btns"><button class="pill danger" type="button" data-act="resetYes">Yes, start over</button><button class="pill sm" type="button" data-act="resetNo" autofocus>Keep my plan</button></div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* =========================================================
-   CONFIG — edit these without touching the rest of the code
-   ========================================================= */
+/* ============ CONFIG: edit freely ============ */
 const CONFIG = {
-  // Passion to Profit mentorship page (your existing Netlify project "passiontoprofit1").
+  instagramUrl: "https://instagram.com/j.david007",
   mentorshipUrl: "https://offtapepassiontoprofit.info",
-  storageKey: "offtape-hype-blueprint-v1",
-  jsPdfSrc: "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+  // Paste a reel URL when each breakdown video is posted. Empty = "coming soon".
+  breakdowns: { plan: "", shoot: "", edit: "" },
+  storageKey: "offtape-hype-plan-v2",
+  html2canvasSrc: "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
 };
 
-/* ---------- constants ---------- */
-const SCREENS = ["Intro", "Plan your video", "Fire moments", "Shot list", "Shoot", "Edit", "Sound design", "Blueprint"];
-const FEELINGS = ["Hype", "Powerful", "Energetic", "Mysterious", "Luxury", "Emotional", "Adventurous"];
-const SHOT_TYPES = ["Wide", "Close-up", "Low angle", "High angle", "Camera movement", "Fire moment", "Story", "Other"];
-const DEFAULT_SHOTS = [
-  ["Wide establishing shot", "Wide"], ["Close-up detail shot", "Close-up"], ["Low-angle hero shot", "Low angle"],
-  ["High-angle shot", "High angle"], ["Push-in or pull-out", "Camera movement"], ["Orbit or creative camera movement", "Camera movement"]
+/* ============ EFFECTS LIBRARY ============
+   demo: optional path to a short muted loop, e.g. "../media/fx-whip.mp4" */
+const EFFECTS = [
+  { id: "whip", name: "Whip transition", lvl: "easy", what: "A fast camera swipe hides the cut between two scenes.",
+    shots: ["Whip A: end the shot with a fast pan (pick a direction)", "Whip B: start with a fast pan in the same direction"], gear: "Any camera or phone", sound: "whoosh", where: "drop", demo: "" },
+  { id: "passby", name: "Object pass-by", lvl: "easy", what: "Something crosses the lens and wipes you into the next shot.",
+    shots: ["Pass-by A: a pole, person or car crosses the lens at the end", "Pass-by B: start behind an object, move out to reveal"], gear: "Any camera or phone", sound: "whoosh", where: "build", demo: "" },
+  { id: "blackout", name: "Lens blackout", lvl: "easy", what: "Push into darkness, pull out somewhere new.",
+    shots: ["Blackout A: push the lens into something dark (a jacket, a wall)", "Blackout B: pull out of darkness in the new location"], gear: "Any camera or phone", sound: "whoosh", where: "build", demo: "" },
+  { id: "jump", name: "Jump cut sequence", lvl: "easy", what: "Same frame, subject jumps to a new spot on every beat.",
+    shots: ["Jump cuts: locked frame, subject in spot 1", "Jump cuts: same frame, subject in spot 2", "Jump cuts: same frame, subject in spot 3"], gear: "Tripod or a steady surface", sound: "impact", where: "drop", demo: "" },
+  { id: "hero", name: "Low-angle hero shot", lvl: "easy", what: "Camera on the ground looking up makes your subject look powerful.",
+    shots: ["Hero: camera near the ground, slow push toward the subject"], gear: "Any camera or phone", sound: "riser", where: "hook", demo: "" },
+  { id: "match", name: "Match cut", lvl: "medium", what: "Two shots with the same shape in the same spot of the frame.",
+    shots: ["Match A: a shape or object centered in frame (e.g. a spinning wheel)", "Match B: a matching shape in the same spot (e.g. a spinning record)"], gear: "Tripod helps", sound: "impact", where: "build", demo: "" },
+  { id: "zoom", name: "Zoom punch", lvl: "medium", what: "A fast push-in that lands in the next shot already moving.",
+    shots: ["Zoom A: fast push-in toward the subject at the end", "Zoom B: start tight, pull out fast"], gear: "Gimbal or steady hands", sound: "impact", where: "drop", demo: "" },
+  { id: "spin", name: "Spin transition", lvl: "medium", what: "Roll the camera at the end of one shot and keep rolling into the next.",
+    shots: ["Spin A: end the shot with a camera roll", "Spin B: start mid-roll in the same direction"], gear: "Gimbal helps", sound: "whoosh", where: "drop", demo: "" },
+  { id: "reveal", name: "Reveal", lvl: "medium", what: "Start on a detail or behind something, then show the whole subject.",
+    shots: ["Reveal: start on a detail or behind an object", "Reveal: move to show the full subject"], gear: "Gimbal or slider helps", sound: "impact", where: "hook", demo: "" },
+  { id: "ramp", name: "Speed ramp", lvl: "medium", what: "Slow motion that snaps to full speed right on the beat.",
+    shots: ["Speed ramp: fast action through the frame at 60 or 120fps"], gear: "Camera that shoots 60fps or more", sound: "whoosh", where: "drop", demo: "" },
+  { id: "orbit", name: "Orbit", lvl: "advanced", what: "A smooth circle around your subject while it stays centered.",
+    shots: ["Orbit: circle the subject, keep it centered the whole move"], gear: "Gimbal", sound: "riser", where: "build", demo: "" },
+  { id: "fpv", name: "FPV / drone reveal", lvl: "advanced", what: "Fly toward the subject, around it, and reveal the whole scene.",
+    shots: ["FPV: fly toward the subject from far out", "FPV: circle around and reveal the full scene"], gear: "FPV or drone, open space", sound: "riser", where: "hook", demo: "" }
 ];
-const SHOOT_ITEMS = [
-  ["s1", "Capture the beginning of your story."], ["s2", "Capture the middle."], ["s3", "Capture the ending."],
-  ["s4", "Film your planned fire moments."], ["s5", "Capture different camera angles."], ["s6", "Get extra details and close-ups."],
-  ["s7", "Review your important shots."], ["s8", "Confirm you captured everything needed for your transitions."]
+const BASICS = ["Wide shot of the full scene", "Close-up details", "Low-angle shot", "High-angle shot", "Camera movement (push-in, pull-out or tracking)"];
+const MAX_PICKS = 3;
+const SOUNDS = [
+  { id: "riser", name: "Risers", what: "Build tension and anticipation leading into a big moment.", always: "Use one into your beat drop." },
+  { id: "impact", name: "Impacts", what: "Emphasize the key moments: a reveal, a big cut, the drop.", always: "Hit one right on the drop." },
+  { id: "whoosh", name: "Whooshes", what: "Accent camera movement and transitions.", always: "Add one under fast moves." }
 ];
-const SOUND_ITEMS = [
-  ["music", "Music selected"], ["cuts", "Main cuts aligned with music where appropriate"], ["risers", "Risers added"],
-  ["impacts", "Impacts added"], ["whooshes", "Whooshes added"], ["natural", "Natural sounds added where appropriate"],
-  ["levels", "Audio levels balanced"], ["headphones", "Final edit reviewed with headphones"]
-];
-const MASTER_ITEMS = [
-  ["m1", "Story planned"], ["m2", "2–3 fire moments selected"], ["m3", "Shot list created"], ["m4", "Footage captured"],
-  ["m5", "Creative transitions filmed"], ["m6", "Music selected"], ["m7", "Edit assembled"], ["m8", "Sound design added"],
-  ["m9", "Final video reviewed"], ["m10", "Video exported"]
-];
-const PARTS = [
-  ["hook", "Hook", "Grab attention."], ["build", "Build-up", "Create anticipation."],
-  ["drop", "Beat drop", "Bring the hype."], ["end", "Ending", "Finish strong."]
-];
-const DEFAULT_RATIO = { hook: 3, build: 9, drop: 13, end: 5 }; // the 30s example
-const FIRE_STATUS = [["not", "Not planned"], ["planned", "Planned"], ["filmed", "Filmed"]];
 
-/* ---------- state ---------- */
-let uid = Date.now() % 1e6;
-const newId = () => "s" + (uid++).toString(36);
+/* ============ STATE ============ */
+const fresh = () => ({ v: 2, idea: "", start: "", build: "", finish: "", song: "", picks: [], done: {}, custom: [] });
+let S = fresh(), storageOk = true;
+try { const d = JSON.parse(localStorage.getItem(CONFIG.storageKey) || "null"); if (d && d.v === 2) S = Object.assign(fresh(), d); } catch (e) { storageOk = false; }
+S.picks = S.picks.filter(id => EFFECTS.some(e => e.id === id));
+let saveT;
+const saveNow = () => { try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(S)); } catch (e) { storageOk = false; } };
+const save = () => { clearTimeout(saveT); saveT = setTimeout(saveNow, 150); };
+addEventListener("pagehide", saveNow);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") saveNow(); });
 
-function freshState() {
-  return {
-    v: 1, updated: null, lastStep: 1,
-    story: { about: "", subject: "", feelings: [], customFeeling: "", beginning: "", middle: "", end: "" },
-    fire: [0, 1, 2].map(() => ({ name: "", visual: "", shots: "", equipment: "", link: "", status: "not" })),
-    shots: DEFAULT_SHOTS.map(([name, type]) => ({ id: newId(), name, type, desc: "", fire: "", notes: "", done: false, def: true })),
-    shoot: {},
-    edit: { len: "30", total: 30, parts: scaledParts(30, DEFAULT_RATIO, null), music: "", musicLink: "" },
-    sound: {},
-    master: {}
-  };
-}
-function scaledParts(total, ratioSrc, prev) {
-  const keys = PARTS.map(p => p[0]);
-  let sum = keys.reduce((a, k) => a + (Number(ratioSrc[k]) || 0), 0);
-  const src = sum > 0 ? ratioSrc : DEFAULT_RATIO;
-  sum = keys.reduce((a, k) => a + (Number(src[k]) || 0), 0);
-  const out = {};
-  let acc = 0;
-  keys.forEach(k => {
-    const d = Math.max(total >= 4 ? 1 : 0, Math.round((Number(src[k]) || 0) / sum * total));
-    out[k] = { dur: d, notes: prev && prev[k] ? prev[k].notes : "", fire: prev && prev[k] ? prev[k].fire : [] };
-    acc += d;
-  });
-  out.drop.dur = Math.max(0, out.drop.dur + (total - acc)); // put rounding remainder on the beat drop
+/* ============ HELPERS ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const t = s => (s || "").trim();
+const fx = id => EFFECTS.find(e => e.id === id);
+const picked = () => S.picks.map(fx).filter(Boolean);
+let toastT;
+function toast(m) { const el = $("#toast"); el.textContent = m; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2300); }
+const X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+const LVL = { easy: "Easy", medium: "Medium", advanced: "Advanced" };
+
+/* shot keys: "b:i" basics, "f:id:i" effect shots, "c:id" custom */
+function allShots() {
+  const out = [{ title: "The basics", items: BASICS.map((n, i) => ({ key: "b:" + i, name: n })) }];
+  picked().forEach(e => out.push({ title: "🔥 " + e.name, fire: true, items: e.shots.map((n, i) => ({ key: "f:" + e.id + ":" + i, name: n })) }));
+  if (S.custom.length) out.push({ title: "Your extras", items: S.custom.map(c => ({ key: "c:" + c.id, name: c.name, cid: c.id })) });
   return out;
 }
 
-let S;
-let storageOk = true;
-function load() {
-  try {
-    const raw = localStorage.getItem(CONFIG.storageKey);
-    if (raw) {
-      const d = JSON.parse(raw);
-      if (d && d.v === 1) {
-        const base = freshState();
-        S = Object.assign(base, d);
-        S.story = Object.assign(base.story, d.story || {});
-        S.edit = Object.assign(base.edit, d.edit || {});
-        for (const [k] of PARTS) S.edit.parts[k] = Object.assign({ dur: 0, notes: "", fire: [] }, (d.edit && d.edit.parts && d.edit.parts[k]) || {});
-        S.fire = [0, 1, 2].map(i => Object.assign({ name: "", visual: "", shots: "", equipment: "", link: "", status: "not" }, (d.fire || [])[i] || {}));
-        return true;
-      }
-    }
-  } catch (e) { storageOk = false; }
-  S = freshState();
-  return false;
+/* ============ RENDER ============ */
+let filter = "all";
+function renderFilters() {
+  $("#filters").innerHTML = [["all", "All 12"], ["easy", "Easy"], ["medium", "Medium"], ["advanced", "Advanced"]]
+    .map(([k, l]) => `<button type="button" class="chip" data-filter="${k}" aria-pressed="${filter === k}">${l}</button>`).join("");
 }
-let saveT;
-function save() {
-  S.updated = new Date().toISOString();
-  clearTimeout(saveT);
-  saveT = setTimeout(() => {
-    try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(S)); } catch (e) { storageOk = false; }
-  }, 150);
+function renderLibrary() {
+  const n = S.picks.length;
+  const c = $("#pickCount"); c.textContent = `${n} of ${MAX_PICKS} picked`; c.classList.toggle("full", n >= 2);
+  $("#library").innerHTML = EFFECTS.filter(e => filter === "all" || e.lvl === filter).map(e => {
+    const on = S.picks.includes(e.id);
+    return `<article class="card${on ? " on" : ""}" aria-labelledby="fx-${e.id}">
+      ${e.demo ? `<div class="demo"><video src="${esc(e.demo)}" muted loop autoplay playsinline preload="metadata" aria-hidden="true"></video></div>` : ""}
+      <div class="bd">
+        <div class="tt"><h4 id="fx-${e.id}">${esc(e.name)}</h4><span class="lvl ${e.lvl}">${LVL[e.lvl]}</span></div>
+        <p class="what">${esc(e.what)}</p>
+        <div class="need"><b>Shots you need</b><ul>${e.shots.map(s => `<li>${esc(s.replace(/^[^:]+:\s*/, ""))}</li>`).join("")}</ul></div>
+        <div class="meta"><div><b>Gear</b>${esc(e.gear)}</div><div><b>Sound</b>${esc(e.sound)}</div></div>
+        <button type="button" class="pill ${on ? "" : "fill"} sm pick" data-pick="${e.id}" aria-pressed="${on}">${on ? "✓ Picked · remove" : "Pick this"}</button>
+      </div></article>`;
+  }).join("");
 }
-function saveNow() { clearTimeout(saveT); try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(S)); } catch (e) {} }
-window.addEventListener("pagehide", saveNow);
-document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") saveNow(); });
-
-function hasContent(st) {
-  const s = st.story;
-  return !!(s.about || s.subject || s.beginning || s.middle || s.end || s.feelings.length || s.customFeeling ||
-    st.fire.some(f => f.name || f.visual || f.shots) || st.shots.some(x => !x.def || x.done) ||
-    Object.values(st.shoot).some(Boolean) || Object.values(st.master).some(Boolean) || st.edit.music);
+function renderShots() {
+  const groups = allShots(), flat = groups.flatMap(g => g.items), done = flat.filter(x => S.done[x.key]).length;
+  $("#shotList").innerHTML = `<div class="progress"><span class="cnt"><b>${done}</b> of ${flat.length} shots</span><div class="bar" aria-hidden="true"><i style="width:${flat.length ? Math.round(done / flat.length * 100) : 0}%"></i></div></div>` +
+    groups.map(g => `<div class="group"><div class="group-h${g.fire ? " fire" : ""}"><span>${esc(g.title)}</span><span class="gc">${g.items.filter(x => S.done[x.key]).length}/${g.items.length}</span></div>
+      ${g.items.map(x => { const id = "ck-" + x.key.replace(/[^a-z0-9]/gi, "-"); return `<div class="shot${S.done[x.key] ? " done" : ""}"><input type="checkbox" class="ck" id="${id}" data-shot="${esc(x.key)}"${S.done[x.key] ? " checked" : ""}><label for="${id}">${esc(x.name)}</label>${x.cid ? `<button type="button" class="ib" data-del="${x.cid}" aria-label="Remove ${esc(x.name)}">${X}</button>` : "<span></span>"}</div>`; }).join("")}</div>`).join("") +
+    (S.picks.length ? "" : `<p class="nofx">No fire moments yet. <a href="#fire">Pick 2–3 in Step 1</a> and their shots will show up here.</p>`);
 }
-
-/* ---------- helpers ---------- */
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const t = s => (s || "").trim();
-const getPath = p => p.split(".").reduce((o, k) => o[k], S);
-function setPath(p, v) { const ks = p.split("."); const last = ks.pop(); ks.reduce((o, k) => o[k], S)[last] = v; }
-function safeUrl(u) { u = t(u); if (!u) return ""; if (!/^https?:\/\//i.test(u)) u = "https://" + u; try { const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ""; } catch (e) { return ""; } }
-const fireLabel = i => "Fire moment " + (i + 1) + (t(S.fire[i].name) ? " · " + t(S.fire[i].name) : "");
-const feelings = () => S.story.feelings.concat(t(S.story.customFeeling) ? [t(S.story.customFeeling)] : []);
-let toastT;
-function toast(msg) { const el = $("#toast"); el.textContent = msg; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("on"), 2400); }
-const ICON_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
-const ICON_X = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
-
-/* ---------- navigation ---------- */
-let cur = 0;
-function go(n, focus = true) {
-  n = Math.max(0, Math.min(SCREENS.length - 1, n));
-  cur = n;
-  $$("[data-screen]").forEach(el => { el.hidden = Number(el.dataset.screen) !== n; });
-  if (n > 0) { S.lastStep = n; save(); }
-  const target = "#step-" + n;
-  if (location.hash !== target) history.replaceState(null, "", n === 0 ? location.pathname + location.search : target);
-  render();
-  window.scrollTo(0, 0);
-  if (focus) { const h = $("#h" + n); if (h) h.focus({ preventScroll: true }); }
-}
-window.addEventListener("hashchange", () => { const m = location.hash.match(/^#step-(\d)$/); go(m ? Number(m[1]) : 0); });
-
-function renderProg() {
-  $("#prog").innerHTML = SCREENS.map((name, i) =>
-    `<button type="button" data-go="${i}" class="${i === cur ? "cur" : i < cur ? "done" : ""}" aria-label="${i === 0 ? "Intro" : i === 7 ? "Your blueprint" : "Step " + i + ": " + name}"${i === cur ? ' aria-current="step"' : ""}></button>`).join("");
-  $("#stepLabel").innerHTML = cur === 0 ? "Hype Video Blueprint" : cur === 7 ? "<b>Your blueprint</b>" : `Step <b>${cur}</b> of 6 · ${esc(SCREENS[cur])}`;
-}
-
-/* ---------- step 1 ---------- */
-function renderFeelings() {
-  $("#feelChips").innerHTML = FEELINGS.map(f => `<button type="button" class="chip" data-feel="${f}" aria-pressed="${S.story.feelings.includes(f)}">${f}</button>`).join("");
-}
-function renderSummary() {
-  const b = (title, v, ph) => `<div class="beat"><h4>${title}</h4><p>${t(v) ? esc(t(v)) : `<span class="empty">${ph}</span>`}</p></div>`;
-  $("#storySummary").innerHTML = b("Beginning", S.story.beginning, "Your opening…") + '<div class="arrow" aria-hidden="true">→</div>' +
-    b("Middle", S.story.middle, "How the energy builds…") + '<div class="arrow" aria-hidden="true">→</div>' + b("End", S.story.end, "Your final moment…");
-}
-
-/* ---------- step 2 ---------- */
-function parseShotLines(txt) { return (txt || "").split(/\n|;/).map(s => s.replace(/^\s*[-•*\d.)]+\s*/, "").trim()).filter(Boolean); }
-function linkedShots(i) { return S.shots.filter(x => String(x.fire) === String(i)); }
-function pendingShots(i) {
-  const have = new Set(linkedShots(i).map(x => x.name.trim().toLowerCase()));
-  return parseShotLines(S.fire[i].shots).filter(n => !have.has(n.toLowerCase()));
-}
-function renderFireLink(i) {
-  const linked = linkedShots(i), pend = pendingShots(i);
-  return `${linked.length ? `<p><b>${linked.length} shot${linked.length > 1 ? "s" : ""} in your shot list</b></p><div class="linked">${linked.map(x => `<span>${esc(x.name)}</span>`).join("")}</div>` : `<p>No shots from this moment in your shot list yet.</p>`}
-    ${pend.length ? `<button type="button" class="pill fill sm" data-act="fireAdd" data-i="${i}">+ Add ${pend.length} shot${pend.length > 1 ? "s" : ""} to my shot list</button>` : (parseShotLines(S.fire[i].shots).length ? "" : `<p class="hint" style="margin:0">Type the shots this moment needs above (one per line) to send them to your shot list.</p>`)}`;
-}
-function renderFires() {
-  $("#fireCards").innerHTML = S.fire.map((f, i) => `
-  <div class="fire" data-fire="${i}">
-    <div class="fire-top"><h4><span class="fl" aria-hidden="true">🔥</span>Fire moment #${i + 1}</h4>
-      <div class="seg" role="group" aria-label="Status for fire moment ${i + 1}">${FIRE_STATUS.map(([k, l]) => `<button type="button" class="s-${k}" data-fstatus="${k}" data-i="${i}" aria-pressed="${f.status === k}">${l}</button>`).join("")}</div></div>
-    <div class="field"><label for="fn${i}">Name of the effect, transition, or movement</label><input class="inp" id="fn${i}" data-bind="fire.${i}.name" placeholder="${["Match cut", "Whip transition", "FPV-style reveal"][i]}" autocomplete="off"></div>
-    <div class="field"><label for="fv${i}">What happens visually?</label><textarea class="inp" id="fv${i}" data-bind="fire.${i}.visual" placeholder="${["Spinning wheel close-up cuts to a spinning record", "Camera whips past the car, lands on it in a new location", "Camera flies toward the car, circles it, reveals the whole vehicle"][i]}"></textarea></div>
-    <div class="field"><label for="fs${i}">What shots do you need to create it?</label><textarea class="inp" id="fs${i}" data-bind="fire.${i}.shots" data-relink="${i}" placeholder="One shot per line, e.g.&#10;${["Close-up: wheel spinning, centered&#10;Close-up: record spinning, same framing", "Shot A: end on a fast whip right&#10;Shot B: start with a whip right, new location", "FPV run toward the car&#10;Orbit around the car"][i]}"></textarea></div>
-    <div class="row2">
-      <div class="field"><label for="fe${i}">Special equipment or setup</label><input class="inp" id="fe${i}" data-bind="fire.${i}.equipment" placeholder="Gimbal, drone, ND filter…" autocomplete="off"></div>
-      <div class="field"><label for="fl${i}">Inspiration link <span style="font-weight:500;color:var(--mute-l)">(optional)</span></label><input class="inp" id="fl${i}" type="url" inputmode="url" data-bind="fire.${i}.link" placeholder="https://" autocomplete="off"></div>
-    </div>
-    <div class="linkbox" id="firelink${i}" aria-live="polite">${renderFireLink(i)}</div>
-  </div>`).join("");
-}
-function addFireShots(i) {
-  const pend = pendingShots(i);
-  pend.forEach(name => S.shots.push({ id: newId(), name, type: "Fire moment", desc: "", fire: String(i), notes: "", done: false, def: false }));
-  if (S.fire[i].status === "not" && pend.length) S.fire[i].status = "planned";
-  save();
-  toast(`${pend.length} shot${pend.length > 1 ? "s" : ""} added to your shot list`);
-}
-
-/* ---------- step 3 / 4 shot lists (single shared source: S.shots) ---------- */
-function shotGroups() {
-  const groups = [];
-  S.fire.forEach((f, i) => {
-    const items = linkedShots(i);
-    const named = t(f.name) || t(f.visual) || t(f.shots);
-    if (items.length || named) groups.push({ key: "f" + i, fire: i, title: "🔥 " + fireLabel(i), items });
-  });
-  SHOT_TYPES.forEach(ty => {
-    const items = S.shots.filter(x => x.fire === "" && (x.type === ty || (!SHOT_TYPES.includes(x.type) && ty === "Other")));
-    if (items.length) groups.push({ key: ty, title: ty, items });
-  });
-  return groups;
-}
-function progressHtml(list) {
-  const done = list.filter(x => x.done).length, n = list.length;
-  return `<div class="progress-line"><span class="cnt"><b>${done}</b> of ${n} shots completed</span><div class="bar" aria-hidden="true"><i style="width:${n ? Math.round(done / n * 100) : 0}%"></i></div></div>`;
-}
-function shotRow(x, mode) {
-  const open = openShots.has(x.id) && mode === "edit";
-  const fireOpts = `<option value="">None</option>` + S.fire.map((f, i) => `<option value="${i}"${String(x.fire) === String(i) ? " selected" : ""}>${esc(fireLabel(i))}</option>`).join("");
-  return `<div class="shot${x.done ? " done" : ""}" data-shot="${x.id}">
-    <div class="shot-row">
-      <input type="checkbox" class="ck" id="ck-${mode}-${x.id}" data-shotdone="${x.id}" data-fkey="ck-${mode}-${x.id}"${mode === "edit" ? ` aria-label="Completed: ${esc(x.name)}"` : ""}${x.done ? " checked" : ""}>
-      ${mode === "edit" ? `<input class="shot-name" data-shotf="name" data-id="${x.id}" value="${esc(x.name)}" aria-label="Shot name">` : `<label class="shot-name" style="cursor:pointer" for="ck-${mode}-${x.id}">${esc(x.name)}</label>`}
-      ${mode === "edit" ? `<button type="button" class="ib" data-act="toggleShot" data-id="${x.id}" data-fkey="tg-${x.id}" aria-expanded="${open}" aria-label="Shot details">${ICON_DOWN}</button>
-      <button type="button" class="ib" data-act="delShot" data-id="${x.id}" aria-label="Delete ${esc(x.name)}">${ICON_X}</button>` : "<span></span><span></span>"}
-    </div>
-    ${open ? `<div class="shot-detail"><div class="row2">
-        <div class="field"><label for="st-${x.id}">Shot type</label><select class="inp" id="st-${x.id}" data-shotf="type" data-id="${x.id}">${SHOT_TYPES.map(ty => `<option${ty === x.type ? " selected" : ""}>${ty}</option>`).join("")}</select></div>
-        <div class="field"><label for="sf-${x.id}">Related fire moment</label><select class="inp" id="sf-${x.id}" data-shotf="fire" data-id="${x.id}">${fireOpts}</select></div></div>
-        <div class="field"><label for="sd-${x.id}">Description</label><input class="inp" id="sd-${x.id}" data-shotf="desc" data-id="${x.id}" value="${esc(x.desc)}" placeholder="What's in frame, how it moves…" autocomplete="off"></div>
-        <div class="field" style="margin:0"><label for="sn-${x.id}">Notes</label><textarea class="inp" id="sn-${x.id}" data-shotf="notes" data-id="${x.id}" placeholder="Lens, settings, timing…" style="min-height:70px">${esc(x.notes)}</textarea></div></div>`
-      : (t(x.desc) || t(x.notes) ? `<p class="shot-note">${esc([t(x.desc), t(x.notes)].filter(Boolean).join(" · "))}</p>` : "")}
-  </div>`;
-}
-const openShots = new Set();
-function renderShotList() {
-  const gs = shotGroups();
-  $("#shotList").innerHTML = progressHtml(S.shots) + (gs.length ? gs.map(g => `<div class="group"><div class="group-h${g.fire !== undefined ? " fireg" : ""}"><span>${esc(g.title)}</span><span class="gc">${g.items.filter(x => x.done).length}/${g.items.length}</span></div>
-    ${g.items.map(x => shotRow(x, "edit")).join("")}
-    ${g.fire !== undefined ? `${pendingShots(g.fire).length ? `<button type="button" class="textbtn" data-act="fireAdd" data-i="${g.fire}">+ Add ${pendingShots(g.fire).length} shot(s) you listed in Step 2</button>` : ""}
-      <form class="addfire" data-addfire="${g.fire}" autocomplete="off"><label class="sr" for="af${g.fire}">Add a shot for ${esc(fireLabel(g.fire))}</label><input class="inp" id="af${g.fire}" placeholder="+ Add a shot for this moment"><button class="pill sm fill" type="submit">Add</button></form>` : ""}</div>`).join("")
-    : `<p class="empty">Your shot list is empty. Add your first shot below.</p>`);
-  const removedDefaults = DEFAULT_SHOTS.filter(([n]) => !S.shots.some(x => x.def && x.name === n)).length;
-  $("#shotMinor").innerHTML = (removedDefaults ? `<button type="button" class="textbtn" data-act="restoreDefaults">Restore ${removedDefaults} suggested shot${removedDefaults > 1 ? "s" : ""}</button>` : "") +
-    (S.fire.every(f => !t(f.name) && !t(f.shots)) ? `<button type="button" class="textbtn" data-go="2">← Plan your fire moments first</button>` : "");
-}
-function renderShootShots() {
-  const gs = shotGroups();
-  $("#shootShots").innerHTML = `<div>${progressHtml(S.shots)}</div>` + (gs.length ? gs.map(g => `<div class="group"><div class="group-h${g.fire !== undefined ? " fireg" : ""}"><span>${esc(g.title)}</span>${g.fire !== undefined ? `<div class="seg" role="group" aria-label="Status for ${esc(fireLabel(g.fire))}">${FIRE_STATUS.slice(1).map(([k, l]) => `<button type="button" class="s-${k}" data-fstatus="${k}" data-i="${g.fire}" aria-pressed="${S.fire[g.fire].status === k}">${l}</button>`).join("")}</div>` : `<span class="gc">${g.items.filter(x => x.done).length}/${g.items.length}</span>`}</div>
-    ${g.items.length ? g.items.map(x => shotRow(x, "shoot")).join("") : `<p class="empty" style="font-size:14px;padding:6px 0">No shots listed for this moment yet.</p>`}</div>`).join("")
-    : `<p class="empty">No shots yet. <button type="button" class="textbtn" data-go="3">Build your shot list →</button></p>`);
-}
-
-/* ---------- checklists ---------- */
-function checklist(el, items, store, name) {
-  el.innerHTML = items.map(([k, l]) => `<li class="${store[k] ? "done" : ""}"><input type="checkbox" class="ck" id="${name}-${k}" data-cl="${name}" data-k="${k}" data-fkey="${name}-${k}"${store[k] ? " checked" : ""}><label for="${name}-${k}">${esc(l)}</label></li>`).join("");
-}
-function renderSound() {
-  $("#soundList").innerHTML = SOUND_ITEMS.map(([k, l]) => { const v = S.sound[k] || "todo"; return `<div class="tri ${v}"><span class="t" id="sl-${k}">${esc(l)}</span>
-    <div class="seg" role="group" aria-labelledby="sl-${k}">${[["todo", "To do"], ["done", "Done"], ["na", "N/A"]].map(([s, lab]) => `<button type="button" class="s-${s === "done" ? "filmed" : s}" data-sound="${k}" data-v="${s}" data-fkey="snd-${k}-${s}" aria-pressed="${v === s}">${lab}</button>`).join("")}</div></div>`; }).join("");
-}
-
-/* ---------- timeline ---------- */
-function partStarts() { let a = 0; const o = {}; PARTS.forEach(([k]) => { o[k] = [a, a + S.edit.parts[k].dur]; a += S.edit.parts[k].dur; }); return o; }
 function renderTimeline() {
-  const E = S.edit, total = E.total, alloc = PARTS.reduce((a, [k]) => a + E.parts[k].dur, 0), diff = total - alloc, scale = Math.max(total, alloc) || 1, st = partStarts();
-  const named = S.fire.map((f, i) => ({ i, f })).filter(o => t(o.f.name) || t(o.f.visual));
+  const by = w => picked().filter(e => e.where === w);
+  const chips = (list, empty) => list.length ? `<div class="yours">${list.map(e => `<span>🔥 ${esc(e.name)}</span>`).join("")}</div>` : (empty ? `<p class="muted">${empty}</p>` : "");
+  const dropFx = picked().filter(e => e.where !== "hook"); // hook picks open the video; everything else lands on the drop
   $("#timeline").innerHTML = `
-    <div class="field" style="margin-bottom:6px"><span class="lbl" id="lenL">Target video length</span>
-      <div class="lens" role="group" aria-labelledby="lenL">${["15", "30", "45", "60"].map(l => `<button type="button" class="chip" data-len="${l}" data-fkey="len-${l}" aria-pressed="${E.len === l}">${l}s</button>`).join("")}
-      <button type="button" class="chip" data-len="custom" data-fkey="len-custom" aria-pressed="${E.len === "custom"}">Custom</button>
-      ${E.len === "custom" ? `<span class="stepper"><label class="sr" for="customLen">Custom length in seconds</label><input id="customLen" type="number" min="1" max="600" inputmode="numeric" value="${total}" data-fkey="customLen"><span>sec</span></span>` : ""}</div></div>
-    <div class="tl-bar" role="img" aria-label="Timeline: ${PARTS.map(([k, l]) => `${l} ${E.parts[k].dur} seconds`).join(", ")}${diff > 0 ? `, ${diff} seconds unallocated` : ""}">
-      ${PARTS.map(([k, l]) => E.parts[k].dur > 0 ? `<div class="p-${k}" style="flex:0 0 ${E.parts[k].dur / scale * 100}%">${E.parts[k].dur / scale > .22 ? `<span>${l}<small>${E.parts[k].dur}s</small></span>` : E.parts[k].dur / scale > .08 ? `<span><small>${E.parts[k].dur}s</small></span>` : ""}</div>` : "").join("")}
-      ${diff > 0 ? `<div class="gap" style="flex:0 0 ${diff / scale * 100}%"></div>` : ""}</div>
-    <p class="tl-status ${diff === 0 ? "ok" : "warn"}" aria-live="polite">${diff === 0 ? `✓ All ${total} seconds planned.` : diff > 0 ? `${diff}s unallocated of your ${total}s video.` : `${-diff}s over your ${total}s target.`}
-      ${diff !== 0 ? `<button type="button" class="pill sm" data-act="rebalance">Rebalance to ${total}s</button>` : ""}</p>
-    <div class="parts">${PARTS.map(([k, l, sub], n) => `<div class="part p${n + 1}">
-      <div class="part-h"><div><h4>${l}</h4><span class="range">${st[k][0]}–${st[k][1]}s · ${sub.toLowerCase()}</span></div>
-        <span class="stepper"><button type="button" data-dur="${k}" data-d="-1" data-fkey="dm-${k}" aria-label="Shorter ${l}">−</button><label class="sr" for="dur-${k}">${l} length in seconds</label><input id="dur-${k}" type="number" min="0" max="600" inputmode="numeric" data-durin="${k}" value="${E.parts[k].dur}"><span>s</span><button type="button" data-dur="${k}" data-d="1" data-fkey="dp-${k}" aria-label="Longer ${l}">+</button></span></div>
-      <label class="sr" for="pn-${k}">${l} notes</label><textarea class="inp" id="pn-${k}" data-bind="edit.parts.${k}.notes" placeholder="${{ hook: "What's the first thing that grabs them?", build: "How do you introduce the subject and build energy?", drop: "Which shots and fire moments hit on the drop?", end: "Your final shot or reveal…" }[k]}" style="min-height:76px">${esc(E.parts[k].notes)}</textarea>
-      ${named.length ? `<div class="firechips" role="group" aria-label="Fire moments in the ${l}">${named.map(o => `<button type="button" class="chip" data-tfire="${k}" data-i="${o.i}" data-fkey="tf-${k}-${o.i}" aria-pressed="${E.parts[k].fire.includes(o.i)}">🔥 ${esc(t(o.f.name) || "Fire moment " + (o.i + 1))}</button>`).join("")}</div>` : ""}
-    </div>`).join("")}</div>`;
+    <div class="beat b1"><span class="k">grab attention</span><h4>Hook</h4><p>Open with your craziest angle, a powerful close-up or a quick reveal.</p>${chips(by("hook"), "")}</div>
+    <div class="beat b2"><span class="k">build anticipation</span><h4>Build-up</h4><p>Introduce your subject. Raise the energy as the music rises.</p>${t(S.build) ? `<p class="muted">Your build: ${esc(t(S.build))}</p>` : ""}</div>
+    <div class="beat b3"><span class="k">bring the hype</span><h4>Beat drop</h4><p>Bring in your fire moments, your strongest shots and faster cuts.</p>${chips(dropFx, "Your fire moments land here.")}</div>
+    <div class="beat b4"><span class="k">finish strong</span><h4>Ending</h4><p>End on a powerful final shot or reveal. Don't let the energy fade.</p>${t(S.finish) ? `<p class="muted">Your ending: ${esc(t(S.finish))}</p>` : ""}</div>`;
 }
-function setTotal(n) {
-  n = Math.max(1, Math.min(600, Math.round(Number(n) || 0)));
-  const ratio = {}; PARTS.forEach(([k]) => ratio[k] = S.edit.parts[k].dur);
-  S.edit.total = n;
-  S.edit.parts = scaledParts(n, ratio, S.edit.parts);
+function renderSfx() {
+  $("#sfx").innerHTML = SOUNDS.map(s => {
+    const mine = picked().filter(e => e.sound === s.id);
+    return `<div><h4>${s.name}</h4><p>${s.what}</p><p class="use">${mine.length ? "For your " + mine.map(e => esc(e.name.toLowerCase())).join(", ") : s.always}</p></div>`;
+  }).join("");
 }
+function renderPlan() {
+  const flat = allShots().flatMap(g => g.items);
+  const story = [["Start", S.start], ["Build", S.build], ["Finish", S.finish]].filter(([, v]) => t(v));
+  const sounds = [...new Set(["riser", "impact", ...picked().map(e => e.sound)])].map(id => SOUNDS.find(s => s.id === id).name.toLowerCase());
+  $("#planCard").innerHTML = `
+    <div class="pc-h"><div><span class="logo">OFF<span>-</span>TAPE</span><b>My hype video plan</b></div><small>plan it · shoot it · make it hype</small></div>
+    <div class="pc-b">
+      <div class="pc-sec"><h5>The video</h5>${t(S.idea) ? `<p class="idea">${esc(t(S.idea))}</p>` : `<p class="empty">Add what you're filming in Step 1.</p>`}</div>
+      <div class="pc-sec"><h5>Story</h5>${story.length ? `<div class="pc-story">${story.map(([k, v]) => `<p><b>${k}</b>${esc(t(v))}</p>`).join("")}</div>` : `<p class="empty">Add your start, build and finish in Step 1.</p>`}</div>
+      <div class="pc-sec"><h5>Fire moments</h5>${picked().length ? `<div class="pc-fx">${picked().map(e => `<span>🔥 ${esc(e.name)}</span>`).join("")}</div>` : `<p class="empty">Pick 2–3 in Step 1.</p>`}</div>
+      <div class="pc-sec"><h5>Shot list · ${flat.filter(x => S.done[x.key]).length}/${flat.length} done</h5><ul class="pc-shots">${flat.map(x => `<li class="${S.done[x.key] ? "d" : ""}">${esc(x.name)}</li>`).join("")}</ul></div>
+      <div class="pc-sec"><h5>Edit</h5><p>Hook → Build-up → <b>Beat drop</b> → Ending</p><p>Song: ${t(S.song) ? esc(t(S.song)) : '<span class="empty">find one with a beat drop</span>'}</p><p>Sound: ${sounds.join(", ")}</p></div>
+      <p class="pc-foot">free guide by off-tape · @j.david007</p>
+    </div>`;
+}
+function renderAll() { renderFilters(); renderLibrary(); renderShots(); renderTimeline(); renderSfx(); renderPlan(); }
+function syncInputs() { $$("[data-bind]").forEach(el => { if (el !== document.activeElement) el.value = S[el.dataset.bind] || ""; }); }
 
-/* ---------- blueprint ---------- */
-const val = (v, ph = "Not filled in yet") => t(v) ? esc(t(v)) : `<span class="empty">${ph}</span>`;
-function shownFires() { return S.fire.map((f, i) => ({ f, i })).filter(o => t(o.f.name) || t(o.f.visual)); }
-function renderBlueprint() {
-  const s = S.story, E = S.edit, st = partStarts();
-  const fires = shownFires();
-  const shotsByGroup = shotGroups().filter(g => g.items.length);
-  const ml = safeUrl(E.musicLink);
-  $("#blueprint").innerHTML = `
-  <div class="bp-head"><div><span class="logo">OFF<span>-</span>TAPE</span><h3>Hype Video Blueprint</h3></div><span class="d">${S.updated ? "updated " + new Date(S.updated).toLocaleDateString() : ""}</span></div>
-  <div class="bp-body">
-    <div class="bp-sec"><h4><i>A</i>Project overview</h4><dl class="kv">
-      <dt>Video concept</dt><dd>${val(s.about)}</dd><dt>Main subject</dt><dd>${val(s.subject)}</dd>
-      <dt>Feeling</dt><dd>${feelings().length ? esc(feelings().join(", ")) : '<span class="empty">Not filled in yet</span>'}</dd><dt>Target duration</dt><dd>${E.total} seconds</dd></dl></div>
-    <div class="bp-sec"><h4><i>B</i>Storyline</h4><dl class="kv"><dt>Beginning</dt><dd>${val(s.beginning)}</dd><dt>Middle</dt><dd>${val(s.middle)}</dd><dt>Ending</dt><dd>${val(s.end)}</dd></dl></div>
-    <div class="bp-sec"><h4><i>C</i>Fire moments</h4>${fires.length ? fires.map(({ f, i }) => { const u = safeUrl(f.link); const sts = FIRE_STATUS.find(x => x[0] === f.status); return `<div class="bp-fire">
-      <div class="ft"><b>🔥 ${esc(t(f.name) || "Fire moment " + (i + 1))}</b><span class="status ${f.status}">${sts ? sts[1] : ""}</span></div>
-      <dl class="kv">${t(f.visual) ? `<dt>What happens</dt><dd>${esc(t(f.visual))}</dd>` : ""}${parseShotLines(f.shots).length ? `<dt>Required shots</dt><dd>${esc(parseShotLines(f.shots).join("\n"))}</dd>` : ""}${t(f.equipment) ? `<dt>Equipment / setup</dt><dd>${esc(t(f.equipment))}</dd>` : ""}${u ? `<dt>Inspiration</dt><dd><a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(t(f.link))}</a></dd>` : ""}</dl></div>`; }).join("")
-      : `<p class="empty">No fire moments planned yet. <button type="button" class="textbtn" data-go="2">Plan them →</button></p>`}</div>
-    <div class="bp-sec"><h4><i>D</i>Shot list <span style="font-family:var(--body);font-size:14px;margin-left:auto;color:var(--mute-l)">${S.shots.filter(x => x.done).length}/${S.shots.length} done</span></h4>
-      ${shotsByGroup.length ? `<table class="bp-table"><thead><tr><th></th><th>Shot</th><th>Type / moment</th></tr></thead><tbody>${shotsByGroup.map(g => g.items.map(x => `<tr><td class="c">${x.done ? "✓" : "○"}</td><td>${esc(x.name)}${t(x.desc) || t(x.notes) ? `<span class="nt">${esc([t(x.desc), t(x.notes)].filter(Boolean).join(" · "))}</span>` : ""}</td><td>${x.fire !== "" ? "🔥 " + esc(t(S.fire[x.fire] && S.fire[x.fire].name) || "Fire moment " + (Number(x.fire) + 1)) : esc(x.type)}</td></tr>`).join("")).join("")}</tbody></table>` : `<p class="empty">No shots yet.</p>`}</div>
-    <div class="bp-sec"><h4><i>E</i>Editing blueprint</h4><div class="bp-edit">
-      <div><b>Duration</b><span>${E.total} seconds${(() => { const d = E.total - PARTS.reduce((a, [k]) => a + E.parts[k].dur, 0); return d ? ` <span class="empty">(${d > 0 ? d + "s unallocated" : -d + "s over"})</span>` : ""; })()}</span></div>
-      ${PARTS.map(([k, l]) => { const fz = E.parts[k].fire.filter(i => S.fire[i] && (t(S.fire[i].name) || t(S.fire[i].visual))).map(i => "🔥 " + (t(S.fire[i].name) || "Fire moment " + (i + 1))); return `<div><b>${l}<small>${st[k][0]}–${st[k][1]}s</small></b><span>${t(E.parts[k].notes) ? esc(t(E.parts[k].notes)) : '<span class="empty">No notes yet</span>'}${fz.length ? `<br><strong>${esc(fz.join(" · "))}</strong>` : ""}</span></div>`; }).join("")}
-      <div><b>Music</b><span>${val(E.music)}${ml ? ` · <a href="${esc(ml)}" target="_blank" rel="noopener noreferrer">listen ↗</a>` : ""}</span></div></div></div>
-    <div class="bp-sec"><h4><i>F</i>Sound design</h4><table class="bp-table"><tbody>${SOUND_ITEMS.map(([k, l]) => { const v = S.sound[k] || "todo"; return `<tr><td>${esc(l)}</td><td style="text-align:right"><span class="status ${v === "done" ? "done" : v}">${v === "done" ? "done" : v === "na" ? "n/a" : "to do"}</span></td></tr>`; }).join("")}</tbody></table></div>
-  </div>`;
-}
-function renderMaster() {
-  checklist($("#masterList"), MASTER_ITEMS, S.master, "master");
-  const n = MASTER_ITEMS.filter(([k]) => S.master[k]).length, p = Math.round(n / MASTER_ITEMS.length * 100);
-  $("#masterPct").textContent = p + "%"; $("#masterBar").style.width = p + "%";
-}
-
-/* ---------- render orchestration ---------- */
-function syncBound() {
-  $$("[data-bind]").forEach(el => { if (el === document.activeElement) return; const v = getPath(el.dataset.bind); if (el.value !== v) el.value = v == null ? "" : v; });
-}
-function render() {
-  const fkey = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.fkey : null;
-  renderProg();
-  if (cur === 1) { renderFeelings(); renderSummary(); }
-  if (cur === 2) { if (!$("#fireCards").contains(document.activeElement) || !document.activeElement.matches("input,textarea")) renderFires(); else S.fire.forEach((f, i) => $("#firelink" + i).innerHTML = renderFireLink(i)); }
-  if (cur === 3) renderShotList();
-  if (cur === 4) { checklist($("#shootChecklist"), SHOOT_ITEMS, S.shoot, "shoot"); renderShootShots(); }
-  if (cur === 5) renderTimeline();
-  if (cur === 6) renderSound();
-  if (cur === 7) { renderBlueprint(); renderMaster(); }
-  syncBound();
-  if (fkey) { const el = $(`[data-fkey="${CSS.escape(fkey)}"]`); if (el) el.focus({ preventScroll: true }); }
-}
-
-/* ---------- events ---------- */
+/* ============ EVENTS ============ */
 document.addEventListener("input", e => {
-  const el = e.target;
-  if (el.dataset.bind) {
-    setPath(el.dataset.bind, el.value); save();
-    if (cur === 1) renderSummary();
-    if (el.dataset.relink !== undefined) { const i = Number(el.dataset.relink); $("#firelink" + i).innerHTML = renderFireLink(i); }
-    return;
-  }
-  if (el.dataset.shotf) {
-    const x = S.shots.find(s => s.id === el.dataset.id); if (!x) return;
-    const f = el.dataset.shotf;
-    if (f === "fire") { x.fire = el.value; if (el.value !== "") x.type = "Fire moment"; else if (x.type === "Fire moment") x.type = "Other"; save(); renderShotList(); return; }
-    x[f] = el.value; save();
-    if (f === "type") renderShotList();
-    return;
-  }
-  if (el.dataset.durin) {
-    const v = Math.max(0, Math.min(600, Math.round(Number(el.value) || 0)));
-    S.edit.parts[el.dataset.durin].dur = v; save();
-    clearTimeout(el._t); el._t = setTimeout(() => { el.dataset.fkey = "durin-" + el.dataset.durin; renderTimeline(); const n = $("#dur-" + el.dataset.durin); if (n) { n.focus({ preventScroll: true }); try { n.setSelectionRange(n.value.length, n.value.length); } catch (e) {} } }, 500);
-    return;
-  }
-  if (el.id === "customLen") {
-    clearTimeout(el._t); el._t = setTimeout(() => { if (Number(el.value) > 0) { setTotal(el.value); save(); renderTimeline(); const n = $("#customLen"); if (n) n.focus({ preventScroll: true }); } }, 600);
-  }
+  const k = e.target.dataset.bind; if (!k) return;
+  S[k] = e.target.value; save();
+  if (k === "build" || k === "finish") renderTimeline();
+  renderPlan();
 });
 document.addEventListener("change", e => {
-  const el = e.target;
-  if (el.dataset.shotdone) {
-    const x = S.shots.find(s => s.id === el.dataset.shotdone); if (x) { x.done = el.checked; save(); render(); }
-  } else if (el.dataset.cl) {
-    S[el.dataset.cl][el.dataset.k] = el.checked; save(); render();
-  } else if (el.dataset.shotf === "name") {
-    const x = S.shots.find(s => s.id === el.dataset.id);
-    if (x && !t(x.name)) { x.name = "Untitled shot"; save(); }
-    if (x) { x.def = x.def && DEFAULT_SHOTS.some(([n]) => n === x.name); save(); }
-  } else if (el.dataset.bind && el.dataset.relink !== undefined) {
-    // nothing extra
-  }
+  const k = e.target.dataset.shot; if (!k) return;
+  if (e.target.checked) S.done[k] = true; else delete S.done[k];
+  save(); renderShots(); renderPlan();
+  const n = $(`[data-shot="${CSS.escape(k)}"]`); if (n) n.focus({ preventScroll: true });
 });
 document.addEventListener("click", e => {
-  const go_ = e.target.closest("[data-go]");
-  if (go_) { e.preventDefault(); go(Number(go_.dataset.go)); return; }
-  const b = e.target.closest("button");
-  if (!b) return;
+  const b = e.target.closest("button"); if (!b) return;
   const d = b.dataset;
-  if (d.feel) { const a = S.story.feelings; const i = a.indexOf(d.feel); i >= 0 ? a.splice(i, 1) : a.push(d.feel); save(); renderFeelings(); $(`[data-feel="${d.feel}"]`).focus(); return; }
-  if (d.fstatus) { S.fire[d.i].status = d.fstatus; save(); b.dataset.fkey = `fs-${d.i}-${d.fstatus}-${cur}`; render(); const n = $(`[data-fstatus="${d.fstatus}"][data-i="${d.i}"]`); if (n) n.focus({ preventScroll: true }); return; }
-  if (d.sound) { S.sound[d.sound] = d.v; save(); render(); return; }
-  if (d.len) { S.edit.len = d.len; if (d.len !== "custom") setTotal(Number(d.len)); save(); render(); if (d.len === "custom") { const n = $("#customLen"); if (n) n.focus(); } return; }
-  if (d.dur) { const p = S.edit.parts[d.dur]; p.dur = Math.max(0, p.dur + Number(d.d)); save(); render(); return; }
-  if (d.tfire) { const a = S.edit.parts[d.tfire].fire; const i = Number(d.i); const k = a.indexOf(i); k >= 0 ? a.splice(k, 1) : a.push(i); save(); render(); return; }
+  if (d.filter) { filter = d.filter; renderFilters(); renderLibrary(); $(`[data-filter="${d.filter}"]`).focus(); return; }
+  if (d.pick) {
+    const i = S.picks.indexOf(d.pick);
+    if (i >= 0) {
+      S.picks.splice(i, 1);
+      Object.keys(S.done).forEach(k => { if (k.startsWith("f:" + d.pick + ":")) delete S.done[k]; });
+      toast(fx(d.pick).name + " removed");
+    } else if (S.picks.length >= MAX_PICKS) { toast("3 is the sweet spot. Remove one to swap."); return; }
+    else { S.picks.push(d.pick); const n = fx(d.pick).shots.length; toast(`${fx(d.pick).name} added · ${n} shot${n > 1 ? "s" : ""} on your list`); }
+    save(); renderLibrary(); renderShots(); renderTimeline(); renderSfx(); renderPlan();
+    const n = $(`[data-pick="${d.pick}"]`); if (n) n.focus({ preventScroll: true });
+    return;
+  }
+  if (d.del) { S.custom = S.custom.filter(c => c.id !== d.del); delete S.done["c:" + d.del]; save(); renderShots(); renderPlan(); toast("Shot removed"); return; }
   switch (d.act) {
-    case "fireAdd": addFireShots(Number(d.i)); render(); break;
-    case "toggleShot": openShots.has(d.id) ? openShots.delete(d.id) : openShots.add(d.id); render(); break;
-    case "delShot": {
-      const x = S.shots.find(s => s.id === d.id);
-      S.shots = S.shots.filter(s => s.id !== d.id); openShots.delete(d.id); save(); render(); toast("Shot removed");
-      break;
-    }
-    case "restoreDefaults": DEFAULT_SHOTS.forEach(([n, ty]) => { if (!S.shots.some(x => x.def && x.name === n)) S.shots.push({ id: newId(), name: n, type: ty, desc: "", fire: "", notes: "", done: false, def: true }); }); save(); render(); break;
-    case "rebalance": { const ratio = {}; PARTS.forEach(([k]) => ratio[k] = S.edit.parts[k].dur); S.edit.parts = scaledParts(S.edit.total, ratio, S.edit.parts); save(); render(); toast("Timeline rebalanced, notes kept"); break; }
-    case "resume": go(S.lastStep || 1); break;
-    case "new": openConfirm(); break;
-    case "confirmNew": $("#confirmNew").close(); S = freshState(); openShots.clear(); saveNow(); toast("New video started"); updateResume(); go(1); break;
-    case "cancelNew": $("#confirmNew").close(); break;
     case "copy": copyPlan(); break;
-    case "pdf": downloadPdf(b); break;
+    case "image": saveImage(b); break;
+    case "reset": { const dl = $("#dlgReset"); if (dl.showModal) dl.showModal(); break; }
+    case "resetNo": $("#dlgReset").close(); break;
+    case "resetYes": $("#dlgReset").close(); S = fresh(); saveNow(); syncInputs(); renderAll(); $("#startBtn").textContent = "Start planning →"; toast("New video started"); location.hash = "plan"; break;
   }
 });
-document.addEventListener("submit", e => {
+$("#addShot").addEventListener("submit", e => {
   e.preventDefault();
-  const f = e.target;
-  if (f.id === "addShot") {
-    const name = t($("#ns-name").value); if (!name) return;
-    S.shots.push({ id: newId(), name, type: $("#ns-type").value, desc: "", fire: "", notes: "", done: false, def: false });
-    $("#ns-name").value = ""; save(); render(); $("#ns-name").focus(); toast("Shot added");
-  } else if (f.dataset.addfire !== undefined) {
-    const i = f.dataset.addfire, inp = f.querySelector("input"), name = t(inp.value); if (!name) return;
-    S.shots.push({ id: newId(), name, type: "Fire moment", desc: "", fire: String(i), notes: "", done: false, def: false });
-    if (S.fire[i].status === "not") S.fire[i].status = "planned";
-    save(); render(); const n = $("#af" + i); if (n) n.focus(); toast("Shot added");
-  }
+  const inp = $("#f-newshot"), name = t(inp.value); if (!name) return;
+  S.custom.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), name });
+  inp.value = ""; save(); renderShots(); renderPlan(); inp.focus(); toast("Shot added");
 });
-function openConfirm() { const dlg = $("#confirmNew"); if (dlg.showModal) dlg.showModal(); else if (confirm("Start a new video? This clears your current plan from this browser.")) { S = freshState(); saveNow(); go(1); } }
 
-/* ---------- plain-text export ---------- */
+/* ============ SAVE / COPY ============ */
 function planText() {
-  const s = S.story, E = S.edit, st = partStarts(), L = [];
-  const line = (k, v) => { if (t(v)) L.push(`${k}: ${t(v)}`); };
-  L.push("HYPE VIDEO BLUEPRINT · OFF-TAPE", "Plan it. Shoot it. Make it hype.", "");
-  L.push("== PROJECT OVERVIEW ==");
-  line("Video concept", s.about); line("Main subject", s.subject); if (feelings().length) L.push("Feeling: " + feelings().join(", ")); L.push(`Target duration: ${E.total}s`, "");
-  if (t(s.beginning) || t(s.middle) || t(s.end)) { L.push("== STORYLINE =="); line("Beginning", s.beginning); line("Middle", s.middle); line("Ending", s.end); L.push(""); }
-  const fires = shownFires();
-  if (fires.length) {
-    L.push("== FIRE MOMENTS ==");
-    fires.forEach(({ f, i }) => {
-      L.push(`🔥 ${t(f.name) || "Fire moment " + (i + 1)} [${FIRE_STATUS.find(x => x[0] === f.status)[1]}]`);
-      if (t(f.visual)) L.push("   What happens: " + t(f.visual));
-      parseShotLines(f.shots).forEach(x => L.push("   - " + x));
-      if (t(f.equipment)) L.push("   Setup: " + t(f.equipment));
-      if (safeUrl(f.link)) L.push("   Inspiration: " + safeUrl(f.link));
-    });
-    L.push("");
-  }
-  if (S.shots.length) {
-    L.push(`== SHOT LIST (${S.shots.filter(x => x.done).length}/${S.shots.length} done) ==`);
-    shotGroups().filter(g => g.items.length).forEach(g => {
-      L.push(g.title.replace("🔥 ", "") + ":");
-      g.items.forEach(x => L.push(`  [${x.done ? "x" : " "}] ${x.name}${t(x.desc) ? " — " + t(x.desc) : ""}${t(x.notes) ? " (" + t(x.notes) + ")" : ""}`));
-    });
-    L.push("");
-  }
-  L.push(`== EDIT TIMELINE (${E.total}s) ==`);
-  PARTS.forEach(([k, l]) => {
-    const fz = E.parts[k].fire.filter(i => S.fire[i] && (t(S.fire[i].name) || t(S.fire[i].visual))).map(i => t(S.fire[i].name) || "Fire moment " + (i + 1));
-    L.push(`${l} (${st[k][0]}–${st[k][1]}s)${t(E.parts[k].notes) ? ": " + t(E.parts[k].notes) : ""}${fz.length ? " | Fire: " + fz.join(", ") : ""}`);
-  });
-  line("Music", E.music); if (safeUrl(E.musicLink)) L.push("Song link: " + safeUrl(E.musicLink)); L.push("");
-  L.push("== SOUND DESIGN ==");
-  SOUND_ITEMS.forEach(([k, l]) => { const v = S.sound[k] || "todo"; L.push(`  [${v === "done" ? "x" : v === "na" ? "-" : " "}] ${l}${v === "na" ? " (n/a)" : ""}`); }); L.push("");
-  const mDone = MASTER_ITEMS.filter(([k]) => S.master[k]).length;
-  L.push(`== PRODUCTION CHECKLIST (${Math.round(mDone / MASTER_ITEMS.length * 100)}%) ==`);
-  MASTER_ITEMS.forEach(([k, l]) => L.push(`  [${S.master[k] ? "x" : " "}] ${l}`));
+  const L = ["MY HYPE VIDEO PLAN · OFF-TAPE", ""];
+  if (t(S.idea)) L.push("Filming: " + t(S.idea));
+  [["Start", S.start], ["Build", S.build], ["Finish", S.finish]].forEach(([k, v]) => { if (t(v)) L.push(`${k}: ${t(v)}`); });
+  if (picked().length) { L.push("", "FIRE MOMENTS"); picked().forEach(e => L.push("🔥 " + e.name + " (" + e.sound + ")")); }
+  L.push("", "SHOT LIST");
+  allShots().forEach(g => { L.push(g.title.replace("🔥 ", "") + ":"); g.items.forEach(x => L.push(`  [${S.done[x.key] ? "x" : " "}] ${x.name}`)); });
+  L.push("", "EDIT: Hook → Build-up → Beat drop → Ending");
+  if (t(S.song)) L.push("Song: " + t(S.song));
+  L.push("Sound: risers into the drop, impacts on key moments, whooshes on moves", "", "Free guide by OFF-TAPE · @j.david007");
   return L.join("\n");
 }
 async function copyPlan() {
-  const txt = planText(), msg = $("#dlMsg");
-  try { await navigator.clipboard.writeText(txt); msg.textContent = "Copied. Paste it into your notes app."; toast("Video plan copied"); return; } catch (e) {}
-  const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+  const txt = planText(), m = $("#saveMsg");
+  try { await navigator.clipboard.writeText(txt); m.textContent = "Copied. Paste it into your notes."; toast("Plan copied"); return; } catch (e) {}
+  const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
   let ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
-  ta.remove();
-  msg.textContent = ok ? "Copied. Paste it into your notes app." : "Your browser blocked copying. Use Download instead.";
-  if (ok) toast("Video plan copied");
+  ta.remove(); m.textContent = ok ? "Copied. Paste it into your notes." : "Your browser blocked copying. Take a screenshot of your plan instead.";
+  if (ok) toast("Plan copied");
 }
-
-/* ---------- PDF export (jsPDF, loaded only when needed) ---------- */
-function loadJsPdf() {
-  if (window.jspdf) return Promise.resolve(window.jspdf.jsPDF);
-  return new Promise((res, rej) => { const sc = document.createElement("script"); sc.src = CONFIG.jsPdfSrc; sc.onload = () => res(window.jspdf.jsPDF); sc.onerror = rej; document.head.appendChild(sc); });
-}
-const pdfSafe = s => String(s || "").replace(/[→]/g, "->").replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/[—]/g, "-").replace(/[^\x09\x0A\x0D\x20-\x7E\xA0-\xFF–•]/g, "").trim();
-async function downloadPdf(btn) {
-  const msg = $("#dlMsg");
-  btn.disabled = true; msg.textContent = "Building your PDF…";
-  let jsPDF;
-  try { jsPDF = await loadJsPdf(); } catch (e) { btn.disabled = false; msg.textContent = "Couldn't load the PDF tool. Check your connection, or use Copy my video plan."; return; }
+function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+async function saveImage(btn) {
+  const m = $("#saveMsg"); btn.disabled = true; m.textContent = "Making your image…";
   try {
-    const doc = new jsPDF({ unit: "pt", format: "letter" });
-    const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), M = 48, CW = W - M * 2;
-    const BLUE = [35, 80, 255], INK = [5, 6, 8], MUTE = [76, 84, 112], RED = [255, 59, 47], GREEN = [18, 161, 80];
-    let y = 0;
-    const header = first => {
-      doc.setFillColor(...BLUE); doc.rect(0, 0, W, first ? 108 : 40, "F");
-      doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold");
-      if (first) {
-        doc.setFontSize(26); doc.text("OFF-TAPE", M, 46);
-        doc.setFontSize(13); doc.text("THE HYPE VIDEO BLUEPRINT", M, 70);
-        doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.text("Plan it. Shoot it. Make it hype.", M, 88);
-        doc.text(new Date().toLocaleDateString(), W - M, 88, { align: "right" });
-        y = 140;
-      } else { doc.setFontSize(12); doc.text("OFF-TAPE  ·  HYPE VIDEO BLUEPRINT", M, 25); y = 70; }
-      doc.setTextColor(...INK);
-    };
-    const need = h => { if (y + h > H - 50) { doc.addPage(); header(false); } };
-    const h2 = (letter, title) => {
-      need(60); y += 10;
-      doc.setFillColor(...BLUE); doc.roundedRect(M, y - 13, 20, 18, 4, 4, "F");
-      doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.text(letter, M + 10, y, { align: "center" });
-      doc.setTextColor(...INK); doc.setFontSize(15); doc.text(title.toUpperCase(), M + 30, y + 1);
-      y += 10; doc.setDrawColor(...INK); doc.setLineWidth(1.4); doc.line(M, y, W - M, y); y += 18;
-    };
-    const para = (txt, opt = {}) => {
-      const size = opt.size || 10.5, indent = opt.indent || 0;
-      doc.setFont("helvetica", opt.bold ? "bold" : opt.italic ? "italic" : "normal"); doc.setFontSize(size); doc.setTextColor(...(opt.color || INK));
-      const lines = doc.splitTextToSize(pdfSafe(txt), CW - indent);
-      lines.forEach(ln => { need(size + 4); doc.text(ln, M + indent, y); y += size * 1.38; });
-      doc.setTextColor(...INK);
-    };
-    const kv = (k, v) => {
-      if (!t(v)) return;
-      need(30); doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.setTextColor(...MUTE); doc.text(pdfSafe(k).toUpperCase(), M, y); y += 12;
-      para(v); y += 6;
-    };
-    const box = (checked, label, opt = {}) => {
-      const lines = doc.splitTextToSize(pdfSafe(label), CW - 22 - (opt.indent || 0));
-      need(lines.length * 14 + 6);
-      const x = M + (opt.indent || 0);
-      doc.setLineWidth(1); doc.setDrawColor(...INK);
-      if (opt.na) { doc.setFillColor(...MUTE); doc.rect(x, y - 9, 11, 11, "F"); }
-      else if (checked) { doc.setFillColor(...BLUE); doc.rect(x, y - 9, 11, 11, "F"); doc.setDrawColor(255, 255, 255); doc.setLineWidth(1.6); doc.line(x + 2.5, y - 3.5, x + 4.8, y - 1); doc.line(x + 4.8, y - 1, x + 8.8, y - 7); }
-      else doc.rect(x, y - 9, 11, 11);
-      doc.setFont("helvetica", opt.bold ? "bold" : "normal"); doc.setFontSize(10.5); doc.setTextColor(...((checked || opt.na) && !opt.keep ? MUTE : INK));
-      lines.forEach((ln, i) => { doc.text(ln, x + 20, y + i * 14); });
-      y += lines.length * 14 + 4; doc.setTextColor(...INK);
-      if (opt.sub) { y -= 2; para(opt.sub, { size: 9, color: MUTE, indent: (opt.indent || 0) + 20 }); y += 4; }
-    };
-    const none = txt => { para(txt, { italic: true, color: MUTE }); y += 4; };
-
-    header(true);
-    const s = S.story, E = S.edit, st = partStarts();
-    h2("A", "Project overview");
-    kv("Video concept", s.about); kv("Main subject", s.subject); kv("Feeling", feelings().join(", ")); kv("Target duration", E.total + " seconds");
-    if (!t(s.about) && !t(s.subject) && !feelings().length) none("Concept not filled in yet.");
-    h2("B", "Storyline");
-    if (t(s.beginning) || t(s.middle) || t(s.end)) { kv("Beginning", s.beginning); kv("Middle", s.middle); kv("Ending", s.end); } else none("Storyline not filled in yet.");
-    h2("C", "Fire moments");
-    const fires = shownFires();
-    if (!fires.length) none("No fire moments planned yet.");
-    fires.forEach(({ f, i }) => {
-      need(40);
-      const status = FIRE_STATUS.find(x => x[0] === f.status)[1];
-      doc.setFont("helvetica", "bold"); doc.setFontSize(12.5); doc.setTextColor(...RED); doc.text(pdfSafe(t(f.name) || "Fire moment " + (i + 1)).toUpperCase(), M, y);
-      doc.setFontSize(8.5); doc.setTextColor(...(f.status === "filmed" ? GREEN : f.status === "planned" ? BLUE : MUTE)); doc.text(status.toUpperCase(), W - M, y, { align: "right" });
-      y += 16; doc.setTextColor(...INK);
-      kv("What happens", f.visual);
-      const req = parseShotLines(f.shots); if (req.length) kv("Required shots", req.map(x => "• " + x).join("\n"));
-      kv("Equipment / setup", f.equipment); kv("Inspiration", safeUrl(f.link));
-      y += 6;
-    });
-    h2("D", `Shot list  (${S.shots.filter(x => x.done).length} of ${S.shots.length} completed)`);
-    const gs = shotGroups().filter(g => g.items.length);
-    if (!gs.length) none("No shots yet.");
-    gs.forEach(g => {
-      need(56); para(g.title.replace("🔥 ", "FIRE · "), { bold: true, size: 9.5, color: g.fire !== undefined ? RED : BLUE });
-      g.items.forEach(x => box(x.done, x.name, { indent: 6, keep: true, sub: [t(x.desc), t(x.notes)].filter(Boolean).join(" · ") }));
-      y += 6;
-    });
-    h2("E", `Editing timeline  (${E.total}s)`);
-    PARTS.forEach(([k, l]) => {
-      need(36);
-      doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.text(l.toUpperCase(), M, y);
-      doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(...MUTE); doc.text(`${st[k][0]}–${st[k][1]}s · ${E.parts[k].dur}s`, W - M, y, { align: "right" }); doc.setTextColor(...INK);
-      y += 15;
-      if (t(E.parts[k].notes)) para(E.parts[k].notes); else none("No notes yet.");
-      const fz = E.parts[k].fire.filter(i => S.fire[i] && (t(S.fire[i].name) || t(S.fire[i].visual))).map(i => t(S.fire[i].name) || "Fire moment " + (i + 1));
-      if (fz.length) para("Fire moments: " + fz.join(", "), { bold: true, color: RED, size: 9.5 });
-      y += 6;
-    });
-    const diff = E.total - PARTS.reduce((a, [k]) => a + E.parts[k].dur, 0);
-    if (diff) para(diff > 0 ? `${diff}s still unallocated.` : `${-diff}s over target.`, { italic: true, color: RED, size: 9.5 });
-    kv("Music reference", E.music); kv("Song link", safeUrl(E.musicLink));
-    h2("F", "Sound design");
-    SOUND_ITEMS.forEach(([k, l]) => { const v = S.sound[k] || "todo"; box(v === "done", l + (v === "na" ? "  (n/a)" : ""), { na: v === "na" }); });
-    const mDone = MASTER_ITEMS.filter(([k]) => S.master[k]).length;
-    h2("G", `Production checklist  (${Math.round(mDone / MASTER_ITEMS.length * 100)}%)`);
-    MASTER_ITEMS.forEach(([k, l]) => box(!!S.master[k], l));
-    need(60); y += 16;
-    doc.setFont("helvetica", "bold"); doc.setFontSize(14); doc.setTextColor(...BLUE); doc.text("YOU'VE GOT THE BLUEPRINT. NOW GO CREATE.", M, y);
-    const pages = doc.getNumberOfPages();
-    for (let p = 1; p <= pages; p++) { doc.setPage(p); doc.setFont("helvetica", "normal"); doc.setFontSize(8); doc.setTextColor(...MUTE); doc.text("off-tape.com  ·  The Hype Video Blueprint", M, H - 24); doc.text(`${p} / ${pages}`, W - M, H - 24, { align: "right" }); }
-    const name = "hype-video-blueprint" + (t(s.subject) ? "-" + t(s.subject).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 30) : "") + ".pdf";
-    doc.save(name);
-    msg.textContent = "Downloaded " + name; toast("Blueprint downloaded");
-  } catch (e) { console.error(e); msg.textContent = "Something went wrong building the PDF. Use Copy my video plan instead."; }
+    if (!window.html2canvas) await loadScript(CONFIG.html2canvasSrc);
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const canvas = await window.html2canvas($("#planCard"), { scale: 2, backgroundColor: "#f7f6fb", useCORS: true, logging: false });
+    const blob = await new Promise(r => canvas.toBlob(r, "image/png"));
+    const name = "hype-video-plan.png";
+    const file = new File([blob], name, { type: "image/png" });
+    if (navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+      try { await navigator.share({ files: [file], title: "My hype video plan" }); m.textContent = "Tap \"Save Image\" in the share sheet to put it in your photos."; btn.disabled = false; return; }
+      catch (e) { if (e && e.name === "AbortError") { m.textContent = ""; btn.disabled = false; return; } }
+    }
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    m.textContent = "Downloaded " + name; toast("Plan saved");
+  } catch (e) { m.textContent = "Couldn't make the image here. Take a screenshot of your plan, or use Copy."; }
   btn.disabled = false;
 }
 
-/* ---------- boot ---------- */
-function updateResume() {
-  const show = hasContent(S);
-  $("#resume").hidden = !show;
-  if (show) { $("#resumeInfo").textContent = "You have a plan in progress" + (t(S.story.about) ? `: "${t(S.story.about).slice(0, 60)}${t(S.story.about).length > 60 ? "…" : ""}"` : "") + "."; $("#startBtn").textContent = "Start from step 1 →"; }
-  else $("#startBtn").textContent = "Let's build your hype video →";
+/* ============ NAV HIGHLIGHT ============ */
+if ("IntersectionObserver" in window) {
+  const links = { plan: $('.jump a[href="#plan"]'), shoot: $('.jump a[href="#shoot"]'), edit: $('.jump a[href="#edit"]'), "my-plan": $('.jump a[href="#my-plan"]') };
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { Object.values(links).forEach(a => a.classList.remove("on")); if (links[en.target.id]) links[en.target.id].classList.add("on"); } }), { rootMargin: "-45% 0px -50% 0px" });
+  ["plan", "shoot", "edit", "my-plan"].forEach(id => io.observe(document.getElementById(id)));
 }
-(function boot() {
-  load();
-  $("#ns-type").innerHTML = SHOT_TYPES.filter(x => x !== "Fire moment").map(x => `<option>${x}</option>`).join("");
-  const mu = safeUrl(CONFIG.mentorshipUrl), ml = $("#mentorLink");
-  if (mu) ml.href = mu; else ml.closest(".ment").hidden = true;
-  updateResume();
-  const m = location.hash.match(/^#step-(\d)$/);
-  go(m ? Number(m[1]) : 0, false);
-  if (!storageOk) $$(".saved").forEach(p => p.textContent = "Your browser is blocking storage, so progress won't be saved after you leave. Download your blueprint to keep a copy.");
+
+/* ============ BOOT ============ */
+(function () {
+  const ig = CONFIG.instagramUrl;
+  $("#igLink").href = ig;
+  if (CONFIG.mentorshipUrl) $("#mentorLink").href = CONFIG.mentorshipUrl; else $("#mentBox").hidden = true;
+  $$("[data-breakdown]").forEach(el => {
+    const u = CONFIG.breakdowns[el.dataset.breakdown], step = { plan: "planning", shoot: "shooting", edit: "editing" }[el.dataset.breakdown];
+    el.innerHTML = `<a class="bdn" href="${esc(u || ig)}" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><span>${u ? `Watch the full ${step} breakdown` : `Full ${step} breakdown coming soon`}<small>${u ? "On Instagram ↗" : "Follow @j.david007 so you don't miss it ↗"}</small></span></a>`;
+  });
+  if (S.idea || S.start || S.picks.length) $("#startBtn").textContent = "Continue my plan →";
+  if (!storageOk) $(".saved-note").textContent = "This browser is blocking storage, so your plan won't be saved if you leave. Save it as an image before you go.";
+  syncInputs(); renderAll();
 })();
 </script>
 </body>
