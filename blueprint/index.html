@@ -89,7 +89,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 50; pointer-event
 .reel .vid video { width: 100%; height: 100%; object-fit: cover; }
 .bar4 { display: flex; height: 46px; border-radius: 12px; overflow: hidden; }
 .bar4 div { display: grid; place-items: center; color: #fff; font-family: var(--display); text-transform: uppercase; font-size: 14px; line-height: 1; min-width: 0; overflow: hidden; }
-.c-hook { background: #2a2f45; } .c-build { background: var(--navy); } .c-drop { background: var(--blue); } .c-end { background: var(--violet); }
+.c-build { background: #2a2f45; } .c-drop { background: var(--blue); } .c-middle { background: var(--navy); } .c-end { background: var(--violet); }
 .ticks { position: relative; height: 20px; margin-top: 4px; font-size: 11px; color: var(--mute-d); font-variant-numeric: tabular-nums; }
 .ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
 .ticks span:first-child { transform: none; } .ticks span:last-child { transform: translateX(-100%); }
@@ -150,7 +150,7 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
 .cs-row div { border-radius: 10px; padding: 8px 10px; font-size: 13px; line-height: 1.3; background: var(--paper-2); }
 .cs-row div b { display: block; font-family: var(--display); font-weight: 400; font-size: 17px; text-transform: uppercase; line-height: 1; margin-bottom: 3px; }
 .cs-row.r4 div { color: #fff; }
-.cs-row .c-hook { background: #2a2f45; } .cs-row .c-build { background: var(--navy); } .cs-row .c-drop { background: var(--blue); } .cs-row .c-end { background: var(--violet); }
+.cs-row .c-build { background: #2a2f45; } .cs-row .c-drop { background: var(--blue); } .cs-row .c-middle { background: var(--navy); } .cs-row .c-end { background: var(--violet); }
 .cs-shots { font-weight: 700; font-size: 15px; line-height: 1.6; }
 .cs-shots span { white-space: nowrap; display: inline-block; }
 .cs-shots span + span::before { content: "·"; color: var(--blue); margin: 0 7px; font-weight: 900; }
@@ -209,7 +209,7 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
         <p><strong>Shoot variety.</strong> Wide shots for the scene, close-ups for details, different angles for options in the edit.</p>
         <p>Get every shot your fire moments need.</p></article>
       <article class="stepc"><h3><b>3</b>Edit it</h3>
-        <p>Find a song that <strong>builds to a beat drop.</strong> Hook them, build with the music, and bring your fire moments on the drop.</p>
+        <p>Find a song that <strong>builds to a beat drop.</strong> Build up with the music, hit your fire moments on the drop, keep the energy through the middle, and finish strong.</p>
         <p>Add <strong>risers</strong> for tension, <strong>impacts</strong> on key moments, <strong>whooshes</strong> on movement.</p></article>
     </div>
   </div>
@@ -240,7 +240,7 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
         <p>End a clip in one room with a fast pan right. Start a clip in another room panning right. Cut where the blur is fastest.</p>
         <p class="learn">Your first fire moment.</p></article>
     </div>
-    <div class="then"><b>Then cut it together</b>Open on your best close-up, build as the music rises, and hit your whip right on the drop. Post it and tag @j.david007. I'd love to see it.</div>
+    <div class="then"><b>Then cut it together</b>Build up with your close-ups as the music rises, hit your whip right on the drop, and end on your best angle. Post it and tag @j.david007. I'd love to see it.</div>
   </div>
 </section>
 
@@ -255,7 +255,7 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
         <div><h5>Story</h5><div class="cs-row"><div><b>Start</b>Set the scene</div><div><b>Build</b>Raise the energy</div><div><b>Finish</b>Final hero moment</div></div></div>
         <div class="cs-rule"><b>Plan 2–3 fire moments</b>Pick them before you shoot and add every shot they need to your list.</div>
         <div><h5>Shoot variety</h5><p class="cs-shots"><span>Wide</span><span>Close-up</span><span>Low angle</span><span>High angle</span><span>Push-in</span><span>Pull-out</span><span>Tracking</span></p></div>
-        <div><h5>Edit to the music</h5><div class="cs-row r4"><div class="c-hook"><b>Hook</b>Grab attention</div><div class="c-build"><b>Build</b>Rise with the song</div><div class="c-drop"><b>Drop</b>Fire moments, fast cuts</div><div class="c-end"><b>End</b>Strong final shot</div></div></div>
+        <div><h5>Edit to the music</h5><div class="cs-row r4"><div class="c-build"><b>Build-up</b>Rise with the song</div><div class="c-drop"><b>Beat drop</b>Fire moments, fast cuts</div><div class="c-middle"><b>Middle</b>Keep the energy going</div><div class="c-end"><b>End</b>Strong final shot</div></div></div>
         <div><h5>Sound design</h5><div class="cs-row"><div><b>Riser</b>Into the drop</div><div><b>Impact</b>On key hits</div><div><b>Whoosh</b>On fast moves</div></div></div>
         <p class="cheat-foot">free guide by off-tape · @j.david007</p>
       </div>
@@ -287,7 +287,7 @@ button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
 const CONFIG = {
   mentorshipUrl: "https://offtapepassiontoprofit.info",
 
-  /* YOUR REEL BREAKDOWN
+  /* YOUR REEL BREAKDOWN  (parts: "build", "drop", "middle", "end")
      Add your video file (e.g. "../media/hype-reel.mp4") and replace the beats
      with your real timestamps. Until a video is set, the beats show as a
      clearly labeled EXAMPLE. */
@@ -296,12 +296,12 @@ const CONFIG = {
     poster: "",
     length: 30, // seconds
     beats: [
-      { t: 0,  part: "hook",  what: "Low-angle close-up: hand grabs the keys.", sound: "Riser starts" },
-      { t: 3,  part: "build", what: "Driver walks to the car and starts the engine.", sound: "Engine sound, riser building" },
-      { t: 8,  part: "build", what: "Car pulls away. Wheel and headlight details.", sound: "Whooshes on the moves" },
-      { t: 12, part: "drop",  what: "Beat drops. Whip transition into the driving.", sound: "Impact on the drop" },
-      { t: 15, part: "drop",  what: "Fast cuts: speed ramp, low-angle hero shot.", sound: "Whooshes on every move" },
-      { t: 25, part: "end",   what: "Car arrives. Driver steps out. Final hero shot.", sound: "Last impact, music out" }
+      { t: 0,  part: "build",  what: "Close-up: hand grabs the keys.", sound: "Riser starts" },
+      { t: 4,  part: "build",  what: "Driver walks to the car and starts the engine.", sound: "Engine sound, riser building" },
+      { t: 10, part: "drop",   what: "Beat drops. Whip transition into the driving.", sound: "Impact on the drop" },
+      { t: 13, part: "drop",   what: "Fast cuts: speed ramp, low-angle hero shot.", sound: "Whooshes on every move" },
+      { t: 19, part: "middle", what: "Driving shots, wheel and headlight details, new angles.", sound: "Whooshes on the moves" },
+      { t: 26, part: "end",    what: "Car arrives. Driver steps out. Final hero shot.", sound: "Last impact, music out" }
     ]
   },
 
@@ -322,7 +322,7 @@ const EFFECTS = [
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const mmss = s => Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0");
-const PART = { hook: ["Hook", "#2a2f45"], build: ["Build-up", "var(--navy)"], drop: ["Beat drop", "var(--blue)"], end: ["Ending", "var(--violet)"] };
+const PART = { build: ["Build-up", "#2a2f45"], drop: ["Beat drop", "var(--blue)"], middle: ["Middle", "var(--navy)"], end: ["End", "var(--violet)"] };
 
 /* breakdown */
 (function renderReel() {
@@ -330,13 +330,13 @@ const PART = { hook: ["Hook", "#2a2f45"], build: ["Build-up", "var(--navy)"], dr
   $("#bdIntro").innerHTML = hasVid
     ? "Here's the reel you just watched, broken down. Tap a moment to jump to it."
     : "Every hype video follows the same shape. Here's a 30-second car video, second by second.";
-  const spans = ["hook", "build", "drop", "end"].map(p => { const b = R.beats.filter(x => x.part === p); if (!b.length) return null; const nxt = R.beats.find(x => x.t > b[b.length - 1].t && x.part !== p); return { p, s: b[0].t, e: nxt ? nxt.t : L }; }).filter(Boolean);
+  const spans = ["build", "drop", "middle", "end"].map(p => { const b = R.beats.filter(x => x.part === p); if (!b.length) return null; const nxt = R.beats.find(x => x.t > b[b.length - 1].t && x.part !== p); return { p, s: b[0].t, e: nxt ? nxt.t : L }; }).filter(Boolean);
   const ticks = [...new Set([0, ...spans.map(s => s.s), L])].sort((a, b) => a - b).filter((v, i, a) => i === 0 || i === a.length - 1 || (v - a[i - 1] > L * .15 && a[a.length - 1] - v > L * .15));
   $("#reel").innerHTML = `${hasVid ? "" : `<span class="ex-tag">example breakdown</span>`}
     <div class="reel${hasVid ? " has-video" : ""}">
       ${hasVid ? `<div class="vid"><video id="reelVid" src="${esc(R.video)}"${R.poster ? ` poster="${esc(R.poster)}"` : ""} controls playsinline preload="metadata"></video></div>` : ""}
       <div>
-        <div class="bar4" role="img" aria-label="${spans.map(s => `${PART[s.p][0]} ${mmss(s.s)} to ${mmss(s.e)}`).join(", ")}">${spans.map(s => `<div class="c-${s.p}" style="flex:0 0 ${(s.e - s.s) / L * 100}%">${(s.e - s.s) / L > .14 ? PART[s.p][0] : ""}</div>`).join("")}</div>
+        <div class="bar4" role="img" aria-label="${spans.map(s => `${PART[s.p][0]} ${mmss(s.s)} to ${mmss(s.e)}`).join(", ")}">${spans.map(s => `<div class="c-${s.p}" style="flex:0 0 ${(s.e - s.s) / L * 100}%">${(s.e - s.s) / L > .1 ? PART[s.p][0] : ""}</div>`).join("")}</div>
         <div class="ticks" aria-hidden="true">${ticks.map(v => `<span style="left:${v / L * 100}%">${mmss(v)}</span>`).join("")}</div>
         <div class="beats">${R.beats.map(b => { const inner = `<span class="ts">${mmss(b.t)}</span><span><span class="tag" style="background:${PART[b.part][1]}">${PART[b.part][0].toLowerCase()}</span><span class="w">${esc(b.what)}</span>${b.sound ? `<span class="sd">🔊 ${esc(b.sound)}</span>` : ""}</span>`;
           return hasVid ? `<button type="button" class="beat" data-seek="${b.t}">${inner}</button>` : `<div class="beat">${inner}</div>`; }).join("")}</div>
