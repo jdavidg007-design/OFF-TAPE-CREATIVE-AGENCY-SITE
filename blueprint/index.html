@@ -4,407 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hype Video Blueprint · OFF-TAPE</title>
-<meta name="description" content="Free guide from OFF-TAPE: how a hype video is built, my 3-step process, 6 fire moments, and drills you can try today with your phone.">
+<meta name="description" content="Free guide from OFF-TAPE: my 3-step process for making hype videos.">
 <meta name="theme-color" content="#050608">
 <link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
 <link rel="icon" href="../favicon-32.png?v=2" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Sans:wght@400;500;600;700&family=Unbounded:wght@700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one short scroll — see it, learn it, the effects, try it, save it. OFF-TAPE tokens copied from off-tape.com. */
+/* Layout: one short scroll — the 3 steps, a quick try-it, follow. OFF-TAPE tokens copied from off-tape.com. */
 :root {
   --ink: #050608;
   --ink-2: #11131d;
   --paper: #f7f6fb;
-  --paper-2: #ebe8f5;
   --blue: #2350ff;
   --sky: #8fb8ff;
   --pink: #ff2d95;
   --violet: #ff3b2f;
-  --aqua: #19c3ff;
   --navy: #0b1440;
-  --green: #12a150;
-  --yellow: #ffd84a;
   --line-d: rgba(143,184,255,.2);
   --mute-d: #9aa2ba;
-  --mute-l: #4c5470;
   --display: "Anton", "Impact", "Arial Narrow Bold", sans-serif;
-  --chunky: "Unbounded", "Arial Black", sans-serif;
   --serif: "Permanent Marker", "Marker Felt", "Comic Sans MS", cursive;
   --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { overflow-x: clip; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-[hidden] { display: none !important; }
-body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--body); font-size: 17px; line-height: 1.5; overflow-x: hidden; overflow-x: clip; }
+body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--body); font-size: 18px; line-height: 1.55; overflow-x: hidden; overflow-x: clip; }
 a { color: inherit; }
-button { font: inherit; color: inherit; }
-img, video { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; }
 :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 p { margin: 0; }
-h1, h2, h3, h4 { margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .9; letter-spacing: .005em; text-wrap: balance; }
-.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.it { font-family: var(--serif); font-style: normal; text-transform: none; font-weight: 400; letter-spacing: 0; display: inline-block; transform: rotate(-3deg); line-height: 1; }
-.pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 26px; border-radius: 999px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1.5px solid currentColor; background: none; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .9; letter-spacing: .005em; text-wrap: balance; }
+.wrap { max-width: 680px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.it { font-family: var(--serif); text-transform: none; letter-spacing: 0; display: inline-block; transform: rotate(-3deg); line-height: 1; }
+.pill { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 26px; border-radius: 999px; font-weight: 600; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s; }
 .pill:hover { transform: translateY(-2px); }
-.pill.fill { background: var(--blue); border-color: var(--blue); color: #fff; }
-.pill.fill:hover { background: var(--sky); border-color: var(--sky); color: var(--ink); }
-.pill.white { background: #fff; border-color: #fff; color: var(--blue); }
-.pill:disabled { opacity: .45; cursor: wait; transform: none; }
-body::after { content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: .07; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.pill.fill { background: var(--blue); color: #fff; }
+.pill.fill:hover { background: var(--sky); color: var(--ink); }
+.pill.white { background: #fff; color: var(--blue); }
 
 /* header */
-.top { padding-top: env(safe-area-inset-top, 0px); border-bottom: 1px solid var(--line-d); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-.logo { font-family: var(--display); font-size: 28px; line-height: 1; text-decoration: none; letter-spacing: .02em; }
-.top small { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--mute-d); }
+.top { padding-top: env(safe-area-inset-top, 0px); }
+.top .wrap { height: 64px; display: flex; align-items: center; }
+.logo { font-family: var(--display); font-size: 28px; line-height: 1; letter-spacing: .02em; }
 
 /* hero */
-.hero { padding-block: clamp(40px, 8vw, 80px) 48px; position: relative; overflow: hidden; }
-.hero .slash { position: absolute; left: -10%; width: 120%; height: 40px; top: 58%; transform: rotate(-12deg); background: var(--blue); opacity: .3; pointer-events: none; }
-.hero .inner { position: relative; z-index: 2; }
-.hero h1 { font-size: clamp(60px, 14vw, 132px); }
-.hero h1 .it { color: var(--sky); font-size: .6em; vertical-align: .1em; }
-.hero .lead { margin-top: 20px; font-size: clamp(19px, 2.6vw, 23px); font-weight: 600; max-width: 560px; line-height: 1.35; }
-.hero .pill { margin-top: 28px; }
-.zap { position: absolute; right: max(4%, 10px); top: 18px; width: 64px; height: 92px; z-index: 1; transform: rotate(12deg); }
-@media (min-width: 720px) { .zap { width: 104px; height: 148px; top: 40px; } }
+.hero { padding-block: clamp(36px, 8vw, 72px) 20px; }
+.hero h1 { font-size: clamp(60px, 15vw, 120px); }
+.hero h1 .it { color: var(--sky); font-size: .58em; vertical-align: .1em; }
+.hero p { margin-top: 18px; font-size: 20px; font-weight: 600; max-width: 480px; }
 
-/* sections */
-.sec { padding-block: clamp(48px, 8vw, 84px) 0; }
-.sec-head { display: flex; align-items: end; gap: 14px; }
-.sec-head .num { font-family: var(--display); font-size: clamp(76px, 16vw, 120px); line-height: .78; color: var(--blue); }
-.sec-head h2 { font-size: clamp(40px, 8vw, 70px); }
-.say { margin-top: 18px; max-width: 600px; font-size: 18px; color: #d9dcea; }
-.say strong { color: #fff; }
+/* steps */
+.step { padding-block: 56px 0; }
+.step h2 { font-size: clamp(48px, 11vw, 76px); display: flex; align-items: baseline; gap: 14px; }
+.step h2 b { font-weight: 400; color: var(--blue); }
+.step .body { margin-top: 16px; display: grid; gap: 14px; }
+.step strong { color: #fff; }
+.step .body > p { color: #d9dcea; }
 
-/* 1 · breakdown */
-.ex-tag { display: inline-block; margin-top: 18px; font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--yellow); color: var(--ink); padding: 5px 11px; border-radius: 999px; }
-.reel { margin-top: 16px; display: grid; gap: 16px; }
-@media (min-width: 760px) { .reel.has-video { grid-template-columns: 240px 1fr; align-items: start; } }
-.reel .vid { border: 6px solid #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 4px var(--blue); background: #000; aspect-ratio: 9/16; max-width: 240px; max-height: 70vh; }
-.reel .vid video { width: 100%; height: 100%; object-fit: cover; }
-.bar4 { display: flex; height: 46px; border-radius: 12px; overflow: hidden; }
-.bar4 div { display: grid; place-items: center; color: #fff; font-family: var(--display); text-transform: uppercase; font-size: 14px; line-height: 1; min-width: 0; overflow: hidden; }
-.c-build { background: #2a2f45; } .c-drop { background: var(--blue); } .c-middle { background: var(--navy); } .c-end { background: var(--violet); }
-.ticks { position: relative; height: 20px; margin-top: 4px; font-size: 11px; color: var(--mute-d); font-variant-numeric: tabular-nums; }
-.ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-.ticks span:first-child { transform: none; } .ticks span:last-child { transform: translateX(-100%); }
-.beats { margin-top: 8px; display: grid; gap: 6px; }
-.beat { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: start; border-bottom: 1px solid var(--line-d); padding: 10px 2px; text-align: left; width: 100%; background: none; border-left: 0; border-right: 0; border-top: 0; color: inherit; }
-button.beat { cursor: pointer; } button.beat:hover .w { color: var(--sky); }
-.beat .ts { font-family: var(--display); font-size: 22px; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.beat .tag { display: inline-block; font-family: var(--chunky); font-weight: 900; font-size: 10px; text-transform: lowercase; padding: 3px 8px; border-radius: 999px; color: #fff; margin-right: 6px; vertical-align: 2px; }
-.beat .w { font-weight: 600; }
-.beat .sd { display: block; margin-top: 2px; font-size: 14px; color: var(--sky); }
+.box { background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 20px; padding: 18px 20px; }
+.box h3 { font-size: 24px; margin-bottom: 10px; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.list li { color: #d9dcea; font-size: 16px; }
+.list li b { color: #fff; }
+ol.list { counter-reset: n; }
+ol.list li { counter-increment: n; display: grid; grid-template-columns: 26px 1fr; gap: 8px; }
+ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; margin-top: 1px; }
 
-/* 2 · steps */
-.steps3 { margin-top: 22px; display: grid; gap: 12px; }
-@media (min-width: 760px) { .steps3 { grid-template-columns: repeat(3, 1fr); } }
-.stepc { background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 22px; padding: 20px; }
-.stepc h3 { font-size: 32px; margin-bottom: 10px; }
-.stepc h3 b { font-weight: 400; color: var(--blue); margin-right: 6px; }
-.stepc p { color: #d9dcea; font-size: 16px; }
-.stepc p + p { margin-top: 8px; }
-.stepc strong { color: #fff; }
+.edit4 { display: grid; grid-template-columns: 1fr 1fr; border-radius: 14px; overflow: hidden; }
+@media (min-width: 560px) { .edit4 { grid-template-columns: repeat(4, 1fr); } }
+.edit4 div { padding: 12px 8px; text-align: center; color: #fff; min-width: 0; }
+.edit4 b { display: block; font-family: var(--display); font-weight: 400; font-size: 20px; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.edit4 span { display: block; margin-top: 4px; font-size: 12px; opacity: .85; line-height: 1.25; }
+.e1 { background: #2a2f45; } .e2 { background: var(--blue); } .e3 { background: var(--navy); } .e4 { background: var(--violet); }
 
-/* 3 · effects */
-.fx { margin-top: 22px; display: grid; gap: 10px; }
-@media (min-width: 640px) { .fx { grid-template-columns: 1fr 1fr; } }
-.card { background: var(--ink-2); border: 1.5px solid var(--line-d); border-radius: 20px; overflow: hidden; min-width: 0; }
-.card .demo { aspect-ratio: 16/9; background: #000; }
-.card .demo video { width: 100%; height: 100%; object-fit: cover; }
-.card .bd { padding: 16px; }
-.card .tt { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 6px; }
-.card h4 { font-size: 26px; }
-.lvl { flex: none; font-family: var(--chunky); font-weight: 900; font-size: 10.5px; text-transform: lowercase; padding: 4px 9px; border-radius: 999px; }
-.lvl.easy { background: var(--green); color: #fff; } .lvl.medium { background: var(--aqua); color: var(--ink); }
-.card p { color: #d9dcea; font-size: 15px; }
-.card .need { margin-top: 8px; font-size: 14px; color: var(--sky); }
-
-/* where I find them */
-.find { margin-top: 14px; background: var(--paper); color: var(--ink); border-radius: 22px; padding: 20px; }
-.find h3 { font-size: 30px; margin-bottom: 12px; }
-.find ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: f; }
-.find li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; counter-increment: f; font-size: 16px; }
-.find li::before { content: counter(f); width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-family: var(--display); font-size: 18px; }
-.find li b { display: block; }
-.find li > span { display: block; min-width: 0; }
-.find .q { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.find .q span { display: inline-block; background: var(--paper-2); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; font-weight: 600; white-space: nowrap; }
-.find .q span::before { content: "⌕ "; color: var(--blue); font-weight: 900; }
-.src { margin-top: 10px; font-size: 15px; }
-.src strong { color: var(--sky); }
-
-/* 4 · try it */
-.drills { margin-top: 22px; display: grid; gap: 10px; }
-@media (min-width: 760px) { .drills { grid-template-columns: repeat(3, 1fr); } }
-.drill { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 18px; }
-.drill .dt { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 8px; }
-.drill h4 { font-size: 26px; }
-.drill .time { flex: none; font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; background: var(--ink); color: #fff; padding: 4px 9px; border-radius: 999px; }
-.drill p { font-size: 15px; }
-.drill .learn { margin-top: 10px; font-size: 13px; color: var(--mute-l); font-weight: 600; }
-.then { margin-top: 12px; background: var(--blue); border-radius: 20px; padding: 18px 20px; font-size: 17px; font-weight: 500; }
-.then b { font-family: var(--display); font-weight: 400; font-size: 26px; text-transform: uppercase; display: block; line-height: 1; margin-bottom: 6px; }
-
-/* 5 · cheat sheet */
-.cheat { margin-top: 22px; background: var(--paper); color: var(--ink); border-radius: 24px; overflow: hidden; border: 6px solid #fff; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.4); max-width: 520px; }
-.cheat-h { background: var(--ink); color: #fff; padding: 16px 20px; }
-.cheat-h .logo { font-size: 24px; }
-.cheat-h b { display: block; font-family: var(--display); font-weight: 400; font-size: 28px; text-transform: uppercase; line-height: 1; margin-top: 4px; color: var(--sky); }
-.cheat-b { padding: 16px 20px 18px; display: grid; gap: 14px; }
-.cheat-b h5 { margin: 0 0 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
-.cs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-.cs-row.r4 { grid-template-columns: 1fr 1fr; }
-@media (min-width: 480px) { .cs-row.r4 { grid-template-columns: repeat(4, 1fr); } }
-.cs-row div { border-radius: 10px; padding: 8px 10px; font-size: 13px; line-height: 1.3; background: var(--paper-2); }
-.cs-row div b { display: block; font-family: var(--display); font-weight: 400; font-size: 17px; text-transform: uppercase; line-height: 1; margin-bottom: 3px; }
-.cs-row.r4 div { color: #fff; }
-.cs-row .c-build { background: #2a2f45; } .cs-row .c-drop { background: var(--blue); } .cs-row .c-middle { background: var(--navy); } .cs-row .c-end { background: var(--violet); }
-.cs-shots { font-weight: 700; font-size: 15px; line-height: 1.6; }
-.cs-shots span { white-space: nowrap; display: inline-block; }
-.cs-shots span + span::before { content: "·"; color: var(--blue); margin: 0 7px; font-weight: 900; }
-.cs-rule { background: var(--violet); color: #fff; border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14px; line-height: 1.35; }
-.cs-rule b { font-family: var(--display); font-weight: 400; font-size: 20px; text-transform: uppercase; display: block; line-height: 1; margin-bottom: 3px; }
-.cheat-foot { font-family: var(--chunky); font-weight: 900; font-size: 11px; text-transform: lowercase; color: var(--mute-l); }
-.save { margin-top: 20px; }
-.save-msg { margin-top: 10px; font-size: 14px; color: var(--aqua); min-height: 1.4em; }
-
-/* outro */
-.follow { margin-top: 64px; background: var(--blue); color: #fff; border-radius: 24px; padding: clamp(22px, 4vw, 34px); display: grid; gap: 18px; align-items: center; }
-@media (min-width: 720px) { .follow { grid-template-columns: 180px 1fr; } }
-.follow .por { border: 6px solid #fff; border-radius: 22px; box-shadow: 0 0 0 4px var(--ink); overflow: hidden; transform: rotate(-2deg); aspect-ratio: 4/5; max-width: 180px; background: var(--navy); }
-.follow .por img { width: 100%; height: 100%; object-fit: cover; }
-.follow h3 { font-size: clamp(32px, 6vw, 50px); margin-bottom: 10px; }
-.follow p + p { margin-top: 8px; }
-.follow .links { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
-.follow .ment { font-weight: 600; font-size: 15px; }
-.foot { padding: 36px 0 calc(36px + env(safe-area-inset-bottom, 0px)); color: var(--mute-d); font-size: 13px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.foot a { color: var(--sky); }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } .pill:hover { transform: none; } }
+/* try + follow */
+.try { margin-top: 60px; background: var(--blue); border-radius: 22px; padding: 22px; }
+.try h3 { font-size: 32px; margin-bottom: 8px; }
+.try p { font-weight: 500; }
+.follow { margin-top: 20px; display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; background: var(--ink-2); border: 1px solid var(--line-d); border-radius: 22px; padding: 18px; }
+.follow img { width: 96px; height: 120px; object-fit: cover; border-radius: 14px; border: 4px solid #fff; }
+.follow h3 { font-size: 26px; margin-bottom: 6px; }
+.follow p { font-size: 15px; color: #d9dcea; }
+.follow .pill { margin-top: 12px; min-height: 44px; padding: 10px 20px; font-size: 15px; }
+.ment { display: block; margin-top: 18px; text-align: center; font-weight: 600; font-size: 15px; color: var(--sky); }
+.foot { padding: 32px 0 calc(32px + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--mute-d); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } .pill:hover { transform: none; } }
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="logo">OFF<span>-</span>TAPE</span><small>Free guide</small></div></header>
+<header class="top"><div class="wrap"><span class="logo">OFF-TAPE</span></div></header>
 
-<main>
-<section class="hero" aria-labelledby="h-hero">
-  <i class="slash" aria-hidden="true"></i>
-  <svg class="zap" viewBox="0 0 100 140" aria-hidden="true"><polygon points="64,4 10,78 44,78 28,136 92,54 58,54 82,4" fill="var(--blue)" stroke="#fff" stroke-width="5" stroke-linejoin="round"/></svg>
-  <div class="wrap inner">
+<main class="wrap">
+  <section class="hero" aria-labelledby="h-hero">
     <h1 id="h-hero">Make your next video <span class="it">hype.</span></h1>
-    <p class="lead">How a hype video is built, my 3-step process, and drills you can try today with just your phone.</p>
-    <a class="pill fill" href="#breakdown">Let's go →</a>
-  </div>
-</section>
+    <p>My process in 3 steps.</p>
+  </section>
 
-<!-- 1 · BREAKDOWN -->
-<section class="sec" id="breakdown" aria-labelledby="h-bd">
-  <div class="wrap">
-    <div class="sec-head"><span class="num" aria-hidden="true">1</span><h2 id="h-bd">The breakdown</h2></div>
-    <p class="say" id="bdIntro"></p>
-    <div id="reel"></div>
-  </div>
-</section>
-
-<!-- 2 · THE 3 STEPS -->
-<section class="sec" aria-labelledby="h-steps">
-  <div class="wrap">
-    <div class="sec-head"><span class="num" aria-hidden="true">2</span><h2 id="h-steps">The 3 steps</h2></div>
-    <div class="steps3">
-      <article class="stepc"><h3><b>1</b>Plan it</h3>
-        <p>Create a storyline with a <strong>start, middle, and end.</strong> Driver grabs the keys, drives off, arrives and steps out.</p>
-        <p>Then plan <strong>2–3 fire moments</strong> and add their shots to your shot list.</p></article>
-      <article class="stepc"><h3><b>2</b>Shoot it</h3>
-        <p><strong>Shoot variety.</strong> Wide shots for the scene, close-ups for details, different angles for options in the edit.</p>
-        <p>Get every shot your fire moments need.</p></article>
-      <article class="stepc"><h3><b>3</b>Edit it</h3>
-        <p>Find a song that <strong>builds to a beat drop.</strong> Open with something eye-catching, build up with the music, hit your fire moments on the drop, keep the energy through the middle, and finish strong.</p>
-        <p>Add <strong>risers</strong> for tension, <strong>impacts</strong> on key moments, <strong>whooshes</strong> on movement.</p>
-        <p class="src">I get my sound effects from <strong>Epidemic Sound</strong> or <strong>Ocular Sounds</strong>.</p></article>
-    </div>
-  </div>
-</section>
-
-<!-- 3 · FIRE MOMENTS -->
-<section class="sec" aria-labelledby="h-fx">
-  <div class="wrap">
-    <div class="sec-head"><span class="num" aria-hidden="true">3</span><h2 id="h-fx">Fire moments</h2></div>
-    <p class="say">The shots people rewatch. Each one needs specific footage, so <strong>plan it before you film.</strong></p>
-    <div class="fx" id="library"></div>
-    <div class="find">
-      <h3>Where I find them</h3>
-      <ol>
-        <li><span><b>Search Instagram.</b>Type the effect or transition into the Instagram search bar and scroll the reels.<span class="q"><span>whip transition</span><span>car transition</span><span>smooth transitions</span><span>creative camera movement</span></span></span></li>
-        <li><span><b>Save them to a folder.</b>Tap save on the ones you love and add them to a collection called "Effects & Transitions." I build mine on the go, any time one catches my eye.</span></li>
-        <li><span><b>Pick from it before you shoot.</b>Open the folder, choose your 2–3 fire moments, and figure out the shots each one needs.</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · TRY IT TODAY -->
-<section class="sec" aria-labelledby="h-try">
-  <div class="wrap">
-    <div class="sec-head"><span class="num" aria-hidden="true">4</span><h2 id="h-try">Try it today</h2></div>
-    <p class="say">No car, no client. Just your phone and about 30 minutes.</p>
-    <div class="drills">
-      <article class="drill"><div class="dt"><h4>Find the drop</h4><span class="time">5 min</span></div>
-        <p>Play a song you like. Find where it builds and where the beat drops. Write down the time.</p>
-        <p class="learn">Your whole edit is built around this moment.</p></article>
-      <article class="drill"><div class="dt"><h4>Five angles</h4><span class="time">10 min</span></div>
-        <p>Pick any object. Film it wide, close-up, from low, from high, and with one slow push-in.</p>
-        <p class="learn">This is shooting variety.</p></article>
-      <article class="drill"><div class="dt"><h4>Whip transition</h4><span class="time">10 min</span></div>
-        <p>End a clip in one room with a fast pan right. Start a clip in another room panning right. Cut where the blur is fastest.</p>
-        <p class="learn">Your first fire moment.</p></article>
-    </div>
-    <div class="then"><b>Then cut it together</b>Build up with your close-ups as the music rises, hit your whip right on the drop, and end on your best angle. Post it and tag @j.david007. I'd love to see it.</div>
-  </div>
-</section>
-
-<!-- 5 · CHEAT SHEET -->
-<section class="sec" aria-labelledby="h-cs">
-  <div class="wrap">
-    <div class="sec-head"><span class="num" aria-hidden="true">5</span><h2 id="h-cs">Cheat sheet</h2></div>
-    <p class="say">Save it to your camera roll for your next shoot.</p>
-    <div class="cheat" id="cheatCard">
-      <div class="cheat-h"><span class="logo">OFF<span>-</span>TAPE</span><b>Hype video cheat sheet</b></div>
-      <div class="cheat-b">
-        <div><h5>Story</h5><div class="cs-row"><div><b>Start</b>Set the scene</div><div><b>Build</b>Raise the energy</div><div><b>Finish</b>Final hero moment</div></div></div>
-        <div class="cs-rule"><b>Plan 2–3 fire moments</b>Pick them before you shoot and add every shot they need to your list.</div>
-        <div><h5>Shoot variety</h5><p class="cs-shots"><span>Wide</span><span>Close-up</span><span>Low angle</span><span>High angle</span><span>Push-in</span><span>Pull-out</span><span>Tracking</span></p></div>
-        <div><h5>Edit to the music</h5><div class="cs-row r4"><div class="c-build"><b>Build-up</b>Open eye-catching, rise with the song</div><div class="c-drop"><b>Beat drop</b>Fire moments, fast cuts</div><div class="c-middle"><b>Middle</b>Keep the energy going</div><div class="c-end"><b>End</b>Strong final shot</div></div></div>
-        <div><h5>Sound design · Epidemic Sound or Ocular Sounds</h5><div class="cs-row"><div><b>Riser</b>Into the drop</div><div><b>Impact</b>On key hits</div><div><b>Whoosh</b>On fast moves</div></div></div>
-        <div><h5>Find fire moments</h5><p style="font-size:14px;font-weight:600">Search Instagram → save to your "Effects &amp; Transitions" folder → pick 2–3 before you shoot.</p></div>
-        <p class="cheat-foot">free guide by off-tape · @j.david007</p>
+  <section class="step" aria-labelledby="h1">
+    <h2 id="h1"><b>1</b>Plan it</h2>
+    <div class="body">
+      <p>Create a story with a <strong>start, middle, and end.</strong> A car video: the driver grabs the keys, drives off, then arrives and steps out.</p>
+      <p>Then plan <strong>2–3 fire moments</strong>: a crazy angle, a transition, or a creative camera move. Know the shots they need before you film.</p>
+      <div class="box">
+        <h3>Fire moments to try</h3>
+        <ul class="list">
+          <li><b>Whip transition:</b> a fast pan hides the cut between two scenes.</li>
+          <li><b>Lens blackout:</b> push into something dark, pull out somewhere new.</li>
+          <li><b>Match cut:</b> two shots with the same shape in the same spot.</li>
+          <li><b>Speed ramp:</b> slow motion that snaps to full speed on the beat.</li>
+        </ul>
       </div>
-    </div>
-    <div class="save"><button class="pill fill" type="button" id="saveBtn">↓ Save cheat sheet</button></div>
-    <p class="save-msg" id="saveMsg" role="status"></p>
-  </div>
-</section>
-
-<div class="wrap">
-  <section class="follow" aria-labelledby="h-follow">
-    <div class="por"><img src="../media/david-hype.jpg" alt="David, founder of OFF-TAPE" loading="lazy" width="360" height="450"></div>
-    <div>
-      <h3 id="h-follow">More breakdowns <span class="it">coming.</span></h3>
-      <p>I'm David, a filmmaker and the founder of OFF-TAPE. I've created content for brands like Royal Caribbean, United Airlines, and Norwegian Cruise Line.</p>
-      <p>I'll go deeper into each step in my next videos. Follow so you catch them.</p>
-      <div class="links">
-        <a class="pill white" id="igLink" href="https://instagram.com/j.david007" target="_blank" rel="noopener">Follow @j.david007 →</a>
-        <a class="ment" id="mentorLink" href="https://offtapepassiontoprofit.net/" target="_blank" rel="noopener">Want to turn videos into income? See the mentorship ↗</a>
+      <div class="box">
+        <h3>Where I find them</h3>
+        <ol class="list">
+          <li>Search the effect in the Instagram search bar, like "whip transition."</li>
+          <li>Save the ones you love to a folder called "Effects &amp; Transitions."</li>
+          <li>Pick 2–3 from it before your shoot.</li>
+        </ol>
       </div>
     </div>
   </section>
-  <footer class="foot"><span>© OFF-TAPE · Hype Video Blueprint</span></footer>
-</div>
-</main>
 
-<script>
-/* =================== CONFIG: edit freely =================== */
-const CONFIG = {
-  mentorshipUrl: "https://offtapepassiontoprofit.net/",
+  <section class="step" aria-labelledby="h2">
+    <h2 id="h2"><b>2</b>Shoot it</h2>
+    <div class="body">
+      <p><strong>Shoot variety.</strong> Wide shots to show the scene, close-ups for details, and different angles so you have options in the edit.</p>
+      <p>Make sure you get every shot your fire moments need.</p>
+    </div>
+  </section>
 
-  /* YOUR REEL BREAKDOWN  (parts: "build", "drop", "middle", "end")
-     Add your video file (e.g. "../media/hype-reel.mp4") and replace the beats
-     with your real timestamps. Until a video is set, the beats show as a
-     clearly labeled EXAMPLE. */
-  reel: {
-    video: "",
-    poster: "",
-    length: 30, // seconds
-    beats: [
-      { t: 0,  part: "build",  what: "Open on something eye-catching: close-up of a hand grabbing the keys.", sound: "Riser starts" },
-      { t: 4,  part: "build",  what: "Driver walks to the car and starts the engine.", sound: "Engine sound, riser building" },
-      { t: 10, part: "drop",   what: "Beat drops. Whip transition into the driving.", sound: "Impact on the drop" },
-      { t: 13, part: "drop",   what: "Fast cuts: speed ramp, low-angle hero shot.", sound: "Whooshes on every move" },
-      { t: 19, part: "middle", what: "Driving shots, wheel and headlight details, new angles.", sound: "Whooshes on the moves" },
-      { t: 26, part: "end",    what: "Car arrives. Driver steps out. Final hero shot.", sound: "Last impact, music out" }
-    ]
-  },
-
-  html2canvasSrc: "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-};
-
-/* =================== FIRE MOMENTS ===================
-   demo: optional short muted loop, e.g. "../media/fx-whip.mp4" */
-const EFFECTS = [
-  { name: "Whip transition", lvl: "easy", what: "A fast camera swipe hides the cut between two scenes.", need: "End shot A with a fast pan, start shot B panning the same way.", demo: "" },
-  { name: "Object pass-by", lvl: "easy", what: "Something crosses the lens and wipes you into the next shot.", need: "Shot A ends with an object crossing the lens. Shot B starts behind one.", demo: "" },
-  { name: "Lens blackout", lvl: "easy", what: "Push into darkness, pull out somewhere new.", need: "Push into something dark, then pull out of dark in the new spot.", demo: "" },
-  { name: "Match cut", lvl: "medium", what: "Two shots with the same shape in the same spot of the frame.", need: "A spinning wheel and a spinning record, framed the same.", demo: "" },
-  { name: "Reveal", lvl: "medium", what: "Start on a detail or behind something, then show the whole subject.", need: "One move from a detail or cover to the full subject.", demo: "" },
-  { name: "Speed ramp", lvl: "medium", what: "Slow motion that snaps to full speed right on the beat.", need: "Fast action shot at 60 or 120fps.", demo: "" }
-];
-
-const $ = s => document.querySelector(s);
-const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const mmss = s => Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0");
-const PART = { build: ["Build-up", "#2a2f45"], drop: ["Beat drop", "var(--blue)"], middle: ["Middle", "var(--navy)"], end: ["End", "var(--violet)"] };
-
-/* breakdown */
-(function renderReel() {
-  const R = CONFIG.reel, hasVid = !!R.video, L = R.length || 30;
-  $("#bdIntro").innerHTML = hasVid
-    ? "Here's the reel you just watched, broken down. Tap a moment to jump to it."
-    : "Every hype video follows the same shape. Here's a 30-second car video, second by second.";
-  const spans = ["build", "drop", "middle", "end"].map(p => { const b = R.beats.filter(x => x.part === p); if (!b.length) return null; const nxt = R.beats.find(x => x.t > b[b.length - 1].t && x.part !== p); return { p, s: b[0].t, e: nxt ? nxt.t : L }; }).filter(Boolean);
-  const ticks = [...new Set([0, ...spans.map(s => s.s), L])].sort((a, b) => a - b).filter((v, i, a) => i === 0 || i === a.length - 1 || (v - a[i - 1] > L * .15 && a[a.length - 1] - v > L * .15));
-  $("#reel").innerHTML = `${hasVid ? "" : `<span class="ex-tag">example breakdown</span>`}
-    <div class="reel${hasVid ? " has-video" : ""}">
-      ${hasVid ? `<div class="vid"><video id="reelVid" src="${esc(R.video)}"${R.poster ? ` poster="${esc(R.poster)}"` : ""} controls playsinline preload="metadata"></video></div>` : ""}
-      <div>
-        <div class="bar4" role="img" aria-label="${spans.map(s => `${PART[s.p][0]} ${mmss(s.s)} to ${mmss(s.e)}`).join(", ")}">${spans.map(s => `<div class="c-${s.p}" style="flex:0 0 ${(s.e - s.s) / L * 100}%">${(s.e - s.s) / L > .1 ? PART[s.p][0] : ""}</div>`).join("")}</div>
-        <div class="ticks" aria-hidden="true">${ticks.map(v => `<span style="left:${v / L * 100}%">${mmss(v)}</span>`).join("")}</div>
-        <div class="beats">${R.beats.map(b => { const inner = `<span class="ts">${mmss(b.t)}</span><span><span class="tag" style="background:${PART[b.part][1]}">${PART[b.part][0].toLowerCase()}</span><span class="w">${esc(b.what)}</span>${b.sound ? `<span class="sd">🔊 ${esc(b.sound)}</span>` : ""}</span>`;
-          return hasVid ? `<button type="button" class="beat" data-seek="${b.t}">${inner}</button>` : `<div class="beat">${inner}</div>`; }).join("")}</div>
+  <section class="step" aria-labelledby="h3">
+    <h2 id="h3"><b>3</b>Edit it</h2>
+    <div class="body">
+      <p>Find a song that <strong>builds to a beat drop.</strong> Then build your edit in four parts:</p>
+      <div class="edit4" role="list">
+        <div class="e1" role="listitem"><b>Build-up</b><span>Open eye-catching</span></div>
+        <div class="e2" role="listitem"><b>Beat drop</b><span>Fire moments</span></div>
+        <div class="e3" role="listitem"><b>Middle</b><span>Keep the energy</span></div>
+        <div class="e4" role="listitem"><b>End</b><span>Strong final shot</span></div>
       </div>
-    </div>`;
-})();
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-seek]"); if (!b) return;
-  const v = $("#reelVid"); if (!v) return;
-  const go = () => { v.currentTime = Number(b.dataset.seek); v.play().catch(() => {}); };
-  if (v.readyState >= 1) go(); else { v.addEventListener("loadedmetadata", go, { once: true }); v.load(); }
-  v.scrollIntoView({ block: "nearest" });
-});
+      <p>Add sound design: <strong>risers</strong> to build tension, <strong>impacts</strong> on key moments, <strong>whooshes</strong> on movement. I get mine from <strong>Epidemic Sound</strong> or <strong>Ocular Sounds</strong>.</p>
+    </div>
+  </section>
 
-/* fire moments */
-$("#library").innerHTML = EFFECTS.map(e => `<article class="card">
-  ${e.demo ? `<div class="demo"><video src="${esc(e.demo)}" muted loop autoplay playsinline preload="metadata" aria-hidden="true"></video></div>` : ""}
-  <div class="bd"><div class="tt"><h4>${esc(e.name)}</h4><span class="lvl ${e.lvl}">${e.lvl}</span></div><p>${esc(e.what)}</p><p class="need">🎬 ${esc(e.need)}</p></div></article>`).join("");
+  <section class="try" aria-labelledby="h-try">
+    <h3 id="h-try">Try it today</h3>
+    <p>Grab your phone. Film a whip transition between two rooms, cut it right on a beat drop, and tag @j.david007.</p>
+  </section>
 
-/* links */
-if (CONFIG.mentorshipUrl) $("#mentorLink").href = CONFIG.mentorshipUrl;
+  <section class="follow" aria-labelledby="h-follow">
+    <img src="../media/david-hype.jpg" alt="David, founder of OFF-TAPE" loading="lazy" width="192" height="240">
+    <div>
+      <h3 id="h-follow">More breakdowns coming</h3>
+      <p>I'm David, founder of OFF-TAPE. Follow for the next videos.</p>
+      <a class="pill white" href="https://instagram.com/j.david007" target="_blank" rel="noopener">Follow @j.david007</a>
+    </div>
+  </section>
 
-/* save cheat sheet */
-function loadScript(src) { return new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
-$("#saveBtn").addEventListener("click", async () => {
-  const btn = $("#saveBtn"), m = $("#saveMsg"), name = "hype-video-cheat-sheet.png";
-  btn.disabled = true; m.textContent = "Making your image…";
-  try {
-    if (!window.html2canvas) await loadScript(CONFIG.html2canvasSrc);
-    if (document.fonts && document.fonts.ready) await document.fonts.ready;
-    const canvas = await window.html2canvas($("#cheatCard"), { scale: 2, backgroundColor: "#f7f6fb", logging: false });
-    const blob = await new Promise(r => canvas.toBlob(r, "image/png"));
-    const file = new File([blob], name, { type: "image/png" });
-    if (navigator.canShare && navigator.canShare({ files: [file] }) && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-      try { await navigator.share({ files: [file], title: "Hype video cheat sheet" }); m.textContent = "Tap \"Save Image\" to put it in your photos."; btn.disabled = false; return; }
-      catch (err) { if (err && err.name === "AbortError") { m.textContent = ""; btn.disabled = false; return; } }
-    }
-    const url = URL.createObjectURL(blob), a = document.createElement("a");
-    a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 4000);
-    m.textContent = "Saved " + name;
-  } catch (err) { m.textContent = "Couldn't make the image here. Take a screenshot of the card instead."; }
-  btn.disabled = false;
-});
-</script>
+  <a class="ment" href="https://offtapepassiontoprofit.net/" target="_blank" rel="noopener">Want to turn videos into income? See the mentorship ↗</a>
+  <footer class="foot">© OFF-TAPE · Hype Video Blueprint</footer>
+</main>
 </body>
 </html>
