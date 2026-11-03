@@ -6,9 +6,9 @@
 <title>Hype Video Blueprint · OFF-TAPE</title>
 <meta name="description" content="Free guide from OFF-TAPE: my 3-step process for making hype videos.">
 <meta name="theme-color" content="#050608">
-<link rel="icon" href="../favicon.svg?v=2" type="image/svg+xml">
-<link rel="icon" href="../favicon-32.png?v=2" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="../apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Instrument+Sans:wght@400;500;600;700&display=swap">
@@ -57,6 +57,16 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 400; text-tran
 .hero h1 .it { color: var(--sky); font-size: .58em; vertical-align: .1em; }
 .hero p { margin-top: 18px; font-size: 20px; font-weight: 600; max-width: 480px; }
 
+/* reference reel */
+.reel { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: 18px; align-items: end; }
+@media (max-width: 520px) { .reel { grid-template-columns: 1fr; } }
+.reel .frame { position: relative; border: 6px solid #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.5); background: #000; aspect-ratio: 9 / 16; width: 100%; max-width: 260px; transform: rotate(-1.5deg); }
+.reel video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel .snd { position: absolute; left: 10px; bottom: 10px; border: 0; border-radius: 999px; background: rgba(5,6,8,.75); color: #fff; font: 600 13px/1 var(--body); padding: 9px 13px; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.reel .snd:hover { background: var(--blue); }
+.reel .cap { color: #d9dcea; font-size: 16px; }
+.reel .cap b { display: block; font-family: var(--serif); color: var(--sky); font-weight: 400; font-size: 22px; transform: rotate(-2deg); margin-bottom: 6px; }
+
 /* steps */
 .step { padding-block: 56px 0; }
 .step h2 { font-size: clamp(48px, 11vw, 76px); display: flex; align-items: baseline; gap: 14px; }
@@ -90,7 +100,13 @@ ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radi
 .follow h3 { font-size: 26px; margin-bottom: 6px; }
 .follow p { font-size: 15px; color: #d9dcea; }
 .follow .pill { margin-top: 12px; min-height: 44px; padding: 10px 20px; font-size: 15px; }
-.ment { display: block; margin-top: 18px; text-align: center; font-weight: 600; font-size: 15px; color: var(--sky); }
+.ment { margin-top: 56px; background: var(--paper); color: var(--ink); border: 6px solid #fff; border-radius: 26px; box-shadow: 0 0 0 4px var(--blue), 0 24px 50px rgba(0,0,0,.45); padding: clamp(24px, 6vw, 40px) clamp(20px, 5vw, 36px); }
+.ment .eb { display: inline-block; font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: #fff; background: var(--violet); padding: 7px 12px; border-radius: 999px; }
+.ment h2 { margin-top: 14px; font-size: clamp(42px, 10vw, 68px); }
+.ment h2 .it { color: var(--blue); font-size: .7em; }
+.ment p { margin-top: 14px; font-size: 17px; color: #2c3150; max-width: 520px; }
+.ment .pill { margin-top: 22px; width: 100%; min-height: 62px; padding-inline: 16px; font-size: 18px; font-weight: 700; white-space: nowrap; box-shadow: 0 10px 24px rgba(35,80,255,.35); }
+@media (min-width: 560px) { .ment .pill { width: auto; padding-inline: 36px; } }
 .foot { padding: 32px 0 calc(32px + env(safe-area-inset-bottom, 0px)); text-align: center; color: var(--mute-d); font-size: 13px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } .pill:hover { transform: none; } }
 </style>
@@ -102,6 +118,13 @@ ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radi
   <section class="hero" aria-labelledby="h-hero">
     <h1 id="h-hero">Make your next video <span class="it">hype.</span></h1>
     <p>My process in 3 steps.</p>
+    <div class="reel">
+      <div class="frame">
+        <video id="reel" src="/media/hype-reel.mp4" poster="/media/hype-reel.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Example hype video by OFF-TAPE"></video>
+        <button class="snd" id="snd" type="button" aria-pressed="false">🔊 Tap for sound</button>
+      </div>
+      <p class="cap"><b>Here's one I made.</b>Watch for the build-up, the beat drop, and the fire moments. Then I'll show you how.</p>
+    </div>
   </section>
 
   <section class="step" aria-labelledby="h1">
@@ -157,7 +180,7 @@ ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radi
   </section>
 
   <section class="follow" aria-labelledby="h-follow">
-    <img src="../media/david-hype.jpg" alt="David, founder of OFF-TAPE" loading="lazy" width="192" height="240">
+    <img src="/media/david-hype.jpg" alt="David, founder of OFF-TAPE" loading="lazy" width="192" height="240">
     <div>
       <h3 id="h-follow">More breakdowns coming</h3>
       <p>I'm David, founder of OFF-TAPE. Follow for the next videos.</p>
@@ -165,8 +188,27 @@ ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radi
     </div>
   </section>
 
-  <a class="ment" href="https://offtapepassiontoprofit.net/" target="_blank" rel="noopener">Want to turn videos into income? See the mentorship ↗</a>
+  <section class="ment" aria-labelledby="h-ment">
+    <span class="eb">Passion to Profit Mentorship</span>
+    <h2 id="h-ment">Turn your videos into <span class="it">income.</span></h2>
+    <p>Making great videos is one thing. Turning them into a business is another. In my mentorship I help creatives sharpen their skills, build their brand, and land paying clients.</p>
+    <a class="pill fill" href="https://offtapepassiontoprofit.net/" target="_blank" rel="noopener">Learn about the mentorship →</a>
+  </section>
   <footer class="foot">© OFF-TAPE · Hype Video Blueprint</footer>
 </main>
+<script>
+(function () {
+  var v = document.getElementById("reel"), b = document.getElementById("snd");
+  if (!v || !b) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); }
+  b.addEventListener("click", function () {
+    v.muted = !v.muted;
+    if (!v.muted) { v.currentTime = 0; }
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+    b.textContent = v.muted ? "🔊 Tap for sound" : "🔇 Mute";
+    b.setAttribute("aria-pressed", String(!v.muted));
+  });
+})();
+</script>
 </body>
 </html>
