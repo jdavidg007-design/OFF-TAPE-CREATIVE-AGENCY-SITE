@@ -97,6 +97,13 @@ h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 400; text-tran
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .list li { color: #d9dcea; font-size: 16px; }
 .list li b { color: #fff; }
+.shots { list-style: none; margin: 0; padding: 0; }
+.shots li { display: grid; grid-template-columns: 118px 1fr; gap: 2px 14px; padding: 11px 0; border-top: 1px solid var(--line-d); }
+.shots li:first-child { border-top: 0; padding-top: 2px; }
+.shots b { grid-row: span 2; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 19px; line-height: 1.05; color: #fff; }
+.shots span { font-size: 16px; color: #fff; }
+.shots i { font-style: normal; font-size: 14px; color: var(--mute-d); }
+@media (max-width: 560px) { .shots li { grid-template-columns: 1fr; } .shots b { grid-row: auto; } }
 ol.list { counter-reset: n; }
 ol.list li { counter-increment: n; display: grid; grid-template-columns: 26px 1fr; gap: 8px; }
 ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; margin-top: 1px; }
@@ -173,8 +180,20 @@ ol.list li::before { content: counter(n); width: 26px; height: 26px; border-radi
   <section class="step" aria-labelledby="h2">
     <h2 id="h2"><b>2</b>Shoot it</h2>
     <div class="body">
-      <p><strong>Shoot variety.</strong> Wide shots to show the scene, close-ups for details, and different angles so you have options in the edit.</p>
-      <p>Make sure you get every shot your fire moments need.</p>
+      <p>You don't need to film everything. You need <strong>enough variety to tell the story</strong>, so you have options in the edit.</p>
+      <div class="box">
+        <h3>Your shot list</h3>
+        <ul class="shots">
+          <li><b>Wide</b><span>Shows where you are and how big it is.</span><i>The whole location, or the hero reveal.</i></li>
+          <li><b>Medium</b><span>Shows your subject in action.</span><i>Someone walking up, a product in use.</i></li>
+          <li><b>Close-up</b><span>Pulls attention to the details.</span><i>Hands, wheels, textures, logos.</i></li>
+          <li><b>Low angle</b><span>Makes your subject look powerful.</span><i>Camera near the ground, looking up.</i></li>
+          <li><b>High angle</b><span>Gives a fresh perspective.</span><i>Looking down from above.</i></li>
+          <li><b>Push / pull</b><span>Builds anticipation or reveals.</span><i>Move in on the subject, or pull back to show it all.</i></li>
+          <li><b>Orbit / tracking</b><span>Adds movement and energy.</span><i>Circle the subject, or follow it.</i></li>
+        </ul>
+      </div>
+      <p>Then make sure you get every shot your fire moments need.</p>
       <p>I shoot in <strong>4K at 60fps</strong>, so I can slow down any shot in the edit.</p>
     </div>
   </section>
