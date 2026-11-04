@@ -1,0 +1,22 @@
+# off-tape.com/creative-edge shows the Creative Edge Blueprint workbook,
+# which is hosted on its own Netlify project (creativeedge1.netlify.app).
+# These rules only add that path; nothing else on off-tape.com changes.
+
+[[redirects]]
+  from = "/creative-edge"
+  to = "https://creativeedge1.netlify.app/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/creative-edge/*"
+  to = "https://creativeedge1.netlify.app/:splat"
+  status = 200
+  force = true
+
+# The workbook's profile writer.
+[[redirects]]
+  from = "/api/profile"
+  to = "https://creativeedge1.netlify.app/api/profile"
+  status = 200
+  force = true
