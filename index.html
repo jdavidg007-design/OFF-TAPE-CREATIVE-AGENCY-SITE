@@ -146,6 +146,53 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .ov-info small { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin-bottom: 6px; }
 .ov-info .big { font-size: clamp(20px, 2.4vw, 28px); font-weight: 600; overflow-wrap: anywhere; }
 @media (max-width: 820px) { .ov-body { grid-template-columns: 1fr; } }
+.ap-body { align-items: start; align-content: start; }
+.ap-body h2 { font-size: clamp(60px, 9vw, 150px); }
+.ap-side { display: grid; gap: 40px; }
+.ap-side .ov-info a.big { color: #fff; text-decoration: none; }
+.ap { position: relative; background: var(--ink); color: #fff; border: 3px solid #fff; border-radius: 26px; box-shadow: 6px 6px 0 var(--ink); padding: 30px 30px 26px; display: grid; gap: 20px; align-self: start; }
+.ap-hp { position: absolute; left: -9999px; }
+.ap-prog { height: 6px; border-radius: 6px; background: rgba(255,255,255,.15); overflow: hidden; }
+.ap-prog i { display: block; height: 100%; width: 11%; background: var(--violet); border-radius: inherit; transition: width .35s cubic-bezier(.2,.8,.2,1); }
+.ap-count { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-top: -8px; }
+.ap-step { display: none; border: 0; margin: 0; padding: 0; min-width: 0; }
+.ap-step.on { display: grid; gap: 14px; animation: apin .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes apin { from { opacity: 0; transform: translateY(12px); } }
+.ap-step legend { font-family: var(--display); text-transform: uppercase; font-size: clamp(34px, 3.4vw, 50px); line-height: .95; padding: 0; margin-bottom: 14px; }
+.ap-step legend small { display: block; font-family: var(--body); text-transform: none; font-size: 15px; opacity: .7; margin-top: 8px; }
+.ap-in { width: 100%; font: inherit; font-size: 20px; color: #fff; background: transparent; border: 0; border-bottom: 2px solid rgba(255,255,255,.4); padding: 10px 2px; border-radius: 0; outline: none; transition: border-color .2s; resize: vertical; }
+.ap-in.sm { font-size: 17px; }
+.ap-in::placeholder { color: rgba(255,255,255,.4); }
+.ap-in:focus { border-color: var(--sky); }
+textarea.ap-in { border: 2px solid rgba(255,255,255,.4); border-radius: 14px; padding: 12px 14px; min-height: 120px; }
+.ap-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.ap-chips label { position: relative; cursor: pointer; }
+.ap-chips input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.ap-chips span { display: inline-block; padding: 12px 18px; border-radius: 999px; border: 2px solid rgba(255,255,255,.5); font-weight: 600; font-size: 15px; transition: background .15s, border-color .15s, color .15s, transform .15s; }
+.ap-chips label:hover span { border-color: #fff; }
+.ap-chips input:checked + span { background: var(--blue); border-color: #fff; color: #fff; transform: rotate(-2deg); }
+.ap-chips input:focus-visible + span { outline: 3px solid var(--sky); outline-offset: 2px; }
+.ap-err { margin: 0; min-height: 1.2em; color: #ff8a80; font-size: 14px; font-weight: 600; }
+.ap-err:empty { min-height: 0; display: none; }
+.ap-nav { display: flex; justify-content: space-between; gap: 12px; }
+.ap-nav .pill { color: #fff; }
+.ap-nav .pill.white { color: var(--blue); }
+.ap-nav .pill.white:hover { background: var(--sky); border-color: var(--sky); color: var(--ink); }
+#ap-back[hidden] { display: inline-flex; visibility: hidden; }
+.ap-done .ap-big { font-family: var(--display); text-transform: uppercase; font-size: clamp(44px, 5vw, 72px); line-height: .9; margin: 0; }
+.ap-done p { margin: 0; font-size: 18px; }
+.ap.sent .ap-prog, .ap.sent .ap-count, .ap.sent .ap-nav { display: none; }
+@media (max-width: 820px) {
+  .ap-body { gap: 28px; padding-top: 16px; }
+  .ap-body h2 { font-size: clamp(40px, 11vw, 56px); }
+  .ap-body h2 br { display: none; }
+  .ap-body h2 .it { font-size: .55em; margin-top: 8px; }
+  .ap-side { gap: 0; }
+  .ap-side .ov-info { display: none; }
+  .ap { padding: 22px 18px 20px; border-radius: 20px; }
+  .ap-in { font-size: 18px; }
+  .ap-chips span { padding: 11px 15px; font-size: 14px; }
+}
 
 /* hero */
 .hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 80px) clamp(110px, 12vw, 170px); background: radial-gradient(75% 85% at 95% 55%, rgba(24,54,190,.55), transparent 70%), radial-gradient(60% 50% at 30% 105%, rgba(20,40,150,.35), transparent 70%), linear-gradient(115deg, #05060b 0%, #070a1c 35%, #0b1a5c 75%, #0e2276 100%); }
@@ -581,7 +628,7 @@ footer { padding-block: 64px 36px; }
 </svg>
 
 <div class="cursor" id="cursor" aria-hidden="true"></div>
-<a class="fab" id="fab" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener"><span class="ph" aria-hidden="true">📞</span>Book a call</a>
+<a class="fab" id="fab" href="#apply" data-apply><span class="ph" aria-hidden="true">✍️</span>Apply now</a>
 <div class="mib-flash" id="mib-flash" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Main">
@@ -589,7 +636,7 @@ footer { padding-block: 64px 36px; }
     <div class="nav-left" aria-hidden="true"></div>
     <a class="logo" href="#top">OFF<span>-</span>TAPE</a>
     <div class="nav-right">
-      <button class="talk" type="button" id="open-talk">Book a call <i aria-hidden="true"><svg><use href="#bolt"/></svg></i></button>
+      <button class="talk" type="button" id="open-talk" data-apply>Apply <i aria-hidden="true"><svg><use href="#bolt"/></svg></i></button>
     </div>
   </div>
 </nav>
@@ -600,13 +647,84 @@ footer { padding-block: 64px 36px; }
       <span class="logo">OFF<span>-</span>TAPE</span>
       <button class="pill" type="button" id="close-talk">Close ✕</button>
     </div>
-    <div class="ov-body">
-      <h2 id="talk-h">Got an<br>idea?<br>Let's<br>shoot it.<span class="it">or just say hi.</span></h2>
-      <div class="ov-info">
-        <div><small>Projects & inquiries</small><span class="big">offtapefilms@gmail.com</span></div>
-        <div><small>Book a kick-off call</small><a class="pill white" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener">Pick a time →</a></div>
-        <div><small>Based in</small>Miami, Florida. Working with brands in every state and abroad.</div>
+    <div class="ov-body ap-body">
+      <div class="ap-side">
+        <h2 id="talk-h">Apply to <br>work with <br>us.<span class="it">takes 1 minute.</span></h2>
+        <div class="ov-info">
+          <div><small>Rather email?</small><a class="big" href="mailto:offtapefilms@gmail.com">offtapefilms@gmail.com</a></div>
+          <div><small>Based in</small>Miami, Florida. Working with brands in every state and abroad.</div>
+        </div>
       </div>
+      <form class="ap" id="apply-form" name="apply" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="apply">
+        <p class="ap-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="ap-prog" aria-hidden="true"><i id="ap-bar"></i></div>
+        <div class="ap-count" id="ap-count" aria-live="polite">1 / 9</div>
+
+        <fieldset class="ap-step on" data-step>
+          <legend>Full name:</legend>
+          <input class="ap-in" type="text" name="name" autocomplete="name" placeholder="First and last name" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Email address:</legend>
+          <input class="ap-in" type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@brand.com" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Your phone number:</legend>
+          <input class="ap-in" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(305) 555-0123" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Location:</legend>
+          <input class="ap-in" type="text" name="location" autocomplete="address-level2" placeholder="City, state or country" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Estimated budget:</legend>
+          <input class="ap-in" type="text" name="budget" placeholder="Your estimate" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Tell me what you are wanting captured!</legend>
+          <textarea class="ap-in" name="captured" rows="4" placeholder="The idea, where it'll run, anything I should know" required></textarea>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step data-multi>
+          <legend>What services are you interested in?<small>Pick all that fit.</small></legend>
+          <div class="ap-chips">
+            <label><input type="checkbox" value="Social content"><span>Social content</span></label>
+            <label><input type="checkbox" value="Commercial / ad"><span>Commercial / ad</span></label>
+            <label><input type="checkbox" value="Event coverage"><span>Event coverage</span></label>
+            <label><input type="checkbox" value="Photography"><span>Photography</span></label>
+            <label><input type="checkbox" value="Behind the scenes"><span>Behind the scenes</span></label>
+            <label><input type="checkbox" value="Something else"><span>Something else</span></label>
+          </div>
+          <input type="hidden" name="services">
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>How did you hear about me?</legend>
+          <input class="ap-in" type="text" name="heard" placeholder="Instagram, a friend, Google…" required>
+        </fieldset>
+
+        <fieldset class="ap-step" data-step>
+          <legend>Instagram Handles? Let's be friends!</legend>
+          <input class="ap-in" type="text" name="instagram" autocapitalize="off" autocomplete="off" placeholder="@yourbrand, @you (optional)">
+        </fieldset>
+
+        <div class="ap-step ap-done" id="ap-done" tabindex="-1">
+          <p class="ap-big">Got it. 🎬</p>
+          <p>Your application is in. We'll be in touch soon.</p>
+        </div>
+
+        <p class="ap-err" id="ap-err" role="alert"></p>
+        <div class="ap-nav" id="ap-nav">
+          <button class="pill" type="button" id="ap-back">← Back</button>
+          <button class="pill white" type="submit" id="ap-next">Next →</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -618,7 +736,7 @@ footer { padding-block: 64px 36px; }
       <span class="eyebrow">Creative agency · Miami</span>
       <h1 aria-label="Hype content that hits different (on purpose)"><span class="hl l0" data-sp=".10">Hype</span><span class="hl l1" data-sp="-.07">content</span><span class="hl l2" data-sp=".14">that hits</span><span class="hl l3" data-sp="-.09">different</span><span class="hl l4" data-sp=".05"><span class="it">(on purpose)</span></span></h1>
       <div class="hero-meta">
-        <a class="pill fill" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener">Book a call →</a>
+        <a class="pill fill" href="#apply" data-apply>Apply now →</a>
         <div class="tags"><b>Social Content for Brands</b><span>Concept, casting, shoot, edit. All of it.</span></div>
       </div>
     </div>
@@ -825,11 +943,11 @@ footer { padding-block: 64px 36px; }
 <section class="band pinkband close-band" id="contact" aria-labelledby="cl-h">
   <span class="deco d9 spin" aria-hidden="true" style="color:var(--pink)"><svg><use href="#burst"/></svg></span>
   <span class="deco d10 bob" aria-hidden="true"><svg><use href="#star"/></svg></span>
-  <span class="ring" aria-hidden="true" style="right:7%;top:12%;width:130px;height:130px"><svg viewBox="0 0 150 150"><defs><path id="circ2" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ2" textLength="362" lengthAdjust="spacing">Book a call ✦ book a call ✦ </textPath></text></svg><span class="core" style="background:var(--ink)">↗</span></span>
+  <span class="ring" aria-hidden="true" style="right:7%;top:12%;width:130px;height:130px"><svg viewBox="0 0 150 150"><defs><path id="circ2" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ2" textLength="362" lengthAdjust="spacing">Apply now ✦ apply now ✦ </textPath></text></svg><span class="core" style="background:var(--ink)">↗</span></span>
   <div class="wrap">
     <h2 id="cl-h"><span class="it">okay, enough scrolling.</span>Let's create.</h2>
     <div class="row">
-      <a class="pill white" href="https://calendly.com/offtapefilms/30min" target="_blank" rel="noopener" style="color:var(--blue)">Book a call →</a>
+      <a class="pill white" href="#apply" data-apply style="color:var(--blue)">Apply now →</a>
       <span class="copybox"><code id="em">offtapefilms@gmail.com</code><button type="button" id="copy" style="color:var(--blue)">Copy</button></span>
     </div>
   </div>
@@ -898,7 +1016,7 @@ footer { padding-block: 64px 36px; }
     nav.classList.toggle('top', overHero());
   })();
 
-  // floating Book a call: shows after the hero, hides once the closing band or footer is on screen
+  // floating Apply button: shows after the hero, hides once the closing band or footer is on screen
   var fab = document.getElementById('fab'), endSeen = false;
   document.body.classList.add('has-fab');
   function fabUpdate() { fab.classList.toggle('on', !endSeen && scrollY > innerHeight * .6); }
@@ -1125,10 +1243,67 @@ footer { padding-block: 64px 36px; }
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
 
   // contact overlay
-  var ov = document.getElementById('talk'), opener = document.getElementById('open-talk');
-  function shut() { ov.hidden = true; document.body.style.overflow = ''; opener.focus(); }
-  opener.addEventListener('click', function () { ov.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('close-talk').focus(); });
+  var ov = document.getElementById('talk'), opener = document.getElementById('open-talk'), lastOpener = opener;
+  function shut() { ov.hidden = true; document.body.style.overflow = ''; if (location.hash === '#apply') history.replaceState(null, '', location.pathname + location.search); (lastOpener || opener).focus(); }
+  function openApply(from) { lastOpener = from || opener; ov.hidden = false; document.body.style.overflow = 'hidden'; apShow(apI, true); }
+  document.querySelectorAll('[data-apply]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openApply(el); });
+  });
   document.getElementById('close-talk').addEventListener('click', shut);
+
+  // apply Q&A
+  var apF = document.getElementById('apply-form'), apSteps = [].slice.call(apF.querySelectorAll('[data-step]')),
+      apI = 0, apN = apSteps.length, apBack = document.getElementById('ap-back'), apNext = document.getElementById('ap-next'),
+      apErr = document.getElementById('ap-err'), apBar = document.getElementById('ap-bar'), apCount = document.getElementById('ap-count'), apBusy = false;
+  function apShow(i, focus) {
+    apSteps.forEach(function (st, k) { st.classList.toggle('on', k === i); });
+    apI = i; apErr.textContent = '';
+    apBar.style.width = ((i + 1) / apN * 100) + '%';
+    apCount.textContent = (i + 1) + ' / ' + apN;
+    apBack.hidden = i === 0;
+    apNext.textContent = i === apN - 1 ? 'Send application →' : 'Next →';
+    if (focus) { var f = apSteps[i].querySelector('input:not([type=hidden]), textarea'); if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 30); }
+  }
+  function apValid(st) {
+    if (st.hasAttribute('data-multi')) {
+      var picked = [].slice.call(st.querySelectorAll('input[type=checkbox]:checked')).map(function (c) { return c.value; });
+      st.querySelector('input[type=hidden]').value = picked.join(', ');
+      if (!picked.length) { apErr.textContent = 'Pick at least one.'; return false; }
+      return true;
+    }
+    var bad = [].slice.call(st.querySelectorAll('input, textarea')).filter(function (el) { return !el.checkValidity(); })[0];
+    if (bad) {
+      apErr.textContent = bad.type === 'radio' ? 'Pick one to continue.' : bad.type === 'email' && bad.value ? 'That email doesn\'t look right.' : 'This one\'s required.';
+      if (bad.type !== 'radio') bad.focus();
+      return false;
+    }
+    return true;
+  }
+  apBack.addEventListener('click', function () { if (apI > 0) apShow(apI - 1, true); });
+  apF.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && !(e.metaKey || e.ctrlKey)) e.stopPropagation(); });
+  apF.querySelectorAll('input[type=radio]').forEach(function (r) {
+    r.addEventListener('change', function () { if (apI < apN - 1) setTimeout(function () { if (apValid(apSteps[apI])) apShow(apI + 1, true); }, 220); });
+  });
+  apF.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (apBusy || !apValid(apSteps[apI])) return;
+    if (apI < apN - 1) { apShow(apI + 1, true); return; }
+    apBusy = true; apNext.textContent = 'Sending…';
+    var body = new URLSearchParams(new FormData(apF)).toString();
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); })
+      .then(function () {
+        apSteps.forEach(function (st) { st.classList.remove('on'); });
+        apF.classList.add('sent');
+        var d = document.getElementById('ap-done'); d.classList.add('on'); d.focus();
+      })
+      .catch(function () {
+        apErr.innerHTML = 'Couldn\'t send. Please email us at <a href="mailto:offtapefilms@gmail.com" style="color:inherit">offtapefilms@gmail.com</a>.';
+        apNext.textContent = 'Try again →';
+      })
+      .then(function () { apBusy = false; });
+  });
+  if (location.hash === '#apply') openApply();
   addEventListener('keydown', function (e) { if (e.key !== 'Escape') return; if (!ov.hidden) shut(); if (!lb.hidden) closeLb(); });
 
   var btn = document.getElementById('copy');
