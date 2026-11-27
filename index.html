@@ -682,12 +682,18 @@ footer { padding-block: 64px 36px; }
         </fieldset>
 
         <fieldset class="ap-step" data-step>
-          <legend>Estimated budget:</legend>
-          <input class="ap-in" type="text" name="budget" placeholder="Your estimate" required>
+          <legend>What is your monthly revenue?</legend>
+          <div class="ap-chips">
+            <label><input type="radio" name="revenue" value="$10k+" required><span>$10k+</span></label>
+            <label><input type="radio" name="revenue" value="$20k+" required><span>$20k+</span></label>
+            <label><input type="radio" name="revenue" value="$30k+" required><span>$30k+</span></label>
+            <label><input type="radio" name="revenue" value="$50k+" required><span>$50k+</span></label>
+            <label><input type="radio" name="revenue" value="$100k+" required><span>$100k+</span></label>
+          </div>
         </fieldset>
 
         <fieldset class="ap-step" data-step>
-          <legend>Tell me what you are wanting captured!</legend>
+          <legend>Tell me what the project is about:</legend>
           <textarea class="ap-in" name="captured" rows="4" placeholder="The idea, where it'll run, anything I should know" required></textarea>
         </fieldset>
 
@@ -705,12 +711,12 @@ footer { padding-block: 64px 36px; }
         </fieldset>
 
         <fieldset class="ap-step" data-step>
-          <legend>How did you hear about me?</legend>
-          <input class="ap-in" type="text" name="heard" placeholder="Instagram, a friend, Google…" required>
+          <legend>Business website:</legend>
+          <input class="ap-in" type="text" name="website" autocapitalize="off" autocomplete="url" inputmode="url" placeholder="yourbrand.com" required>
         </fieldset>
 
         <fieldset class="ap-step" data-step>
-          <legend>Instagram Handles? Let's be friends!</legend>
+          <legend>Instagram handles?</legend>
           <input class="ap-in" type="text" name="instagram" autocapitalize="off" autocomplete="off" placeholder="@yourbrand, @you (optional)">
         </fieldset>
 
