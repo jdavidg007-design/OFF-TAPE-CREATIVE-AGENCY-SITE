@@ -20,3 +20,7 @@
   to = "https://creativeedge1.netlify.app/api/profile"
   status = 200
   force = true
+
+# The Apply Q&A form on the home page (name="apply") is a Netlify Form.
+# Form detection is turned on for this project, so each deploy registers it
+# and submissions show under Forms in the Netlify dashboard.
